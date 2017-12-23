@@ -1,0 +1,242 @@
+﻿---
+title: java之枚举类型应用
+date: 2016-12-30
+top: 8
+categories: [java]
+tags: [enum,提升]
+description: "enum限制了常量集的取值范围，使程序避免产生类型不安全的问题。"
+---
+<!--more-->
+
+
+[toc]
+
+### 一. 前言
+
+> 为什么使用枚举类型？
+
+在此之前，我们需要创建一个整形常量集，但是这些整型常量集并不会必然地将其自身的取值限制在这个常量集的范围之内，因此他们更有风险，且更难以使用。但是，枚举类型消除了这一缺陷，显得更加使用，下面实例说明。
+
+使用`public final static`的方法定义如下常量集：
+```java
+public class WeekDay{
+    public static final int SUN = 1;
+    public static final int MON = 2;
+    public static final int TUE = 3;
+}
+```
+
+通过下面的方法，传入不同类型的参数：
+
+```java
+private static String getToday(int weekDay){
+    switch (weekDay){
+        case ConstantTest.MON:
+            System.out.println("MON");
+            break;
+        case ConstantTest.SUN:
+            System.out.println("SUN");
+            break;
+        case ConstantTest.TUE:
+            System.out.println("TUE");
+            break;
+    }
+    return null;
+}
+
+//调用上面的方法
+getToday(ConstantTest.MON);//正常的场景
+getToday(5);//错误的场景，产生类型不安全的问题，因为取值没有在常量集范围之内
+```
+
+通过上面的方法，`getToday(5)`传入的参数，虽然编译时通过，但是在运行时出现什么情况，我们就不得而知了，但是这显然是不符合java程序的类型安全。
+
+### 二. 枚举定义
+
+`枚举类型`是指由一组固定的常量组成合法的类型，定义方法如下：
+
+```java
+public enum WeekDay{
+    SUN, MON, TUE, WED, THT, FRI, SAT
+}
+```
+
+> 在创建enum时，编译器会自动添加一些有用的特性，他会创建toString()方法，以便你可以方便的显示某个enum实例的名字，编译器还会创建ordinal()方法，用来表示某个特定enum常量的声明顺序，以及static values()方法，用来按照enum常量的声明顺序，产生由这些常量值构成的数组：
+
+```java
+for (WeekDay wd :
+        WeekDay.values()) {
+    System.out.println(wd + ",ordinal" + wd.ordinal());
+}
+
+output:
+SUN,ordinal：0
+MON,ordinal：1
+TUE,ordinal：2
+WED,ordinal：3
+THT,ordinal：4
+FRI,ordinal：5
+SAT,ordinal：6
+
+```
+
+改写上面的例子：
+
+```java
+//定义枚举
+public enum WeekDay {
+    SUN, MON, TUE, WED, THT, FRI, SAT
+}
+
+private static String getToday(WeekDay weekDay){
+    switch (weekDay){
+        case MON:
+            System.out.println("MON");
+            break;
+        case SUN:
+            System.out.println("SUN");
+            break;
+        case TUE:
+            System.out.println("TUE");
+            break;
+    }
+    return null;
+}
+
+public static void main(String[] args){
+    getToday(WeekDay.MON);//正常的场景
+    //getToday(5);//编译时出错，超出了enum的类型范围。
+}
+```
+
+### 三. 枚举的用法
+
+1. 常量定义
+
+```java
+public enum WeekDay {
+    SUN, MON, TUE, WED, THT, FRI, SAT
+}
+```
+
+2. switch
+
+```java
+public enum WeekDay {
+    SUN, MON, TUE, WED, THT, FRI, SAT
+}
+
+public class SelectDay{
+    WeekDay weekday = WeekDay.SUN;
+    public void select(){
+        switch(weekday){
+            case SUN:
+                weekday = WeekDay.SUN;
+                bread;
+            ...
+        }
+    }
+}
+
+```
+
+3. 向枚举中添加新方法
+```java
+public enum Color {  
+    RED("红色", 1), GREEN("绿色", 2), BLANK("白色", 3), YELLO("黄色", 4);  
+    // 成员变量  
+    private String name;  
+    private int index;  
+    // 构造方法  
+    private Color(String name, int index) {  
+        this.name = name;  
+        this.index = index;  
+    }  
+    // 普通方法  
+    public static String getName(int index) {  
+        for (Color c : Color.values()) {  
+            if (c.getIndex() == index) {  
+                return c.name;  
+            }  
+        }  
+        return null;  
+    }  
+    // get set 方法  
+    public String getName() {  
+        return name;  
+    }  
+    public void setName(String name) {  
+        this.name = name;  
+    }  
+    public int getIndex() {  
+        return index;  
+    }  
+    public void setIndex(int index) {  
+        this.index = index;  
+    }  
+}  
+
+```
+
+4. 覆盖枚举的方法
+
+```java
+public enum Color { 
+    RED("红色", 1), GREEN("绿色", 2), BLANK("白色", 3), YELLO("黄色", 4); 
+    // 成员变量
+    private String name; private int index; 
+    // 构造方法 
+    private Color(String name, int index) { 
+        this.name = name; this.index = index; 
+    } 
+    //覆盖方法 
+    @Override 
+    public String toString() { 
+    return this.index+"_"+this.name; 
+    } 
+}
+```
+
+5. 实现接口
+
+```java
+public interface Behaviour { 
+    void print(); 
+    String getInfo(); 
+} 
+public enum Color implements Behaviour{ 
+    RED("红色", 1), GREEN("绿色", 2), BLANK("白色", 3), YELLO("黄色", 4); 
+    // 成员变量 
+    private String name; 
+    private int index; 
+    // 构造方法 
+    private Color(String name, int index) { 
+        this.name = name; this.index = index; 
+    } 
+    //接口方法 
+    @Override 
+    public String getInfo() { 
+        return this.name; 
+    } 
+    //接口方法 
+    @Override 
+    public void print() { 
+        System.out.println(this.index+":"+this.name); 
+    } 
+}
+```
+
+6. 使用接口组织枚举
+
+```java
+public interface Food { 
+    enum Coffee implements Food{ 
+        BLACK_COFFEE,DECAF_COFFEE,LATTE,CAPPUCCINO 
+    } 
+    enum Dessert implements Food{ 
+        FRUIT, CAKE, GELATO 
+    } 
+}
+```
+
+> 实例参考至：http://www.imooc.com/article/3924

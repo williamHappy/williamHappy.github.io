@@ -1,0 +1,300 @@
+﻿---
+title: Linux学习笔记（初级）
+date: 2017-01-08
+top: 14
+categories: [System]
+tags: [System,Linux]
+description: "礼拜天，闲着没事，喜欢折腾，想学习学习一直被奉为圣物的系统——Linux，据说十分的掉，相当的掉，作为小白的我，真的忍不住想去摸一下他。"
+---
+<!--more-->
+
+[toc]
+### 前言
+> 学习之路参考：http://www.oschina.net/question/587367_156024
+> 文章参考：http://wiki.jikexueyuan.com/project/linux-in-eye-of-java/
+> 书籍参考：《Linux就是这个范儿》阿里巴巴Linux技术大拿赵鑫磊、支付宝高级专家Jie Zhang 著
+在此感谢以上技术贡献者。。。
+
+### 一. 学习工具准备
+- VM ware workstation12虚拟机（百度下载）
+- Linux系统镜像文件，iso文件
+
+注：因为Linux为开源系统，所以版本众多，作为小白的我，刚开始都不知道去选择哪个版本比较好，当遇到选择障碍症的时候，我们可以百度，可以google啊。
+借鉴了百度的经验：http://jingyan.baidu.com/article/95c9d20da1045dec4e7561ee.html
+
+---
+
+### 二. 虚拟机和Linux的安装
+1. 百度，google一大堆了，也不想说了，自己也是照这上边操做，一步一步来吧。
+VMware workstation pro12安装详细参考：
+- http://jingyan.baidu.com/article/215817f78879c21edb142379.html?qq-pf-to=pcqq.group
+2. Linux安装详细参考：
+    Ubuntu安装：
+    - http://jingyan.baidu.com/article/4f7d5712d20a1b1a21192760.html
+    Elementary OS安装：
+    - http://jingyan.baidu.com/album/f3e34a12df6eddf5ea65357d.html?picindex=10
+    CentOS安装：
+    - http://blog.csdn.net/alex_my/article/details/38142229
+
+> 注：创建好虚拟机后，启动是“出现Intel VT-x 处于禁用状态”，通过进入blos进行设置Intel VT-x为Enabled状态，详细解决办法见：
+百度经验：http://jingyan.baidu.com/article/fc07f98976710e12ffe519de.html
+
+---
+
+### 三.Linux介绍
+- 以后关于Linux相关知识是基于CentOS的Linux的发行版，可能各个版本的Linux版本有细微的差别，但是并不影响我们学习linux，因为毕竟他们都是基于Linux内核的，都属于类Unix。
+    关于这个介绍比较好的，引用：
+> Linux 本质来源不是 Unix，但是它借鉴了 Unix 的设计思想，所以在系统业界上把这种和 Unix 是一致设计思想的系统归为：类 Unix 系统。
+类 Unix 系统的介绍：https://zh.wikipedia.org/wiki/%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F
+类 Unix 系统，除了我们今天要讲的 Linux，还有大家熟知的 Mac OS X、FreeBSD（这两个是直接从 Unix 系发展过来的，所以相对 Linux 是比较地道的类 Unix 系统）
+
+- Linux 和 Mac OS X 都是类 Unix 系统，所以这篇文章中基本上的理由都可以用到 Linux 上的。 为什么国外程序员爱用 Mac？http://www.vpsee.com/2009/06/why-programmers-love-mac/
+
+---
+
+***哎，废话不多说了，下面就开始进入主题，我是按照书的内容进行，做好相应的笔记，查阅相应的资料***
+
+### 四. 返朴归真的命令行
+> 别叹气，存在另一个世界，那就是命令行，让你暂时远离鼠标。对于那些苦哈哈的程序猿来讲，这也许是另一种情调的工作放肆。                                                                       ---《Linux就是这个范儿》
+
+1. 介绍
+- 用户和系统不是直接打交道的，他们中间有个名字叫shell的联系人，我们从键盘中输入命令给shell，shell再把它交给操作系统去执行。
+- shell就是Linux系统提供的一个叫终端模拟器的程序。
+- 打开终端，我们可以看到shell的命令提示符是$,这意味你是普通用户，而root用户的提示符则为#。
+2. 文本和图形的切换
+    Crtl+Alt+F1快捷键是代表图形界面，Ctrl+Alt+F2-F6对应5个不同的文本终端。
+3. 基本的命令操作
+    看图片吧，：），从书上拍的，也可以上网查，多的狠。。。
+![shell1](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/BaseShell1.jpg)
+
+![shell2](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/BaseShell2.jpg)
+
+![shell3](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/BaseShell3.jpg)
+4. 快捷键
+    废话不多说，上图！
+![QuickKey](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/QuickKey.jpg)
+
+<br>
+5. 联机帮助---man狠靠谱
+    终端输入：
+```
+$ man 命令名
+```
+便可以查看帮助手册，但是你的英文要通关奥，反正我不怎么能看懂，我很内疚。：（
+
+### 五. 融于心而表与行
+
+ 1. 用户身份（澡堂子模型）
+ 作者把Linux的用户管理方式比喻成一个澡堂子模型，我感觉，还是相当形象的，毕竟我们可以想象一下的，对吧。
+所有非root用户，都是这个澡堂子的顾客；root用户则是这个澡堂的服务生；Linux系统就是个大澡堂了。
+   <p style="color:blue;">具体的描述，看书的作者的形象描述，写的非常活泼：）</p>
+ 2. 理解用户角色
+     还是以书中的介绍为主，Linux中用到的是用户组的概念，可以生动的把他理解为用户的职业，比如澡堂子里，除了客人之外，还有搓澡的，搓背的，烧水的等好多职业。在Linux中，也是一样，一个用户组就相当于一个职业，当然一个用户可以属于多个用户组，相当于身兼多职吗，并且也要注意，一个用户至少应该属于一个用户组。
+
+ 3. /etc/passwd文件查看用户
+```
+$ cat /etc/passwd
+```
+
+终端输出：
+```
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+```
+
+其基本机构如下：
+
+<p style="font-size:20px;color:#8edda4;">用户名：密码：UID：GID：用户全名：home 目录：shell</p>
+
+- 同样的，还有/etc/group文件查看组，其机构如下:
+
+<p style="font-size:20px;color:#8edda4;">祖名：用户组密码：GID：用户组内的用户名</p>
+
+*注：详细的解释，去看书吧，再写下来，太多了，好累，所以要看的自己去书上看吧。。。《Linux就是这个范儿》*<br/>
+ 4. 管理用户和组
+```
+# useradd william
+```
+*注：adduser是一个脚本，而useradd是一个二进制程序，前者对后者进行了封装，更加智能！*
+类似的命令还有用户的删除，userdel，用户的修改，usermod
+至于对用户组的管理，就是相应的将“user”的这个前缀换成“group”，即groupadd，groupmod和groupdel。<br/>
+ 5. 利用sudo假借身份
+     比如/etc/shadow文件，由于其特殊性，普通用户是不被允许查看其内容的，但是拥有sudo特权的用户，可以执行以下命令：
+```
+$ sudo cat/etc/shadow
+```
+那么如何获得sudo特权呢，起始就是修改/etc/sudoers的文件中内容，
+```
+## Allow root to run any commands anywhere 
+root	ALL=(ALL) 	ALL
+
+## Allows members of the 'sys' group to run networking, software, 
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel	ALL=(ALL)	ALL
+
+## Same thing without a password
+# %wheel	ALL=(ALL)	NOPASSWD: ALL
+
+## Allows members of the users group to mount and unmount the 
+## cdrom as root
+# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+
+## Allows members of the users group to shutdown this system
+# %users  localhost=/sbin/shutdown -h now
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d
+```
+照着葫芦，画个瓢，在：
+```
+root	ALL=(ALL) 	ALL
+```
+后面，添加一行：
+```
+william	ALL=(ALL) 	ALL
+```
+<br>
+ 6. 我是谁？
+ 
+```
+[root@localhost will]# whoami
+root
+[root@localhost will]# who am i
+will     pts/0        2016-11-23 11:03 (:0)
+[root@localhost will]# who
+will     :0           2016-11-23 10:59 (:0)
+will     pts/0        2016-11-23 11:03 (:0)
+will     tty2         2016-11-23 12:14
+```
+*注意：仔细观察他们上面的不同点。*<br/>
+ 7. 文件和目录
+ 和window不同，Linux是使用颜色来区分文件和目录，也适用于区分不同种类的文件，蓝色代表目录，其他颜色代表文件，如：绿色代表可执行文件，青色代表符号连接等。了解详细，可：
+```
+$ man dir_colors
+```
+还要了解几个特殊的目录标记：
+
+- .代表当前目录，比如cd .或者cd ./都是工作目录变更到当前目录，等于没变。
+- ..代表上级目录
+- ~代表用户的home目录
+- /代表系统的根目录
+- pwd命令用户显示当前目录的绝对路径
+- -代表前一目录
+- 更多特殊符号含义，请看：http://www.jb51.net/article/51342.htm
+
+<br>
+ 8. 文件的属性和权限
+
+```
+drwxr-xr-x. 2 will will 6 11月 20 14:36 公共
+drwxr-xr-x. 2 will will 6 11月 20 14:36 模板
+drwxr-xr-x. 2 will will 6 11月 20 14:36 视频
+drwxr-xr-x. 2 will will 6 11月 20 14:36 图片
+drwxr-xr-x. 2 will will 6 11月 20 14:36 文档
+drwxr-xr-x. 2 will will 6 11月 20 14:36 下载
+drwxr-xr-x. 2 will will 6 11月 20 14:36 音乐
+drwxr-xr-x. 2 will will 6 11月 20 14:36 桌面
+
+```
+文件属性的展现结构：
+<p style="font-size:20px;color:#8edda4;">drwxr-xr-x. 2 will will 6 11月 20 14:36 桌面</p>
+对应解释为：
+<p style="font-size:20px;color:#8edda4;">文件类型和权限/连接数/拥有者/所属用户组/文件大小/最后修改时间/文件名</p>
+对于文件的类型和权限属性单独来说：
+<p style="font-size:20px;color:#8edda4;">drwxr-xr-x.</p>
+第一个字符描述文件的类型，取值有：-、d、l、b、c、s和p，具体代表啥，自己去查吧，太多了。
+r代表读，w代表写，x代表执行，r-x代表所属用户组的权限，最后一个r-x代表其他。
+通过命令：
+```
+$ ls-al
+```
+输出：
+```
+-rw-r--r--.  1 will will  193 11月 20 2015 .bash_profile
+-rw-r--r--.  1 will will  231 11月 20 2015 .bashrc
+drwx------. 17 will will 4096 11月 20 15:10 .cache
+
+```
+可以查看全部的属性和权限信息，包含所有隐藏的文件。
+其中文件名前边带“.”,的即为隐藏文件，而实际上文件的隐藏属性就是在文件的前边添加“.”。
+<br>
+9. 文件链接
+
+关于硬链接和软连接的不同，得出如下推断：（具体的概念问题，自己翻书）
+
+- 输入删除文件连接的目标文件，则软连接会失效，而硬链接则仅是“连接数”-1.
+- 软连接可以创建在任何位置，包括网络，而硬链接则不行，目标文件与连接文件必须在同一磁盘分区内。
+- 软硬连接在使用的时候区别不大，都相当于是一个文件具有不同的路径和文件名。
+
+*注：软连接，跟window中的快捷方式是一样的东西，而硬链接则是可以使得同一个文件能够拥有不同的路径，还能防止恶意被删除*
+<br>
+10. 修改文件的属性和权限
+使用命令：
+```
+$ chmod a-r test.txt        //给所有用户减去读权限
+$ chmod ugo-w test.txt      //给所属用户，所属组，其他减去写权限
+$ chmod +x test.txt         //默认的给所有用户加上执行权限（默认的操作对象，根据自己的亲自体验，去记，不一定准确）
+```
+- 深入文件权限，起始Linux的文件权限不只是r，w和x，还包括s和t这两个特殊的，他们与系统的账号和系统的进程相关，详情请参考范儿P52 ：）。
+
+<br>
+11. 文件的基本操作
+常用命令ls、cd、cp、rm和mv，详情，网上自己查看。。。
+推荐几篇博客文章，感谢博主，我可以不用写了，：）
+http://blog.csdn.net/yiliumu/article/details/20405505
+http://www.centoscn.com/CentOS/2015/0325/5014.html
+http://www.cnblogs.com/zf2011/archive/2011/05/17/2049155.html
+
+<br>
+12. 搜索文件
+五个命令，因地制宜，不同需求使用不同命令，作者想让我们称为那少数人，感觉好难，：》
+```
+$ whereis ls
+$ locate ls             //或locate -b "\ls"
+$ which gcc             //一般用来确认系统是否安装了指定的软件，常用
+$ type -p gcc           //type -p相当于which，type其本身是判断一个命令是否属于shell内置的，作者告诉我的，他不让我告诉别人。
+
+$ find /-mtime -1 -exec ls -1 {} \;     //find相当叼的一个搜索命令，具体怎么叼，去看作者吹的吧，比我吹好。P56
+```
+<br>
+13. 对文件的打包压缩
+```
+$ tar -zcvf filename.tar.gz FILES               //打包成gz格式的压缩包，j代表bz2，J代表xz
+$ tar -vxf filename                             //解压缩
+```
+<br>
+14. 程序的执行问题
+这一小节，对于我这个门外汉来说，有点难，什么多任务协调机制啊，计划任务啊，守护进程等等，没大看懂，也不敢做过多总结，就这些吧，以后有能力了再细看，哈哈。P58
+15. Linux软件安装
+
+- ①源码安装
+相对麻烦的方法，具体做法参考作者的P71，也可以参考博客文章，感谢：
+http://www.centoscn.com/CentOS/2012/1226/96.html
+这种方式的弊端，作者也分析了，就是说这样安装会因为没有做软件相关性检查会导致它依赖的其他软件不存在或者版本不正确，从而导致无法正常运行。
+- ②利用软件管理工具rpm和dpkg
+不说了上图：
+![RPM](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/RPM.jpg)
+
+![DPKG](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/DPKG.jpg)
+
+- ③线上升级工具apt和yum
+还是上图：
+![yum](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/Yum.jpg)
+
+![apt](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Linux001/img/Apt.jpg)
+16. 磁盘管理
+这节感觉也好难理解，决定跳过。。。以后有能力了再搞：）
+17. 解决上网问题
+这一章后面，不想看了，没什么兴致都下去了，以后有机会再细看：（
+
+

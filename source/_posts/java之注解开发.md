@@ -1,0 +1,103 @@
+﻿---
+title: java之注解开发应用
+date: 2016-12-31
+top: 9
+categories: [java]
+tags: [Annotation,提升]
+description: "Annotation对我们生成代码文档，跟踪代码依赖性，编译时进行格式检查有很大帮助，而不仅仅像注释那么简单。"
+---
+<!--more-->
+
+
+[toc]
+
+
+### 一. 注解概念知识
+
+`注解（Annotation）`,也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释,这些信息被保存在Annotation的"name=value"对中。
+
+### 二. 基本的Annotation
+
+使用Annotation时要在其前面加上`@`符号，并把该Annotation当成一个修饰符使用，用于修饰它支持的程序元素。
+
+三个基本的Annotation：
+
+- @Override:限定重写父类方法，该注释只能用于方法
+- @Deprecated：用于表示某个程序元素（类，方法等）已过时
+- @SupperessWarnings: 抑制编译器警告
+
+### 三. 元注解
+
+JDK的元注解是用来修饰其他Annotation定义。
+JDK1.5提供了专门在注解上的注解类型，分别为以下四种：
+
+- @Retention
+- @Target
+- @Documented
+- @Inherited
+
+分别来说明以下：
+`@Retention`,只能用于修饰一个Annotation定义，用于指定该Annotation可以保留多长时间，@Retention包含了一个RetentionPolicy类型的成员变量，使用@Rentention时必须为该value成员变量指定值：
+
+- RetentionPolicy.SOURCE: 编译器直接丢弃这种策略的注释
+- RetentionPolicy.ClASS： 编译器将把注释记录在class文件中，当运行java程序时，JVM不会保留注解，这是默认值。
+- RetentionPolicy.RUNTIME: 编译器将把注释记录在class文件中，当运行java程序时，JVM会保留注释，程序可以通过反射获取该注释
+
+`@Target`,用于修饰Annotation定义，用于指定被修饰的Annotation能用于修饰哪些程序元素。@Target也包含一个名为Value的成员变量。@Target说明了Annotation所修饰的对象范围：Annotation可被用于 packages、types（类、接口、枚举、Annotation类型）、类型成员（方法、构造方法、成员变量、枚举值）、方法参数和本地变量（如循环变量、catch参数）。在Annotation类型的声明中使用了target可更加明晰其修饰的目标。
+**取值（ElementType）有：**
+1.CONSTRUCTOR:用于描述构造器
+2.FIELD:用于描述域
+3.LOCAL_VARIABLE:用于描述局部变量
+4.METHOD:用于描述方法
+5.PACKAGE:用于描述包
+6.PARAMETER:用于描述参数
+7.TYPE:用于描述类、接口(包括注解类型) 或enum声明
+
+
+`@Documented`,用于指定被该元Annotation修饰的Annotation类将被javadoc工具提取成文档。定义为Documented的注解必须设置Retention值为RUNTIME。
+
+`@Inherited`，被它修饰的Annotation将具有继承性，如果某个类使用了被@Inherited修饰的Annotation，则其子类将自动具有该注解（实际应用中，使用较少）。
+
+
+### 四. 自定义注解
+
+使用`@interface`自定义注解，会自动继承java.lang.annotation.Annotation接口，由编译程序自动完成其他细节。在定义注解时，不能继承其他的注解或接口。`@interface`用来声明一个注解，其中的每一个方法实际上是声明了一个配置参数。方法的名称就是参数的名称，返回值类型就是参数的类型（返回值只能是基本类型、Class、String、enum）,可以通过default来声明参数的默认值。
+
+**定义注解格式：**
+> public @interface 注解名{定义体}
+
+实例代码：
+```java
+@Target(ElementType.FIELD)//作用范围在属性上
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface MyAnnotation {
+    public enum WeekDay{SUN,MON,TUE,WED,THU,FRI,SAT};
+    WeekDay wd() default WeekDay.SUN;
+    public int id() default -1;
+    public String name() default "";
+}
+```
+
+自定义注释的使用：
+```java
+@MyAnnotation(wd = WeekDay.MON)
+public int age;
+```
+
+**注解元素默认值：**
+注解元素必须有确定的值，要么在定义注解的默认值中指定，要么在使用注解时指定，非基本类型的注解元素的值不可为null。因此, 使用空字符串或0作为默认值是一种常用的做法。这个约束使得处理器很难表现一个元素的存在或缺失的状态，因为每个注解的声明中，所有元素都存在，并且都具有相应的值，为了绕开这个约束，我们只能定义一些特殊的值，例如空字符串或者负数，一次表示某个元素不存在，在定义注解时，这已经成为一个习惯用法。
+如果在定义注解中没有指定默认值，或者在使用时，没有指定值，会报以下错误：
+![annotationException](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161225/Java005/img/annotationException.png)
+
+
+> 关于注解的更过知识，请查看博客：http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html
+博主写的狠详细，也很好，采摘了博主部分内容，望博主见谅，也帮他宣传下，知识共享。。。
+
+上面博主的一张脑图，很好，分享一下：
+![javaAnnotation](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161225/Java005/img/javaAnnotation.jpg)
+
+
+
+
+

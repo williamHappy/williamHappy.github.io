@@ -1,0 +1,91 @@
+﻿---
+title: 使用Nexus搭建Maven私服
+date: 2017-01-08
+top: 13
+categories: [java]
+tags: [Maven,Nexus]
+description: "项目开发简便易行，提高效率，才是关键所在！"
+---
+<!--more-->
+
+
+[toc]
+
+
+最近使用IDEA基于Maven开发项目，有些jar包在本地仓库找不到，要到中央仓库去下载，很慢，一天搞不成个啥事，想着可以搭建一个Maven私服。一来通过私服管理jar包插件，同时将自己的一些jar包放上去，供自己以后使用。二来就是能够加开一些自己的开发效率，要不真是弄不成个事。
+同时，也从网上了解到Maven私服，在公司内部同样非常实用，可以解决内网访问问题，jar包闭源问题，重复下载问题等等，也增加了写找工作前，增加知识储备的动力，总之，一步步来吧，呲呲。。。
+
+### 一. Nexus下载安装
+
+前提环境(我自己的)：
+> 1. Win10系统
+2. JDK1.8
+3.Maven3
+
+哎，说来也头疼，网上关于私服搭建的知识，多的狠，可是，无奈，我下的最新版本`nexus-3.2.0-01-win64.zip`,他和网上介绍版本有所不同，网上大都是以Nexus1.x，Nexus2.x为例，而Nexus3.x和前两个版本的配置完全不同，其目录结构也不尽相同，这里以我下的版本为例，做介绍。
+> 下载地址：https://www.sonatype.com/download-oss-sonatype
+
+下载完，解压即可得到两个目录结构：`nexus-3.2.0-01`和`sonatype-work`
+
+`nexus-3.2.0-01`为Nexus的安装文件目录，`sonatype-work`为Nexus的工作（数据）目录，和以往版本的Nexus不同，nexus的启动文件不是通过nexus2.x/bin/nexus.bat来运行，现在nexus.bat文件压根就不存在，取而代之的是`nexus.exe`,所以真是折腾了半天都不知道怎么玩的。
+
+### 二. Nexus的配置
+
+1. 修改数据存储的路径，文件目录为：`\nexus-3.2.0-01\bin\nexus.vmoptions`
+![nexusVM](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusVM.png)
+
+2. 修改IP，端口，访问根目录，文件目录为：`\nexus-3.2.0-01\etc\nexus-default.properties`
+![nexusDefault](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusDefault.png)
+修改之后重新启动，即可。
+
+> 这一步注意几点，一是要注意各个配置文件的目录所在位置，二是，其实都可以实用默认的配置，直接运行，即可访问，嘻嘻，何必多次一举呢，对不对，但是毕竟是学习，可以搞下玩玩。
+
+
+### 三. Nexus运行
+
+这里注意一下，关于Nexus3.x的运行和其它版本有所不同，
+首先，我们要进入命令行，通过命令来执行，
+![nexusRun](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusRun.png)
+
+> 如果嫌一层层进入目录麻烦，可以直接粘贴nexus.exe所在目录，cd 到这个目录即可，也可以先进入nexus.exe所在目录，按住Shift，点鼠标右键，点击在此处打开命令窗口，可直接进入此目录。
+
+出现下面的message，即表示nexus已运行，
+![nexusRunMsg](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusRunMsg.png)
+
+启动后，可以使用浏览器通过http://localhost:8088/进行访问了（我自己修改的端口为8088，默认为8081），界面如下：
+![nexusRunSuccess](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusRunSuccess.png)
+
+可以通过右上方的`Sign in`进行登录，默认的用户名admin，密码admin123
+
+### 四. Nexus服务安装
+
+这个比较坑爹，搞了半天，要将Nexus安装成windows服务，首先要安装，嘻嘻，不是废话吗，这一步同样要使用`nexus.exe`这个可执行文件，所以首先要进入到这个文件的所在目录。这一步，你可能会出现下面的错误：
+![nexusInstallErr](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusInstallErr.png)
+
+呵呵，那是因为我们没有使用管理员的身份进入命令行，我也犯错了，window安装服务可能是要用管理员的身份的，所以会出现错误。但是，运行nexus是没问题的。
+
+好了下面我们正式以管理员的身份进入命令行执行nexus服务的安装：
+![nexusInstall](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusInstall.png)
+上面表示安装成功。
+可以查看一下我们电脑的所有服务当中，就有了Nexus服务。
+![nexusService](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170106/Java008/img/nexusService.png)
+
+说明一下Nexus关于服务的几个命令：
+```
+nexus.exe /install <optional-service-name>                 //nexus服务的安装
+nexus.exe /start <optional-service-name>                   //启动nexus服务
+nexus.exe /stop <optional-service-name>                    //停止nexus服务
+nexus.exe /uninstall <optional-service-name>               //卸载nexus服务
+```
+`<optional-service-name>`自己取服务的名字，我取的是Nexus，默认的官网上说好像是nexus。
+
+对于start，stop这两个命令，如果嫌命令行麻烦的话，就手动上windows服务中去设置。
+
+至此，关于Nexus的安装下载配置，就完成了。喜欢的加个关注。。
+
+
+
+
+
+
+
