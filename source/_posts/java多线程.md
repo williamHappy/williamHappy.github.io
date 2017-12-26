@@ -1,7 +1,6 @@
-﻿---
+---
 title: java多线程开发应用
 date: 2017-01-01
-top: 10
 categories: [java]
 tags: [Thread,提升]
 description: "多线程也是一个相对较难的知识点，要多下点功夫才行，加油！"
