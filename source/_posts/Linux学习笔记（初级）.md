@@ -1,7 +1,6 @@
-﻿---
+---
 title: Linux学习笔记（初级）
 date: 2017-01-08
-top: 14
 categories: [System]
 tags: [System,Linux]
 description: "礼拜天，闲着没事，喜欢折腾，想学习学习一直被奉为圣物的系统——Linux，据说十分的掉，相当的掉，作为小白的我，真的忍不住想去摸一下他。"
