@@ -1,7 +1,6 @@
 ---
 title: centos7.0搭建web环境的坎
 date: 2017-12-23
-top: 15
 categories: [后端, linux]
 tags: [Linux]
 description: "为了好好活着，还是得好好学习，沉淀啊！"
