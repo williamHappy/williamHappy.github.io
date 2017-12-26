@@ -123,7 +123,7 @@ languages.xml文件：
     
 
     b. IOC理论背景
-       ![SpringIOC](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Java002/img/SpringIOC.png)
+    ![SpringIOC](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Java002/img/SpringIOC.png)
     c. IOC通俗的理解如下：
     - IOC控制反转：说的是创建对象实例的控制权从代码控制剥离到IOC容器控制，实际就是你在xml文件控制，侧重原理
     - DI依赖注入：说的是创建对象实例时，为这个对象注入属性值或其他对象实例，侧重于实现。
@@ -132,7 +132,7 @@ languages.xml文件：
     
 3. spring之AOP
     a. AOP图解
-        ![SpringAOP](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Java002/img/SpringAOP.png)
+    ![SpringAOP](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/Java002/img/SpringAOP.png)
 
 面向切面的编程，扩展功能不是修改源代码实现
 
