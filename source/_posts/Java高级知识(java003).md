@@ -1,7 +1,6 @@
-﻿---
+---
 title: Java提升2
 date: 2016-11-25
-top: 6
 categories: [java]
 tags: [提升]
 description: "极客学院web工程师java高级知识总结笔记。"
