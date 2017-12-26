@@ -1,5 +1,3 @@
-﻿# centos7.0搭建web环境的坎
-
 ---
 title: centos7.0搭建web环境的坎
 date: 2017-12-23
