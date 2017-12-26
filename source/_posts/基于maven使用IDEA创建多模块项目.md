@@ -1,7 +1,6 @@
-﻿---
+---
 title: 基于maven使用IDEA创建多模块项目
 date: 2017-01-07
-top: 11
 categories: [java]
 tags: [Maven,提升]
 description: "项目实践才是硬道理，不多说，上去就是干！"
