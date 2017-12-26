@@ -1,7 +1,6 @@
-﻿---
+---
 title: 安装Nginx和vsftpd的坑
 date: 2017-06-11
-top: 17
 categories: [后端]
 tags: [Linux,Nginx,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
