@@ -1,7 +1,6 @@
-﻿---
+---
 title: java之反射技术及其应用
 date: 2017-01-01
-top: 10
 categories: [java]
 tags: [Reflect,提升]
 description: "java的反射机制就是增加程序的灵活性，避免将程序写死到代码里，也体现了java是一门动态语言。"
