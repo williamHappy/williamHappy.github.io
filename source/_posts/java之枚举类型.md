@@ -1,7 +1,6 @@
-﻿---
+---
 title: java之枚举类型应用
 date: 2016-12-30
-top: 8
 categories: [java]
 tags: [enum,提升]
 description: "enum限制了常量集的取值范围，使程序避免产生类型不安全的问题。"
