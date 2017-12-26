@@ -1,7 +1,6 @@
 ---
 title: Java入门
 date: 2016-11-20
-top: 4
 categories: [java]
 tags: [基础]
 description: "极客学院web工程师java基础知识总结笔记。"
