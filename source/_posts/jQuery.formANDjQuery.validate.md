@@ -1,7 +1,6 @@
-﻿---
+---
 title: jQuery.form和jQuery.validate的使用
 date: 2015-11-20
-top: 3
 categories: [前端]
 tags: [jQuery]
 description: "前端学习中的一些收获。"
