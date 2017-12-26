@@ -1,8 +1,6 @@
-﻿
 ---
 title: GitHub+Hexo搭建个人博客
 date: 2015-07-24
-top: 2
 categories: [通用]
 tags: Github/hexo
 description: 使用Github空间搭建Hexo博客，写博客，分享交流。
