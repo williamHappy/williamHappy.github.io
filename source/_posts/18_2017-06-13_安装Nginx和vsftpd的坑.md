@@ -25,8 +25,20 @@ description: "Linux还是要好好学的，要不安装个东西太累了！"
 
 后来找到解决方案：
 ```
-.nginx           //启动nginx
+[root@localhost var]# cd /var/run		###先cd到/var/run目录下
+	[root@localhost run]# mkdir nginx		###然后创建nginx目录
+	[root@TEST sbin]# sudo ./nginx -c /usr/local/nginx/conf/nginx.conf		###重新配置nginx配置文件
+	[root@TEST sbin]# ./nginx -s reload		###重新加载配置文件
+	虚拟机重启，需要重新配置文件即可
+
 ```
+
+方案二：参考
+https://jingyan.baidu.com/article/f00622281858e2fbd3f0c81b.html
+
+> 每次重启比较麻烦，可以设置nginx开机自启，https://www.cnblogs.com/piscesLoveCc/p/5867900.html
+
+访问url： ip/images/123.jpg，正常访问
 
 3. 关于Nginx的配置文件访问路径问题。
 当使用vsftpd上传到相应目录文件后，怎么取访问呢？
