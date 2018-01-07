@@ -26,10 +26,10 @@ description: "Linux还是要好好学的，要不安装个东西太累了！"
 后来找到解决方案：
 ```
 [root@localhost var]# cd /var/run		###先cd到/var/run目录下
-	[root@localhost run]# mkdir nginx		###然后创建nginx目录
-	[root@TEST sbin]# sudo ./nginx -c /usr/local/nginx/conf/nginx.conf		###重新配置nginx配置文件
-	[root@TEST sbin]# ./nginx -s reload		###重新加载配置文件
-	虚拟机重启，需要重新配置文件即可
+[root@localhost run]# mkdir nginx		###然后创建nginx目录
+[root@TEST sbin]# sudo ./nginx -c /usr/local/nginx/conf/nginx.conf		###重新配置nginx配置文件
+[root@TEST sbin]# ./nginx -s reload		###重新加载配置文件
+虚拟机重启，需要重新配置文件即可
 
 ```
 
