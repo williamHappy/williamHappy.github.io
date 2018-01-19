@@ -1,0 +1,27 @@
+{
+  "name": "hexo-theme-skapp",
+  "version": "1.0.0",
+  "description": "hexo扁平化主题",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "hexo-theme"
+  ],
+  "author": "minfive <chenxiaowu1994@outlook.com> (http://blog.minfive.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "hexo-autoprefixer": "^1.0.0",
+    "hexo-filter-cleanup": "^1.0.7",
+    "hexo-generator-feed": "^1.2.2",
+    "hexo-generator-sitemap": "^1.2.0",
+    "hexo-renderer-sass": "^0.3.2",
+    "hexo-renderer-swig": "^1.1.0",
+    "lunr": "github:mamboer/lunr.js",
+    "moment": "^2.20.1",
+    "node-sass": "^4.7.2",
+    "object-assign": "^4.1.1"
+  }
+}
