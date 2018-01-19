@@ -4,7 +4,7 @@ date: 2017-06-11
 categories: [后端]
 tags: [Linux,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
-cover_picture: http://imgsrc.baidu.com/imgad/pic/item/7aec54e736d12f2e9525d04744c2d562853568f0.jpg
+cover_picture: https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/cover_picture/cover_picture_1.jpg
 ---
 <!--more-->
 

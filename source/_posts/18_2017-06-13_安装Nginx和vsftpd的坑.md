@@ -4,7 +4,7 @@ date: 2017-06-13
 categories: [后端]
 tags: [Linux,Nginx,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
-cover_picture: http://imgsrc.baidu.com/imgad/pic/item/f9dcd100baa1cd117a3cf508b212c8fcc3ce2d0b.jpg
+cover_picture: https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/cover_picture/cover_picture_1.jpg
 ---
 <!--more-->
 

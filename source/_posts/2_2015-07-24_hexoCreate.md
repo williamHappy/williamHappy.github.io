@@ -4,7 +4,7 @@ date: 2015-07-24
 categories: [通用]
 tags: Github/hexo
 description: 使用Github空间搭建Hexo博客，写博客，分享交流。
-cover_picture: http://imgsrc.baidu.com/imgad/pic/item/7aec54e736d12f2e9525d04744c2d562853568f0.jpg
+cover_picture: https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/cover_picture/cover_picture_1.jpg
 ---
 
 <!--more-->
