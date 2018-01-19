@@ -3,20 +3,30 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.2.0"
+    "version": "3.4.4"
   },
   "dependencies": {
-    "hexo": "^3.2.0",
-    "hexo-generator-archive": "^0.1.4",
+    "hexo": "^3.4.4",
+    "hexo-autoprefixer": "^1.0.0",
+    "hexo-deployer-git": "^0.1.0",
+    "hexo-generator-archive": "^0.1.5",
     "hexo-generator-category": "^0.1.3",
-    "hexo-generator-index": "^0.2.0",
+    "hexo-generator-feed": "^1.2.2",
+    "hexo-generator-index": "^0.2.1",
+    "hexo-generator-json-content": "^3.0.1",
+    "hexo-generator-search": "^1.0.4",
+    "hexo-generator-seo-friendly-sitemap": "0.0.20",
+    "hexo-generator-sitemap": "^1.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-renderer-ejs": "^0.2.0",
-    "hexo-renderer-stylus": "^0.3.1",
-    "hexo-renderer-marked": "^0.2.10",
-    "hexo-server": "^0.2.0",
-    "hexo-deployer-git": "^0.1.0",
-    "hexo-generator-search": "^1.0.2",
-    "hexo-generator-seo-friendly-sitemap": "0.0.20"
+    "hexo-renderer-marked": "^0.2.11",
+    "hexo-renderer-sass": "^0.3.2",
+    "hexo-renderer-stylus": "^0.3.3",
+    "hexo-renderer-swig": "^1.1.0",
+    "hexo-server": "^0.2.2",
+    "lunr": "github:mamboer/lunr.js",
+    "moment": "^2.20.1",
+    "node-sass": "^4.7.2",
+    "object-assign": "^4.1.1"
   }
 }

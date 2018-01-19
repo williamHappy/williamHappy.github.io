@@ -1,7 +1,0 @@
-2016.11.27
-1.修改了/yelee/source/css/_variables.styl
-mid-col-color = rgba(99,99,99,.8)
-article-color = rgba(255,255,255,.75)
-
-2.修改了/yelee/source/css/article.styl
-box-shadow: 3px 2px 8px rgba(0,0,0, .8);

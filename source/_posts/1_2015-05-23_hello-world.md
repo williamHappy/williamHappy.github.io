@@ -3,6 +3,7 @@ title: Hello World
 date: 2015-05-23
 categories: [通用]
 tags: [兴趣]
+cover_picture: http://imgsrc.baidu.com/imgad/pic/item/7aec54e736d12f2e9525d04744c2d562853568f0.jpg
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 <!--more-->
