@@ -7,7 +7,7 @@ favicon: /favicon.ico
 # Header
 
 # Keywords of your site | 网站关键字
-keywords: willhappy,will's Blog,Willhappy,WillHappy
+keywords: willhappy, will's Blog, Willhappy, WillHappy
 # Head headline | 头部标题
 header_title: Will's Blog
 # Head description | 头部描述
@@ -58,10 +58,10 @@ social:
 #    target: false
   qq:
     title: Qq
-    url: http://localhost:4000/images/qq_url.jpg
+    url: http://willhappy.cn/images/qq_url.jpg
   weixin:
     title: Weixin
-    url: http://localhost:4000/images/wechat_code_me.jpg
+    url: http://willhappy.cn/images/wechat_code_me.jpg
   #snapchat:
   #telegram:
   #envelope-o:
