@@ -58,10 +58,10 @@ social:
 #    target: false
   qq:
     title: Qq
-    url: http://willhappy.cn/images/qq_url.jpg
+    url: http://blog.willhappy.cn/images/qq_url.jpg
   weixin:
     title: Weixin
-    url: http://willhappy.cn/images/wechat_code_me.jpg
+    url: http://blog.willhappy.cn/images/wechat_code_me.jpg
   #snapchat:
   #telegram:
   #envelope-o:
