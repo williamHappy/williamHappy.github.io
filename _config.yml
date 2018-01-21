@@ -72,6 +72,14 @@ pagination_dir: page
 #theme: yelee  
 theme: hexo-theme-miho
 
+# Live2D
+live2d:
+  model: Epsilon2.1
+  width: 200 # The width of your model. default: 150
+  height: 350 # The height of your model. default: 300
+  position: left
+  opacityDefault: 1
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
