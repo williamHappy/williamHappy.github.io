@@ -123,7 +123,7 @@ disqus: false
 cnzz_analytics: false
 # 百度分析，输入key值
 #baidu_analytics: false
-baidu_analytics: 0634f704c62074d4033dbfc95b40b7b0
+baidu_analytics: aa4349e706e4d8d729a94c2f879190d7
 # google analytics | google分析
 google_analytics: false
 
