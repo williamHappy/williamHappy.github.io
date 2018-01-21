@@ -97,7 +97,6 @@ style:
   main_color: '#fff'
 
 # Reward | 打赏
-
 reward:
   # 0-close, 1-All articles are rewarding, 2-Article's md file has reward:true attribute, only reward
   # 0-关闭, 1-所有文章均有打赏, 2-文章的md文件里有reward:true属性，才有打赏
@@ -137,4 +136,4 @@ access_counter:
   site_pv: 总访问量：
 
 # Copyright Information | 版权信息
-copyright: 2017 MinHow
+copyright: 2017 Will
