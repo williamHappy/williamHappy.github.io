@@ -13,6 +13,7 @@ cover_picture: https://raw.githubusercontent.com/williamHappy/FileRepo/master/he
 
 ### 1.hexo介绍
 看到同学使用github+hexo搭建了属于自己的博客，眼馋，弄了好久了，感觉有点眼高手低了，一直没来得及写一下自己搭建的流程，心血来潮，下边来简单介绍下搭建流程，也方便自己以后review，也可以和大家共享交流技术问题。
+可以关注我的blog,  地址：blog.willhappy.cn
 >Hexo是一个基于node.js快速，简介且高效的博客框架，可以将Markdown文件快速的生成静态网页，托管到github pages上。--《摘自Judas的hexo博客》
 
 ### 2.搭建前准备
@@ -131,7 +132,8 @@ hexo d
     
     
 ### 8.绑定域名
-注： 没有合适的域名，暂时没做，以后有机会再做。
+可以访问：blog.willhappy.cn
 
 ### 9.更多
 博客网站的主题优化，插件应用，博客文章书写技巧能相关内容敬请期待。。。
+也可以关注hexo官方网站：hexo.io
