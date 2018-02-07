@@ -24,7 +24,7 @@ banner_img: images/banner.png
 menu:
   home:
     title: Home
-    url: /willhappy.cn
+    url: //willhappy.cn
     target: false
   archive:
     title: Archives
