@@ -22,4 +22,4 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 
 3. 修改样式
 文件：\hexo-theme-miho\source\css\_variables.styl(样式值表)
-由color-background = #eee 改为color-background = #fff
+由color-background = #eee 改为color-background = #fff 
