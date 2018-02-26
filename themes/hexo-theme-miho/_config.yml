@@ -111,8 +111,8 @@ reward:
 # Comments | 评论
 
 # 畅言，输入appid和appkey
-changyan_appid: false
-changyan_appkey: false
+changyan_appid: cytueCvRo
+changyan_appkey: 4d1969e14481e91681ef3e5a426cb374
 # 友言，输入id
 youyan_id: false
 # disqus
