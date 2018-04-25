@@ -1,6 +1,6 @@
 # 使用语言
 language: node_js
-# node版本
+# node版本(由于依赖nodejieba不支持node稳定版本（stable）,所以使用9.6.1)
 #node_js: stable
 node_js:
   - '9.6.1'
@@ -22,16 +22,17 @@ before_install:
   - git config --global user.name "williamhappy"
   - git config --global user.email "ctwang1994@163.com"
   # 由于使用了yarn，所以需要下载，如不用yarn这两行可以删除
-  #- curl -o- -L https://yarnpkg.com/install.sh | bash
-  #- export PATH=$HOME/.yarn/bin:$PATH
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
   - npm install -g hexo-cli
-  - npm install -g node-gyp
+  #- npm install -g node-gyp
   #- npm install nodejieba
-  
+
+# 安装依赖
 install:
 # 不用yarn的话这里改成 npm i 即可
-  #- yarn
-  - npm i
+  - yarn
+  #- npm i
   
 # 部署命令
 script:
