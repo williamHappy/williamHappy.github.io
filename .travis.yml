@@ -24,7 +24,7 @@ before_install:
   #- export PATH=$HOME/.yarn/bin:$PATH
   - npm install -g hexo-cli
   - npm install -g node-gyp
-  - npm install nodejieba
+  #- npm install nodejieba
   
 install:
 # 不用yarn的话这里改成 npm i 即可
