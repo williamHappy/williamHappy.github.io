@@ -1,27 +1,27 @@
-# Ê¹ÓÃÓïÑÔ
+# ä½¿ç”¨è¯­è¨€
 language: node_js
-# node°æ±¾
+# nodeç‰ˆæœ¬
 node_js: stable
-# ÉèÖÃÖ»¼àÌıÄÄ¸ö·ÖÖ§
+# è®¾ç½®åªç›‘å¬å“ªä¸ªåˆ†æ”¯
 branches:
   only:
   - blog_source
-# »º´æ£¬¿ÉÒÔ½ÚÊ¡¼¯³ÉµÄÊ±¼ä£¬ÕâÀïÎÒÓÃÁËyarn£¬Èç¹û²»ÓÃ¿ÉÒÔÉ¾³ı
+# ç¼“å­˜ï¼Œå¯ä»¥èŠ‚çœé›†æˆçš„æ—¶é—´ï¼Œè¿™é‡Œæˆ‘ç”¨äº†yarnï¼Œå¦‚æœä¸ç”¨å¯ä»¥åˆ é™¤
 cache:
-  apt: true
-  yarn: true
+#  apt: true
+#  yarn: true
   directories:
     - node_modules
-# tarvisÉúÃüÖÜÆÚÖ´ĞĞË³ĞòÏê¼û¹ÙÍøÎÄµµ
+# tarvisç”Ÿå‘½å‘¨æœŸæ‰§è¡Œé¡ºåºè¯¦è§å®˜ç½‘æ–‡æ¡£
 before_install:
 - git config --global user.name "williamhappy"
 - git config --global user.email "ctwang1994@163.com"
-# ÓÉÓÚÊ¹ÓÃÁËyarn£¬ËùÒÔĞèÒªÏÂÔØ£¬Èç²»ÓÃyarnÕâÁ½ĞĞ¿ÉÒÔÉ¾³ı
+# ç”±äºä½¿ç”¨äº†yarnï¼Œæ‰€ä»¥éœ€è¦ä¸‹è½½ï¼Œå¦‚ä¸ç”¨yarnè¿™ä¸¤è¡Œå¯ä»¥åˆ é™¤
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH=$HOME/.yarn/bin:$PATH
 - npm install -g hexo-cli
 install:
-# ²»ÓÃyarnµÄ»°ÕâÀï¸Ä³É npm i ¼´¿É
+# ä¸ç”¨yarnçš„è¯è¿™é‡Œæ”¹æˆ npm i å³å¯
 - yarn
 script:
 - hexo clean
@@ -31,6 +31,6 @@ after_success:
 - git init
 - git add --all .
 - git commit -m "Travis CI Auto Builder"
-# ÕâÀïµÄ GH_TOKEN ¼´Ö®Ç°ÔÚ travis ÏîÄ¿µÄ»·¾³±äÁ¿ÀïÌí¼ÓµÄ
+# è¿™é‡Œçš„ GH_TOKEN å³ä¹‹å‰åœ¨ travis é¡¹ç›®çš„ç¯å¢ƒå˜é‡é‡Œæ·»åŠ çš„
 - git push --quiet --force https://$GH_TOKEN@github.com/williamhappy/williamhappy.github.io.git
   master
