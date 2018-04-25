@@ -23,7 +23,7 @@ before_install:
   #- curl -o- -L https://yarnpkg.com/install.sh | bash
   #- export PATH=$HOME/.yarn/bin:$PATH
   - npm install -g hexo-cli
-  - npm install nodejieba@2.2.5
+  - npm install -g nodejieba
   
 install:
 # 不用yarn的话这里改成 npm i 即可
