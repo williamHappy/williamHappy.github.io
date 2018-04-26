@@ -25,3 +25,51 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 由color-background = #eee 改为color-background = #fff 
 
 ***************此版本为v1.0后稳定版本v1.1，自此（18/04/25）后为自定义主题更新，带稳定后立tag版本为v2.0***************
+2018.04.----theme: hexo-theme-miho
+
+1. \themes\hexo-theme-miho\source\css\_extend.styl
+	h3
+		font-size: 1.5rem
+	h4
+		font-size: 1.2rem
+	h5
+		font-size: 1rem
+	修改为：
+	h3
+		font-size: 2rem
+	h4
+		font-size: 1.5rem
+	h5
+		font-size: 1.3rem
+		
+	$block
+	  background: #fff
+	  box-shadow: 3px 6px 9px #ddd		//will自定义 1px 2px 3px改为3px 6px 9px
+	  border: 1px solid color-border
+	  border-radius: 9px		//will自定义 3px改为9px
+
+2. \themes\hexo-theme-miho\source\css\_partial\article.styl
+	p, table
+		line-height: line-height
+		font-size: 1rem
+		margin: line-height-margin 0
+		word-wrap: break-word
+	修改为：
+	p, table
+		line-height: line-height
+		//font-size: 1rem
+		margin: line-height-margin 0
+		word-wrap: break-word
+		
+	h4, h5, h6
+		font-weight: bold;
+	修改为：
+	h1, h2, h3, h4, h5, h6
+		font-weight: bold;
+		
+	.article
+		border-radius: 9px		//will自定义 0改为9px
+		
+3. \themes\hexo-theme-miho\source\css\_variables.styl
+	// 主色调
+	main-color = #51acf9		//自定义 #0cc修改为#51acf9
