@@ -18,7 +18,7 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 2018.01.19----theme: hexo-theme-miho
 1. 原blog目录文件‘修改主题样式说明.txt’（即此文件），更名为blog说明文件‘blog_readme.txt’
 
-2. 更换主题hexo-theme-miho
+2. 更换主题hexo-theme-miho 
 
 3. 修改样式
 文件：\hexo-theme-miho\source\css\_variables.styl(样式值表)
