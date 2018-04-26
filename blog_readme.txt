@@ -73,3 +73,6 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 3. \themes\hexo-theme-miho\source\css\_variables.styl
 	// 主色调
 	main-color = #51acf9		//自定义 #0cc修改为#51acf9
+	
+4. \themes\hexo-theme-miho\source\css\_partial\highlight.styl
+	//修复部分代码块颜色，具体查看代码
