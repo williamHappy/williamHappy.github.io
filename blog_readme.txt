@@ -69,6 +69,8 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 		
 	.article
 		border-radius: 9px		//will自定义 0改为9px
+
+	有自定义的部分是有标注注释的，可查看具体的代码文件。
 		
 3. \themes\hexo-theme-miho\source\css\_variables.styl
 	// 主色调
