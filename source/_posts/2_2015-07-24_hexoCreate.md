@@ -2,7 +2,7 @@
 title: GitHub+Hexo搭建个人博客
 date: 2015-07-24
 categories: [通用]
-tags: Github/hexo
+tags: [Github,hexo]
 description: 使用Github空间搭建Hexo博客，写博客，分享交流。
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_2.jpg
 ---
