@@ -1,7 +1,7 @@
 ---
 title: windows下安装使用Redis
 date: 2017-06-12
-categories: [后端]
+categories: [后端,tools]
 tags: [Redis,Database]
 description: "Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。"
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_17.jpg
