@@ -19,7 +19,7 @@ cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_18.jpg
 谢谢博主，我就不写了//呲牙。
 
 2. 前一天装好了，第二天起来，再次启动，发现起不来了Nginx，错误信息如下：
-![startNginxErr](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20170113/Java009/img/startNginxErr.png)
+![startNginxErr][1]
 
 实在没找到什么原因，怀疑是由于nginx停止的方式不对，因为前一天晚上因为机子卡，vm非正常关闭，导致了无法启动，果断重装了。以后再遇到就再说了，要不进行不下去了。
 
@@ -90,3 +90,5 @@ Redirecting to /bin/systemctl restart  vsftpd.service
 3. 关于使用FileZilla上传文件出现553 Could not create file错误
 原因分析：可能是linux文件的访问权限问题。
 解决办法：进去linux，找到访问文件的目录，找到相应的文件，鼠标右键点击属性，权限，设置权限为可写，重启一下vsftpd服务即可。然后重新使用FileZilla重新上传一下文件，即可。
+
+[1]: http://img.willhappy.cn/18-5-3/78920160.jpg
