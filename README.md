@@ -15,7 +15,8 @@
 
 ### 2018.05.03
 
-原blog目录文件`blog_readme.txt`，使用`readme.md`文件(即此文件)来替换，使用`readme.md`文件记录博客的重要更新日志。暂不删除`blog_readme.txt`文件。
+1. 原blog目录文件`blog_readme.txt`，使用`readme.md`文件(即此文件)来替换，使用`readme.md`文件记录博客的重要更新日志。暂不删除`blog_readme.txt`文件。
+2. 博客全部的图片文件完成迁移，从github的仓库`FileRepo`迁移到七牛云oss对象存储。github仓库保留，暂不删除。
 
 ---
 
