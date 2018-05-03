@@ -15,13 +15,13 @@
 
 ### 2018.05.03
 
-原blog目录文件`blog_readme.txt`，使用`readme.md`文件来替换，使用`readme.md`文件记录博客的重要更新日志。暂不删除`blog_readme.txt`文件。
+原blog目录文件`blog_readme.txt`，使用`readme.md`文件(即此文件)来替换，使用`readme.md`文件记录博客的重要更新日志。暂不删除`blog_readme.txt`文件。
 
 ---
 
 ### 2018.04.27
 blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛云oss对象存储.
-从第22篇blog（`git养成日记的脑图`）开始，脑图存放在了七牛云存储仓库中，之后blog中所有图片文件或者其他文件都存放在七牛云。
+从第22篇blog（[git养成日记的脑图][1]）开始，脑图存放在了七牛云存储仓库中，之后blog中所有图片文件或者其他文件都存放在七牛云。
 
 ---
 
@@ -113,3 +113,5 @@ article-color = rgba(255,255,255,.75)
 ```
 box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 ```
+
+[1]: https://github.com/williamHappy/williamHappy.github.io/blob/blog_source/source/_posts/22_2018-04-26_git%E5%85%BB%E6%88%90%E6%97%A5%E8%AE%B0.md
