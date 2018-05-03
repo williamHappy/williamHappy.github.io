@@ -94,12 +94,12 @@ deploy:
  
  最后，在git bash中执行命令，提交到github：
 
-    hexo d
+> hexo d
 
 如果不出意外的话，在浏览器中可以通过http://用户名.github.io/  来访问你的博客了。
 
 hexo博客整体命令操作流程图：
-![hexoBlogProces](https://raw.githubusercontent.com/williamHappy/FileRepo/master/hexo/20161124/HexoBlog/img/hexoBlogProces.gif)
+![hexoBlogProces][1]
 
 ### 6.主题修改
 - 在这里 https://github.com/hexojs/hexo/wiki/Themes  挑选好我们心动的主题。
@@ -122,7 +122,7 @@ hexo d
 上传到github，最后通过 用户名.github.io访问查看最终效果。
 
 ### 7.hexo 相关命令
-
+```
     hexo new page"pageName"     新建页面
     cls                         清屏
     hexo clean                  清理项目
@@ -131,7 +131,7 @@ hexo d
     hexo d(deploy)              将.deploy目录部署到GitHub
     hexo help                   查看帮助
     hexo version                查看Hexo的版本
-    
+```    
     
 ### 8.绑定域名
 可以访问：http://blog.willhappy.cn
@@ -139,3 +139,5 @@ hexo d
 ### 9.更多
 博客网站的主题优化，插件应用，博客文章书写技巧能相关内容敬请期待。。。
 也可以关注hexo官方网站：hexo.io
+
+[1]: http://img.willhappy.cn/18-5-3/78589442.jpg
