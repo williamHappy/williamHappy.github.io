@@ -123,8 +123,8 @@ hexo d
 
 ### 7.hexo 相关命令
 
-```
-hexo new page"pageName"     新建页面
+```shell
+hexo new page"pageName"     新建页面
 cls                         清屏
 hexo clean                  清理项目
 hexo g(generate)            生成静态页面至public目录
