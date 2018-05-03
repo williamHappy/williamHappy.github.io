@@ -122,15 +122,16 @@ hexo d
 上传到github，最后通过 用户名.github.io访问查看最终效果。
 
 ### 7.hexo 相关命令
+
 ```
-    hexo new page"pageName"     新建页面
-    cls                         清屏
-    hexo clean                  清理项目
-    hexo g(generate)            生成静态页面至public目录
-    hexo s(server)              开启预览访问端口
-    hexo d(deploy)              将.deploy目录部署到GitHub
-    hexo help                   查看帮助
-    hexo version                查看Hexo的版本
+hexo new page"pageName"     新建页面
+cls                         清屏
+hexo clean                  清理项目
+hexo g(generate)            生成静态页面至public目录
+hexo s(server)              开启预览访问端口
+hexo d(deploy)              将.deploy目录部署到GitHub
+hexo help                   查看帮助
+hexo version                查看Hexo的版本
 ```    
     
 ### 8.绑定域名
