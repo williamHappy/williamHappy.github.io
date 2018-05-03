@@ -25,7 +25,7 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 由color-background = #eee 改为color-background = #fff 
 
 ***************此版本为v1.0后稳定版本v1.1，自此（18/04/25）后为自定义主题更新，带稳定后立tag版本为v2.0***************
-2018.04.----theme: hexo-theme-miho
+2018.04.25----theme: hexo-theme-miho
 
 1. \themes\hexo-theme-miho\source\css\_extend.styl
 	h3
@@ -81,3 +81,7 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 
 5. \themes\hexo-theme-miho\source\css\_partial\post.styl
 	//修改了部分样式，具体查看文件标注
+	
+*********************************************************************************************************************
+2018.04.27------blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛云oss对象存储
+从第22篇blog（git养成日记的脑图）开始，脑图存放在了七牛云存储仓库中，之后blog中所有图片文件或者其他文件都存放在七牛云。
