@@ -5,10 +5,12 @@ categories: [后端,tools]
 tags: [Linux,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_16.jpg
+
 ---
-<!--more-->
 
 转载至vsftpd安装手册。。。
+
+<!--more-->
 
 [toc]
 
@@ -24,7 +26,7 @@ cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_16.jpg
 [root@bogon ~]# useradd ftpuser
 ```
 
-这样一个用户建完，可以用这个登录，记得用普通登录不要用匿名了。登录后默认的路径为 /home/ftpuser.	
+这样一个用户建完，可以用这个登录，记得用普通登录不要用匿名了。登录后默认的路径为 /home/ftpuser.
 
 ### 三. 给ftp用户添加密码。
 ```
@@ -68,7 +70,7 @@ ftpd_connect_db --> off
 ftpd_use_passive_mode --> off
 httpd_enable_ftp_server --> off
 tftp_anon_write --> off
-[root@bogon ~]# 
+[root@bogon ~]#
 ```
 
 执行上面命令，再返回的结果看到两行都是off，代表，没有开启外网的访问
@@ -76,7 +78,7 @@ tftp_anon_write --> off
 [root@bogon ~]# setsebool -P allow_ftpd_full_access on
 [root@bogon ~]# setsebool -P ftp_home_dir on
 ```
- 
+
 
 ### 六. 关闭匿名访问
 修改/etc/vsftpd/vsftpd.conf文件：
@@ -84,7 +86,7 @@ tftp_anon_write --> off
 anonymous_enable=NO
 ```
 
- 
+
 重启ftp服务：
 ```
 [root@bogon ~]# service vsftpd restart
@@ -107,5 +109,3 @@ pasv_max_port=30999
 ```
 
 > 相关问题和踩过的坑，查看[下一章节](http://willhappy.cn/2017/06/11/%E5%AE%89%E8%A3%85Nginx%E5%92%8Cvsftpd%E7%9A%84%E5%9D%91/)。
-
-

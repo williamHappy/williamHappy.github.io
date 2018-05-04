@@ -5,13 +5,16 @@ categories: [后端,tools]
 tags: [Redis,Database]
 description: "Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。"
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_17.jpg
+
 ---
+
 <!--more-->
 
-
 [TOC]
+
 ### 1.redis介绍
 Redis是一个Key-value存储系统。在学习慕课网java高并发秒杀的高并发优化是接触到redis，顺便记录学习过程。
+
 ### 2.redis安装
 注：本文主要讲解在windows下安装
 * linux下安装
@@ -33,6 +36,7 @@ redis-cli
 ```
 info
 ```
+
 ### 4.使用java访问本地redis做缓存
 Jedis ：http://www.oschina.net/p/jedis （Redis的官方首选Java开发包）
 ```
