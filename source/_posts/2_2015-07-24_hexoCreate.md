@@ -9,11 +9,11 @@ cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_2.jpg
 
 <!--more-->
 
-[TOC]
+[toc]
 
 ### 1.hexo介绍
 看到同学使用github+hexo搭建了属于自己的博客，眼馋，弄了好久了，感觉有点眼高手低了，一直没来得及写一下自己搭建的流程，心血来潮，下边来简单介绍下搭建流程，也方便自己以后review，也可以和大家共享交流技术问题。
-可以关注我的blog,  
+可以关注我的blog,
 >地址：http://blog.willhappy.cn
 Hexo简介：
 >Hexo是一个基于node.js快速，简介且高效的博客框架，可以将Markdown文件快速的生成静态网页，托管到github pages上。--《摘自Judas的hexo博客》
@@ -127,7 +127,7 @@ hexo d
 
 ### 7.hexo 相关命令
 
-```shell
+```
 hexo new page"pageName"     新建页面
 cls                         清屏
 hexo clean                  清理项目
@@ -136,7 +136,7 @@ hexo s(server)              开启预览访问端口
 hexo d(deploy)              将.deploy目录部署到GitHub
 hexo help                   查看帮助
 hexo version                查看Hexo的版本
-```    
+```
 
 ### 8.绑定域名
 参考文章：https://blog.csdn.net/xiangzhihong8/article/details/53355036
