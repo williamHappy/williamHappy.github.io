@@ -69,7 +69,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #blog第一版
-#theme: yelee  
+#theme: yelee
 theme: hexo-theme-miho
 
 # Live2D
@@ -79,6 +79,17 @@ live2d:
   height: 350 # The height of your model. default: 300
   position: left
   opacityDefault: 1
+
+# 在线联系 | DaoVoice
+daovoice: true
+daovoice_app_id: ab5cf222
+daovoice_user_id: willhappy   # 必填: 该用户在您系统上的唯一ID
+daovoice_email: ctwang1994@163.com    # 选填:  该用户在您系统上的主邮箱
+daovoice_name: 甩甩哒博主      # 选填: 用户名
+daovoice_signed_up: 1449821660      # 选填: 用户的注册时间，用Unix时间戳表示
+
+# 鼠标点击桃心效果
+love: true
 
 
 # Deployment

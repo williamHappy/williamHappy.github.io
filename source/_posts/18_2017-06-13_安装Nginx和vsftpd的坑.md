@@ -5,12 +5,14 @@ categories: [后端,tools]
 tags: [Linux,Nginx,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_18.jpg
+
 ---
+
+为了搭个图片服务器，在centos上安装配置Nginx和vsftpd服务，简直折腾了我一天的时间，最终得出结论，还是要好好学习Linux，不然真是折腾死个人！
+
 <!--more-->
 
 [toc]
-
-为了搭个图片服务器，在centos上安装配置Nginx和vsftpd服务，简直折腾了我一天的时间，最终得出结论，还是要好好学习Linux，不然真是折腾死个人！
 
 ### 一. Nginx访问问题
 

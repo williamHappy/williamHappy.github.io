@@ -54,26 +54,28 @@ hexo init            //hexo初始化
  ```
  注意（踩过的坑）：
  > ERROR Local hexo not found in E:\GitHub\hexo
- 
+
  出现这个错误的原因可能是：仔细观察是hexo的生成目录中缺少了node_modules文件夹，所以这个文件夹没有更新上去，可以继续在git bash中执行:
  ```
  npm install
  ```
  重新安装以后，继续执行：hexo s  即可。
- 
+
  现在可以使用浏览器访问：http://localhost:4000/。
  -在git bash中按Ctrl+C即可停止hexo服务。
  现在，我们便完成了静态博客的搭建。
- 
+
  ### 4.书写blog文章
  可以在git bash中使用命令来新建文件
 
     hexo new "newBlog"    //新建文章
-    
-然后来写文章内容，但是这样过于麻烦，因为hexo 博客是支持markdown语法格式的，我们可以使用相关的编辑器编写好md文档后，将其放在hexo目录下的\source\\_posts文件夹下，此文件夹下已经有了一个hello-world.md文件。然后我们执行：
+
+然后来写文章内容，但是这样过于麻烦，因为hexo 博客是支持markdown语法格式的，我们可以使用相关的编辑器编写好md文档后，将其放在hexo目录下的\source\_posts文件夹下，此文件夹下已经有了一个hello-world.md文件。然后我们执行：
+
 ```
 hexo g          //生成静态页面
 ```
+
 重新生成一下静态页面，然后执行hexo s启动服务。
 通过http://localhost:4000/，  可以访问我们书写了新文章的博客了。
 
@@ -91,7 +93,7 @@ deploy:
   repo: https://github.com/用户名/用户名.github.io.git
   branch: master
 ```
- 
+
  最后，在git bash中执行命令，提交到github：
 
 > hexo d
@@ -104,10 +106,12 @@ hexo博客整体命令操作流程图：
 ### 6.主题修改
 - 在这里 https://github.com/hexojs/hexo/wiki/Themes  挑选好我们心动的主题。
 - 在hexo目录下，使用git bash 执行命令：
+
 ```
 git clone 主题地址
 ```
-- 下载好主题后，同样在hexo目录下打开配置文件:_config.yml，把对应的主题目录名改下：
+
+- 下载好主题后，同样在hexo目录下打开配置文件: `_config.yml`，把对应的主题目录名改下：
 
 > theme: 主题名称
 
@@ -133,8 +137,9 @@ hexo d(deploy)              将.deploy目录部署到GitHub
 hexo help                   查看帮助
 hexo version                查看Hexo的版本
 ```    
-    
+
 ### 8.绑定域名
+参考文章：https://blog.csdn.net/xiangzhihong8/article/details/53355036
 可以访问：http://blog.willhappy.cn
 
 ### 9.更多
