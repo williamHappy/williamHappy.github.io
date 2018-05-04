@@ -10,7 +10,7 @@ cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_17.jpg
 
 <!--more-->
 
-[TOC]
+[toc]
 
 ### 1.redis介绍
 Redis是一个Key-value存储系统。在学习慕课网java高并发秒杀的高并发优化是接触到redis，顺便记录学习过程。
