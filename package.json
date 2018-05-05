@@ -25,6 +25,7 @@
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-renderer-swig": "^1.1.0",
     "hexo-server": "^0.2.2",
+    "hexo-wordcount": "^3.0.2",
     "lunr": "github:mamboer/lunr.js",
     "moment": "^2.20.1",
     "node-sass": "^4.7.2",

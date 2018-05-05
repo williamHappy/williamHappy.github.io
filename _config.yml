@@ -91,6 +91,11 @@ daovoice_signed_up: 1449821660      # 选填: 用户的注册时间，用Unix时
 # 鼠标点击桃心效果
 love: true
 
+# Post wordcount display settings
+# Dependencies: https://github.com/willin/hexo-wordcount
+post:
+  content: true
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

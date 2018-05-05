@@ -8,6 +8,7 @@
         Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
       &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %><br>
       </p>
+      <span class="post-count"><%= wordcount(theme.post.content) %></span>
     </div>
   </div>
 </footer>
