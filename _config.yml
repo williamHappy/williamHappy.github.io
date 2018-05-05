@@ -116,6 +116,7 @@ feed:
   path: atom.xml
   limit: 20
 
+# sitemap生成插件配置
 Plugins:
 - hexo-generator-baidu-sitemap
 - hexo-generator-sitemap
@@ -125,10 +126,21 @@ baidusitemap:
 sitemap:
   path: sitemap.xml
 
+# 百度链接提交 | 主动推送
+baidu_url_submit:
+  count: 1 ## 提交最新的一个链接
+  host: blog.willhappy.cn ## 在百度站长平台中注册的域名
+  token: lfEZ9d58GJ78BBfx ## 请注意这是您的秘钥
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+
+# 百度链接提交 | 自动推送
+baidu_push: true
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/williamHappy/williamHappy.github.io.git
-  branch: master
+  - type: git
+    repo: https://github.com/williamHappy/williamHappy.github.io.git
+    branch: master
+  - type: baidu_url_submitter
