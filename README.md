@@ -108,7 +108,7 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
 
 ### 2018.01.19
 
-更换主题：theme: `hexo-theme-miho`
+更换主题：theme: `hexo-theme-miho`， 安装配置说明[点击][3]
 
 1. 原blog目录文件`修改主题样式说明.txt`（即此文件），更名为blog说明文件`blog_readme.txt`
 2. 更换主题`hexo-theme-miho `
@@ -120,7 +120,7 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
 
 ### 2016.11.27
 
-更新主题：theme: `yelee`
+更新主题：theme: `yelee`, 安装配置[点击][4]
 
 1. 修改了`/yelee/source/css/_variables.styl`
 ```
@@ -135,3 +135,5 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 
 [1]: https://github.com/williamHappy/williamHappy.github.io/blob/blog_source/source/_posts/22_2018-04-26_git%E5%85%BB%E6%88%90%E6%97%A5%E8%AE%B0.md
 [2]: //hexo主题添加插件配置
+[3]: https://github.com/WongMinHo/hexo-theme-miho
+[4]: https://github.com/MOxFIVE/hexo-theme-yelee

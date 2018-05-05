@@ -29,6 +29,21 @@
           <span id="busuanzi_value_page_pv"></span>
         </li>
       </ul>
+      <% if (theme.wordcount.enable){ %>
+      <ul>
+        <li>
+            <i class="fa fa-file-word-o"></i>
+            字数统计<span class="post-count"><%= wordcount(post.content) %></span>字
+        </li>
+        <li>
+          <span> | </span>
+        </li>
+        <li>
+          <i class="fa fa-clock-o"></i>
+          阅读时长<span class="post-count"><%= min2read(post.content) %></span>分钟
+        </li>
+      </ul>
+      <% } %>
     </div>
   <% } %>
 <% } %>

@@ -4,10 +4,10 @@
 
 
 # Site
-title: WilliamHappy
+title: WillHappy
 subtitle:
-description: 学习总结 知识管理 思考感悟
-author: William
+description: 认识世界 发现自己
+author: Will
 language: zh-Hans
 timezone:
 
@@ -81,20 +81,47 @@ live2d:
   opacityDefault: 1
 
 # 在线联系 | DaoVoice
-daovoice: true
-daovoice_app_id: ab5cf222
-daovoice_user_id: willhappy   # 必填: 该用户在您系统上的唯一ID
-daovoice_email: ctwang1994@163.com    # 选填:  该用户在您系统上的主邮箱
-daovoice_name: 甩甩哒博主      # 选填: 用户名
-daovoice_signed_up: 1449821660      # 选填: 用户的注册时间，用Unix时间戳表示
+daovoice:
+  enable: true
+  app_id: ab5cf222
+  user_id: willhappy   # 必填: 该用户在您系统上的唯一ID
+  email: ctwang1994@163.com    # 选填:  该用户在您系统上的主邮箱
+  name: 甩甩哒博主      # 选填: 用户名
+  signed_up: 1449821660      # 选填: 用户的注册时间，用Unix时间戳表示
 
 # 鼠标点击桃心效果
 love: true
 
-# Post wordcount display settings
+# Post wordcount display settings字数统计插件
 # Dependencies: https://github.com/willin/hexo-wordcount
-post:
-  content: true
+# 打开之后，会同时打开文章文字统计， 阅读时长和全站文字统计
+wordcount:
+  enable: true
+
+# 备案号
+record:
+  enable: true
+  value: 浙ICP备18005540号
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+#RSS订阅
+plugin:
+- hexo-generator-feed
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+Plugins:
+- hexo-generator-baidu-sitemap
+- hexo-generator-sitemap
+
+baidusitemap:
+  path: baidusitemap.xml
+sitemap:
+  path: sitemap.xml
 
 
 # Deployment
