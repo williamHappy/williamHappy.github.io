@@ -102,7 +102,7 @@ wordcount:
 
 # 备案号
 record:
-  enable: true
+  enable: false
   value: 浙ICP备18005540号
 
 # Extensions
