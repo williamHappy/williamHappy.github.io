@@ -14,3 +14,35 @@
 3. 整理关于我的介绍模块（可附加建立）
 
 测试travisCI提交是否正常
+# 2018/05/05之前的配置
+# tarvis生命周期执行顺序详见官网文档
+# before_install:
+#   - git config --global user.name "williamhappy"
+#   - git config --global user.email "ctwang1994@163.com"
+#   # 由于使用了yarn，所以需要下载，如不用yarn这两行可以删除
+#   - curl -o- -L https://yarnpkg.com/install.sh | bash
+#   - export PATH=$HOME/.yarn/bin:$PATH
+#   - npm install -g hexo-cli
+#   #- npm install -g node-gyp
+#   #- npm install nodejieba
+#
+# # 安装依赖
+# install:
+# # 不用yarn的话这里改成 npm i 即可
+#   - yarn
+#   #- npm i
+#
+# # 部署命令
+# script:
+#   - hexo clean
+#   - hexo generate
+#
+# # 提交内容及git 用户信息
+# after_success:
+#   - cd ./public
+#   - git init
+#   - git add --all .
+#   - git commit -m "Travis CI Auto Builder"
+#   # 这里的 GH_TOKEN 即之前在 travis 项目的环境变量里添加的
+#   - git push --quiet --force https://$GH_TOKEN@github.com/williamhappy/williamhappy.github.io.git
+#     master
