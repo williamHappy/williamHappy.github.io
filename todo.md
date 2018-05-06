@@ -14,6 +14,52 @@
 3. 整理关于我的介绍模块（可附加建立）
 
 测试travisCI提交是否正常
+
+# 使用语言
+language: node_js
+# node版本(由于依赖nodejieba不支持node稳定版本（stable）,所以使用9.6.1)
+#node_js: stable
+node_js:
+  - '9.6.1'
+
+# 设置只监听哪个分支
+branches:
+  only:
+  - blog_source
+
+# 缓存，可以节省集成的时间，这里我用了yarn，如果不用可以删除
+cache:
+#  apt: true
+#  yarn: true
+  directories:
+    - node_modules
+
+# 构建提交方式改变， 由原来hexo只负责生成，travis推送git仓库，更改为通过hexo d来推送git仓库，是为了同时主动推送百度链接
+before_install:
+  - npm install -g hexo-cli
+
+# Start: Build Lifecycle
+install:
+  - npm install
+  - npm install hexo-deployer-git --save
+
+# 执行清缓存，生成网页操作
+script:
+  - hexo clean
+  - hexo generate
+
+# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
+after_script:
+  - git config user.name "williamhappy"
+  - git config user.email "ctwang1994@163.com"
+  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
+  - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
+  - sed -i "s/baidu_token/${Baidu_Url_Submit_Token}/g" ./_config.yml
+  - cat ./_config.yml
+  - hexo deploy
+# End: Build LifeCycle
+
+
 # 2018/05/05之前的配置
 # tarvis生命周期执行顺序详见官网文档
 # before_install:
