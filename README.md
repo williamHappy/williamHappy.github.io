@@ -12,11 +12,17 @@
 
 ---
 
+### 2018.05.07
+更新`.travis.yml`配置文件， git仓库梳理。
+
+1. 百度链接的主动推送方式，使用了插件，需要在`hexo d`是推送，所以要更改travisCI的流程，要改配置文件，踩到坑了，详情[查看][2]文章的第六节-->站点收录的**坑二**。
+2. 由于使用了travisCI自动构建，自动推送部署，所以会出现主分支和blog分支不一致的情况，看着不舒服，其实没什么影响，以后环境的更换的话，只需要clone博客源分支，写文章提交皆可，不需要clone主分支。
+
 ### 2018.05.04
 
 更新主题：theme: `hexo-theme-miho`
 
-1. 主题添加了在线联系`daovoice`插件，鼠标点击出现桃心插件，安装配置详情，请查看我的博客文章[主题更新][2]
+1. 主题添加了在线联系daovoice插件，鼠标点击出现桃心插件，rss订阅，sitemap等安装配置详情，请查看我的博客文章[主题配置升级][2]
 2. 说明：自此， 以后编写博客文章使用atom， 不再使用作业部落， 作业部落以后可作为记载文章摘要等， 之前文章都与作业部落云端进行了同步（以后有更改不再同步）， 作业部落上有些半成品文章未作处理。
 
 ### 2018.05.03
@@ -134,6 +140,6 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 ```
 
 [1]: https://github.com/williamHappy/williamHappy.github.io/blob/blog_source/source/_posts/22_2018-04-26_git%E5%85%BB%E6%88%90%E6%97%A5%E8%AE%B0.md
-[2]: //hexo主题添加插件配置
+[2]: http://blog.willhappy.cn/2018/05/06/27_2018-05-06_hexo%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E5%8D%87%E7%BA%A7/
 [3]: https://github.com/WongMinHo/hexo-theme-miho
 [4]: https://github.com/MOxFIVE/hexo-theme-yelee

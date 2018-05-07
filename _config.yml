@@ -126,7 +126,7 @@ baidusitemap:
 sitemap:
   path: sitemap.xml
 
-# 百度链接提交 | 主动推送
+# 百度链接提交 | 主动推送
 baidu_url_submit:
   count: 10 ## 提交最新的一个链接
   host: blog.willhappy.cn ## 在百度站长平台中注册的域名
