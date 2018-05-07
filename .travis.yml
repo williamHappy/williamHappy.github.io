@@ -9,6 +9,8 @@ node_js:
 branches:
   only:
   - blog_source
+  except:
+  - master
 
 # 缓存，可以节省集成的时间，这里我用了yarn，如果不用可以删除
 cache:
@@ -17,6 +19,7 @@ cache:
   directories:
     - node_modules
 
+# 2018/05/05之前的配置
 # tarvis生命周期执行顺序详见官网文档
 # before_install:
 #   - git config --global user.name "williamhappy"
@@ -49,6 +52,8 @@ cache:
 #   - git push --quiet --force https://$GH_TOKEN@github.com/williamhappy/williamhappy.github.io.git
 #     master
 
+# 2018/05/05之前的配置
+# 构建提交方式改变， 由原来hexo只负责生成，travis推送git仓库，更改为通过hexo d来推送git仓库，是为了同时主动推送百度链接
 before_install:
   - npm install -g hexo-cli
 
