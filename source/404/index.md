@@ -58,7 +58,7 @@ fancybox: false
 ***
 <div class="pic">
 <img src="/img/404.png" height=430>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=1&id=37888128&auto=1&height=430"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=2&id=37888128&auto=1&height=430"></iframe>
 </div>
 
 <p class="center"><a href="/">回主页</a> · <a href="/archives">所有文章</a> · <a href="/about">留言板</a></p>
