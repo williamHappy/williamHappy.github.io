@@ -1,7 +1,9 @@
+---
 title: 404 Not Found：听首歌，稍作休息！
 comments: false
 permalink: /404
 fancybox: false
+
 ---
 <style type="text/css">
     .article-title {
@@ -56,7 +58,7 @@ fancybox: false
 ***
 <div class="pic">
 <img src="/img/404.png" height=430>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="http://music.163.com/outchain/player?type=1&id=3433409&auto=1&height=430"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=1&id=37888128&auto=1&height=430"></iframe>
 </div>
 
 <p class="center"><a href="/">回主页</a> · <a href="/archives">所有文章</a> · <a href="/about">留言板</a></p>

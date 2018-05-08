@@ -1,5 +1,5 @@
+[![Build Status](https://www.travis-ci.org/williamHappy/williamHappy.github.io.svg?branch=blog_source)](https://www.travis-ci.org/williamHappy/williamHappy.github.io)
 # 版本更新说明
-
 
 ---
 
