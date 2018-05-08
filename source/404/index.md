@@ -57,7 +57,7 @@ fancybox: false
 
 ***
 <div class="pic">
-<img src="/img/404.png" height=430>
+<img src="/images/404.png" height=430>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="http://music.163.com/outchain/player?type=1&id=3433409&auto=1&height=430"></iframe>
 </div>
 
