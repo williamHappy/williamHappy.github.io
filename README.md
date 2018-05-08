@@ -12,6 +12,17 @@
 
 ---
 
+### 2018.05.08
+更新主题：theme: `hexo-theme-miho`
+
+1. 文件：`themes/hexo-theme-miho/source/css/_partial/article.styl`
+```css
+{
+  .article-entry
+    background: #fff                  //will自定义 #f9f9f9修改为#fff
+}
+```
+
 ### 2018.05.07
 更新`.travis.yml`配置文件， git仓库梳理。
 
