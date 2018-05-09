@@ -12,7 +12,7 @@
   - more https://segmentfault.com/a/1190000009544924
 - [x] 整理作业部落markdown的文章， 和blog文章数据同步
 - [x] 整理关于我的介绍模块（可附加建立）
-- [ ] 把主题使用git子模块提出来，可单独克隆最好（使用git subtree,当然git submodule也可以，但是麻烦）
+- [ ] 把主题使用git子模块提出来，进行单独管理最好（使用git subtree,当然git submodule也可以，但是麻烦）
 - [ ] onrepublic 歌曲搜索
 
 ### 2018/05/09
