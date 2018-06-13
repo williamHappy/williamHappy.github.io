@@ -125,14 +125,17 @@ upstream whome{
   更改参考[文章1][7],[文章二][8], 根据这两篇文章修改，虽然没有最终完成修改，但是依然更改了端口号的配置。发现情况不妙；
   发现情况不妙后，准备恢复防火墙设置，参考[iptables配置][9], 因为不知道哪个是原来防火墙的最终配置，所以选择了`/etc/iptables.up.rules`进行恢复。
   从文件恢复IPtables规则：
+
 ```
 $ sudo iptables-restore < iptables.up.rules
 ```
+
 这样虽然挽回了部分端口规则，但是docker的防火墙规则被破坏，出现了问题2.
 
 2. **docker 启动容器报"No chain/target/match by that name"错误，无法启动容器。**
   同样参考了几篇文章：[文章][10]，但是都是基于centos修改防火墙规则的，但是已经不敢再去动debian的规则了，怕再出问题。所以继续找。
   google搜索最终看到一种[解决方法][11],即重启docker服务，即可自动恢复docker关于防火墙的配置，测试，最终解决，QAQ。
+  
 ```
 # 重启docker服务，须在所有容器停止后重启
 $ sudo systemctl restart docker
@@ -169,7 +172,7 @@ $ sudo systemctl restart docker     #重启docker服务（debian）须在所有�
 
 
 
-[1]: XX
+[1]: http://blog.willhappy.cn/2018/06/11/29_2018-06-11_docker%E5%88%9D%E8%AF%86/
 [2]: https://blog.csdn.net/weixin_39800144/article/details/79231002
 [3]: https://wiki.debian.org/iptables
 [4]: https://console.cloud.google.com/networking/firewalls/list?project=beaming-oarlock-197105&tab=INGRESS
