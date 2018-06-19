@@ -18,7 +18,7 @@
 
 ### 2018/06/06
 
-- [ ] mock测试学习
+- [ ] mock测试学习，[参考][6]
 - [ ] 前后端分离部署架构, [参考][5]
 - [ ] docker构建自己的镜像
 
@@ -58,3 +58,4 @@
 [3]: http://img.willhappy.cn/18-5-10/49725989.jpg
 [4]: https://github.com/williamHappy/williamHappy.github.io/blob/blog_source/README.md
 [5]: https://segmentfault.com/a/1190000009329474?name=tec&description=&isPrivate=1
+[6]: https://github.com/thx/rap2-delos
