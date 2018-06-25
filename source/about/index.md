@@ -43,6 +43,23 @@ date: 2016-11-26 22:16:23
 
 <i class="fa fa-weibo fa-x"></i> weibo: [欢迎关注][8]
 
+---
+
+<p style="text-align: center">欢迎关注个人微信公众号</p>
+
+<div style="text-align: center; width: 100%; border: #b6e0d5 solid 1px;">
+  <img alt="" src="http://img.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" />
+</div>
+
+---
+
+<p style="text-align: center">喜欢请给个赞赏，谢谢</p>
+
+<div style="text-align: center; width: 100%; border: #b6e0d5 solid 1px;">
+  <img alt="" src="http://img.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;height: 400px;" />
+</div>
+
+
 [1]: https://map.baidu.com/
 [2]: http://blog.willhappy.cn
 [3]: https://willhappy.cn
@@ -51,3 +68,4 @@ date: 2016-11-26 22:16:23
 [6]: http://blog.willhappy.cn/images/qq_url.jpg
 [7]: http://blog.willhappy.cn/images/wechat_url.jpg
 [8]: http://weibo.com/williamhappy
+[9]: http://img.willhappy.cn/private/qrcode_for_gzh.jpg

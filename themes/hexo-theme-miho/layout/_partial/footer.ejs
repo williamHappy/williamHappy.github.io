@@ -1,6 +1,6 @@
-<footer id="footer">
+<footer id="footer" style="padding:30px 0;backgroud: #303848;">
   <div class="outer">
-    <div id="footer-info" class="inner">
+    <div id="footer-info" class="inner" style="padding: 66px;width:20%;">
       <%- partial('plugins/sites/visit') %>
       <% if (theme.record.enable){ %>
 	    <p><%= theme.record.value %></p>
@@ -17,5 +17,16 @@
       </p>
       <% } %>
     </div>
+
+    <div style="text-align: center;border-left: 1px solid #4C5461;float:right;padding:10px;width: 30%;">
+      <img alt="" src="http://img.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;" width="200" height="200">
+      <p style="text-align: center">喜欢请给个赞赏，谢谢</p>
+    </div>
+
+    <div style="text-align: center;border-left: 1px solid #4C5461;float:right;padding:10px;width: 30%;">
+      <img alt="" src="http://img.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" height="200" width="200">
+      <p style="text-align: center">欢迎关注个人微信公众号</p>
+    </div>
+
   </div>
 </footer>
