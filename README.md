@@ -12,6 +12,15 @@
 
 ---
 
+### 2018.06.25
+更新主题：theme: `hexo-theme-miho`
+
+1. 文件：`themes/hexo-theme-miho/layout/_partial/footer.ejs`
+增加底部公众号二维码和赞赏二维码，以及样式的修改，参考七牛云的footer做的修改。
+
+2. 文件：`source/about/index.md`
+更新about me菜单，添加微信公众号二维码和赞赏二维码。
+
 ### 2018.05.08
 更新主题：theme: `hexo-theme-miho`
 
