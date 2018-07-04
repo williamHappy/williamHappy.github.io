@@ -11,6 +11,7 @@
 
 [spring/spring中bean配置和bean注入][2]
 [RabbitMQ/RabbitMQ的应用场景以及基本原理介绍][7]
+[SpringWorld/SpringBoot+zk+dubbo架构实践][8]
 
 #### 前端
 
@@ -32,3 +33,4 @@
 [5]: http://www.qinshenxue.com/article/20171102091836.html
 [6]: https://goo.gl/6Yafjb
 [7]: https://blog.csdn.net/whoamiyang/article/details/54954780
+[8]: https://www.jianshu.com/p/f4c81373094f
