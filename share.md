@@ -10,6 +10,7 @@
 #### 框架
 
 [spring/spring中bean配置和bean注入][2]
+[RabbitMQ/RabbitMQ的应用场景以及基本原理介绍][7]
 
 #### 前端
 
@@ -30,3 +31,4 @@
 [4]: http://tinyambition.com/Single-Page-App-Break/
 [5]: http://www.qinshenxue.com/article/20171102091836.html
 [6]: https://goo.gl/6Yafjb
+[7]: https://blog.csdn.net/whoamiyang/article/details/54954780
