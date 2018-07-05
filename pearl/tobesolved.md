@@ -1,7 +1,23 @@
-# 待解决的问题
+---
+title: 2018亟待解决
+date: 2018-07-01
+categories: [问题]
+tags: [总结,提升,坑]
+description: 正确面对问题，记录下它，下次便可饶过他，虽然待解决，总比抛出去更好。
 
 ---
 
-## 后端
+正确面对问题，记录下它，下次便可饶过他，虽然待解决，总比抛出去更好。
 
-**1. springboot搭建dubbo环境，springboot2.x需要额外添加log4j jar包，springboot1.x不需要，why？**
+<!--more-->
+
+[toc]
+
+#### 前言
+
+- 记录问题，虽然没解决，但做到心中有数，看一年自己的遗留问题
+- 也分几大类，分别记录
+
+#### 后端
+
+**1. springboot搭建dubbo环境，springboot2.x需要额外添加log4j jar包，springboot1.x不需要，why？**（2018/07/01）

@@ -1,7 +1,7 @@
 ---
 title: 主页部署docker+ng+tomcat+https
 date: 2018-06-13
-categories: [后端]
+categories: [运维]
 tags: [Linux,docker,nginx,https]
 description: "将博客主页搬到docker上"
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_30.jpg

@@ -1,7 +1,7 @@
 ---
 title: Centos安装vsftpd组件
 date: 2017-06-11
-categories: [后端,tools]
+categories: [运维]
 tags: [Linux,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
 cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_16.jpg
