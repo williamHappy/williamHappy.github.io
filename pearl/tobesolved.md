@@ -26,3 +26,7 @@ description: 正确面对问题，记录下它，下次便可饶过他，虽然�
 
 **1. git 修改内容未提交切换分支，造成的后果？**
 **2. dev和master分支都有各自的提交执行($dev)git pull origin master-->git push推送-->切换到master-->git pull origin dev,结果如何？**
+
+#### 实践问题
+
+**1. 半小时内用户错误登录次数,半小时用户访问频率超限,锁定用户的时效(半个小时)，基于redis实现（参考vanke项目）**（2018/07/31）
