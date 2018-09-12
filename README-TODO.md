@@ -18,12 +18,8 @@
 
 ### 2018/09/11
 - [ ] vanke项目mysql全文索引，或倒排索引整理blog
-- [ ] doc_stu/学习问题总结，关于前端的，整理成blog，删除text文档
+- [x] doc_stu/学习问题总结，关于前端的，整理成blog，删除text文档, 详见[前端归结（科学上网）][7]
 - [ ] doc_stu/目录下其他可以整理到github上的一并整理上来，以后方便'随身携带'
-
-### 2018/07/27
-- [ ] git rebase和git merge深入理解(区别)
-- [ ] git stash应用（？我试过一次，无法储藏工作区文件，网上都说可以，why?）
 
 ### 2018/06/27
 - [x] 记录分享文章, 思考如何方便的添加到自己的博客中，会附原出处
@@ -71,3 +67,4 @@
 [4]: https://github.com/williamHappy/williamHappy.github.io/blob/blog_source/README.md
 [5]: https://segmentfault.com/a/1190000009329474?name=tec&description=&isPrivate=1
 [6]: https://github.com/thx/rap2-delos
+[7]: https://goo.gl/EVbwiU

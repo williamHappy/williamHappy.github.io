@@ -20,9 +20,11 @@
 
 #### 工具
 
-**--2018/07/01--**
+**--2018/07/27--**
 - [ ] 1. git 修改内容未提交切换分支，造成的后果？
 - [ ] 2. dev和master分支都有各自的提交执行($dev)git pull origin master-->git push推送-->切换到master-->git pull origin dev,结果如何？
+- [ ] 3. git rebase和git merge深入理解(区别), 参考[git-recipes][1]
+- [ ] 4. git stash应用（？我试过一次，无法储藏工作区文件，网上都说可以，why?）
 
 #### 实践问题
 
@@ -32,3 +34,7 @@
 ---
 
 #### 博客部署常见问题
+
+
+
+[1]: https://github.com/geeeeeeeeek/git-recipes
