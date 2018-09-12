@@ -18,6 +18,8 @@
 
 ### 2018/09/11
 - [ ] vanke项目mysql全文索引，或倒排索引整理blog
+- [ ] doc_stu/学习问题总结，关于前端的，整理成blog，删除text文档
+- [ ] doc_stu/目录下其他可以整理到github上的一并整理上来，以后方便'随身携带'
 
 ### 2018/07/27
 - [ ] git rebase和git merge深入理解(区别)
