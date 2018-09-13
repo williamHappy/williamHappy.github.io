@@ -15,14 +15,15 @@ highlight-purple = #a95aa9
 $code-block
   background: highlight-background
   // margin: 8px article-padding * -1   //will自定义 替换成下面一行
-  margin: 8px 0
+  margin: 8px 0                         //will自定义
   padding: 15px article-padding
   // border-style: solid        //will自定义 去掉
   border-color: color-border
   border-width: 1px 0
   overflow: auto
   color: highlight-foreground
-  line-height: font-size * line-height
+  // line-height: font-size * line-height   //will自定义 替换成下面一行
+  line-height: 1.45                         //will自定义
   border-radius: 5px    //will自定义 新添加属性
 
 $line-numbers
@@ -44,7 +45,7 @@ $line-numbers
     word-wrap: break-word
     background-color: #f9f2f4
   .code
-    font: 14px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace
+    font: 14px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace   //will自定义 14px改为12px
   pre
     @extend $code-block
     code
