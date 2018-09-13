@@ -1,8 +1,8 @@
 // https://github.com/chriskempson/tomorrow-theme
-highlight-background = #333		//will自定义 #f6f8fa改为#333
+highlight-background = #f6f8fa		//will自定义 #f6f8fa改为#333 改回去
 highlight-current-line = #393939
 highlight-selection = #515151
-highlight-foreground = #f2f2f2		//will自定义 #24292e改为#f2f2f2
+highlight-foreground = #24292e		//will自定义 #24292e改为#f2f2f2 该回去
 highlight-comment = #675f5f
 highlight-red = #f2777a
 highlight-orange = #f99157
@@ -14,14 +14,16 @@ highlight-purple = #a95aa9
 
 $code-block
   background: highlight-background
-  margin: 8px article-padding * -1
+  // margin: 8px article-padding * -1   //will自定义 替换成下面一行
+  margin: 8px 0
   padding: 15px article-padding
-  border-style: solid
+  // border-style: solid        //will自定义 去掉
   border-color: color-border
   border-width: 1px 0
   overflow: auto
   color: highlight-foreground
   line-height: font-size * line-height
+  border-radius: 5px    //will自定义 新添加属性
 
 $line-numbers
   color: #999			//will自定义#666改为#999

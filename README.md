@@ -12,6 +12,11 @@
 
 ---
 
+### 2018.09.13
+更新主题：theme: `hexo-theme-miho`
+1. 文件`/themes/hexo-theme-miho/source/css/_partial/highlight.styl`, 详细见代码文件
+主要是对代码块样式的更新。
+
 ### 2018.06.25
 更新主题：theme: `hexo-theme-miho`
 
