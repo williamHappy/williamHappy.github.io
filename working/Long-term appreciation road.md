@@ -28,13 +28,16 @@ description: 指向性博文，督促自我，拒绝拖拉，果断执行，铺�
 
 #### Java/J2EE 基础
 
-- [ ] 2018/11/6 will be completed
+- [x] 2018/11/6 will be completed
 
 1. 27. hashCode 与 equals（重要）
 
 #### Java 集合框架
 
 - [ ] 2018/11/8 will be completed
+  - [ ] 源码没有看，结合具体源码查看
+
+1. HashMap和ConcurrentHashMap区别，源码分析
 
 #### Java 多线程
 
