@@ -6,6 +6,12 @@ Interest is the best teacher, record new things, memorize the agenda.
 
 <!--more-->
 
+#### 项目架构
+
+**2018/12/09**
+-[ ] 1. whome-cloud-paas平台搭建
+-[ ] 2. whome-login统一登录页面抽离
+
 
 #### 技术相关
 
