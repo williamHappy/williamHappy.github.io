@@ -121,6 +121,8 @@ description: 指向性博文，督促自我，拒绝拖拉，果断执行，铺�
 
 - [ ] 2019/01/08 will be completed
 
+[Java 高并发，什么方式解决？高并发和大流量解决方案][3]
+
 #### 分布式相关
 
 - [ ] 2019/01/08 will be completed
@@ -145,3 +147,4 @@ description: 指向性博文，督促自我，拒绝拖拉，果断执行，铺�
 
 [1]: https://github.com/Snailclimb/JavaGuide
 [2]: https://juejin.im/post/5ada8a5cf265da0b9347df8c
+[3]: https://gitbook.cn/books/5b625e94daf78a4dc2deacce/index.html
