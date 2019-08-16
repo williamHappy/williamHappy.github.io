@@ -8,7 +8,7 @@ title: WillHappy
 subtitle:
 description: 认识世界 发现自己
 author: Will
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
@@ -41,10 +41,16 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
+# 代码高亮显示
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
 
 # Category & Tag
 default_category: uncategorized
@@ -72,7 +78,18 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 #blog第一版
 #theme: yelee
-theme: hexo-theme-miho
+# theme: hexo-theme-miho
+theme: hexo-theme-matery
+
+# 搜索
+search:
+  path: search.xml
+  field: post
+
+# 中文链接转拼音（可选的
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
 
 # Live2D
 live2d:
@@ -99,6 +116,9 @@ love: true
 # 打开之后，会同时打开文章文字统计， 阅读时长和全站文字统计
 wordcount:
   enable: true
+  postWordCount: true
+  min2read: true
+  totalCount: true
 
 # 备案号
 record:
@@ -115,6 +135,11 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
 
 # sitemap生成插件配置
 Plugins:
