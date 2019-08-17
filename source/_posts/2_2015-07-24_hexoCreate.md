@@ -4,7 +4,7 @@ date: 2015-07-24
 categories: [通用]
 tags: [Github,hexo]
 description: 使用Github空间搭建Hexo博客，写博客，分享交流。
-cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_2.jpg
+cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_2.jpg
 
 ---
 
@@ -151,4 +151,4 @@ hexo version                查看Hexo的版本
 博客网站的主题优化，插件应用，博客文章书写技巧能相关内容敬请期待。。。
 也可以关注hexo官方网站：hexo.io
 
-[1]: http://img.willhappy.cn/18-5-3/78589442.jpg
+[1]: http://oss.willhappy.cn/18-5-3/78589442.jpg

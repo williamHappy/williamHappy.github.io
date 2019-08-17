@@ -48,7 +48,7 @@ date: 2016-11-26 22:16:23
 <p style="text-align: center">欢迎关注个人微信公众号</p>
 
 <div style="text-align: center; width: 100%; border: #b6e0d5 solid 1px;">
-  <img alt="qrcode_for_gzh" src="http://img.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" width="40%" />
+  <img alt="qrcode_for_gzh" src="http://oss.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" width="40%" />
 </div>
 
 ---
@@ -56,7 +56,7 @@ date: 2016-11-26 22:16:23
 <p style="text-align: center">喜欢请给个赞赏，谢谢</p>
 
 <div style="text-align: center; width: 100%; border: #b6e0d5 solid 1px;">
-  <img alt="mm_reward_qrcode" src="http://img.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;" width="40%" />
+  <img alt="mm_reward_qrcode" src="http://oss.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;" width="40%" />
 </div>
 
 
@@ -68,4 +68,4 @@ date: 2016-11-26 22:16:23
 [6]: http://blog.willhappy.cn/images/qq_url.jpg
 [7]: http://blog.willhappy.cn/images/wechat_url.jpg
 [8]: http://weibo.com/williamhappy
-[9]: http://img.willhappy.cn/private/qrcode_for_gzh.jpg
+[9]: http://oss.willhappy.cn/private/qrcode_for_gzh.jpg

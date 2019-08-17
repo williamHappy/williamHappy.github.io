@@ -63,7 +63,7 @@
 
 [1]: https://willhappy.cn/
 [2]: http://www.gitnavi.com/
-[3]: http://img.willhappy.cn/18-5-10/49725989.jpg
+[3]: http://oss.willhappy.cn/18-5-10/49725989.jpg
 [4]: https://github.com/williamHappy/williamHappy.github.io/blob/blog_source/README.md
 [5]: https://segmentfault.com/a/1190000009329474?name=tec&description=&isPrivate=1
 [6]: https://github.com/thx/rap2-delos

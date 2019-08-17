@@ -4,7 +4,7 @@ date: 2019-04-19
 categories: [通用]
 tags: [interview]
 description: "易错点，重点笔记"
-cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_34.jpg
+cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_34.jpg
 
 ---
 
