@@ -1,9 +1,9 @@
 /* Here is your custom css styles. */
 .music-player .aplayer.aplayer-fixed {
-    bottom: 280px;
+    bottom: 300px;
 }
 .music-player .aplayer.aplayer-fixed .aplayer-body {
-    bottom: 280px;
+    bottom: 300px;
 }
 .music-player .aplayer.aplayer-fixed .aplayer-lrc {
     padding-left: 700px;
