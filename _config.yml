@@ -5,7 +5,7 @@
 
 # Site
 title: WillHappy
-subtitle:
+subtitle: 水火
 description: 认识世界 发现自己
 author: Will
 language: zh-CN
@@ -37,7 +37,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -66,7 +66,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 12
 pagination_dir: page
 
 # Disqus Disqus插件，我们会替换成“多说”，不修改
@@ -93,11 +93,27 @@ permalink_pinyin:
 
 # Live2D
 live2d:
-  model: Epsilon2.1
-  width: 200 # The width of your model. default: 150
-  height: 350 # The height of your model. default: 300
-  position: left
-  opacityDefault: 1
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: true
+  debug: false
+  model:
+    use: live2d-widget-model-epsilon2_1
+  display:
+    position: left
+    width: 150
+    height: 300
+  mobile:
+    show: true
+  react:
+    opacity: 0.7
+
+# hexo-tag-aplayer
+aplayer:
+  meting: true
 
 # 在线联系 | DaoVoice
 daovoice:
@@ -109,21 +125,29 @@ daovoice:
   signed_up: 1449821660      # 选填: 用户的注册时间，用Unix时间戳表示
 
 # 鼠标点击桃心效果
-love: true
+# 主题配置文件中配置了
+# love: true
 
 # Post wordcount display settings字数统计插件
 # Dependencies: https://github.com/willin/hexo-wordcount
 # 打开之后，会同时打开文章文字统计， 阅读时长和全站文字统计
-wordcount:
-  enable: true
-  postWordCount: true
-  min2read: true
-  totalCount: true
+# 在主题文件中配置
+# wordcount:
+#   enable: true
+#   postWordCount: true
+#   min2read: true
+#   totalCount: true
 
 # 备案号
 record:
   enable: true
   value: 浙ICP备18005540号
+
+footer:
+  qrcode: 
+    enable: true
+    reward: http://oss.willhappy.cn/private/mm_reward_qrcode.png
+    wechat: http://oss.willhappy.cn/private/qrcode_for_gzh.jpg
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/

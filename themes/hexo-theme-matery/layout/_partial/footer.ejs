@@ -1,6 +1,20 @@
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
+            <% if (theme.footer.qrcode.enable) { %>
+            <div>
+                <div style="text-align: center; float:left; width: 50%;">
+                    <img alt="" src="<%- theme.footer.qrcode.reward %>" style="margin: 0 auto;" width="43%">
+                    <p style="text-align: center">喜欢请给个赞赏，谢谢</p>
+                </div>
+            
+                <div style="text-align: center; border-left: 1px solid #4C5461; float:left; width: 48%;">
+                    <img alt="" src="<%- theme.footer.qrcode.wechat %>" style="margin: 0 auto;" width="45%">
+                    <p style="text-align: center">欢迎关注个人微信公众号</p>
+                </div>
+            </div>
+            <% } %>
+
             本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
             <a href="https://hexo.io/" target="_blank">Hexo</a> 的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.

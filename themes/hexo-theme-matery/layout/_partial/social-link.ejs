@@ -1,3 +1,9 @@
+<% if (theme.socialLink.home) { %>
+    <a href="<%= theme.socialLink.home %>" class="tooltipped" target="_blank" data-tooltip="访问我的主页" data-position="top" data-delay="50">
+        <i class="fa fa-home"></i>
+    </a>
+<% } %>
+
 <% if (theme.socialLink.github) { %>
     <a href="<%= theme.socialLink.github %>" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
@@ -13,6 +19,18 @@
 <% if (theme.socialLink.qq) { %>
     <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=<%= theme.socialLink.qq %>" class="tooltipped" data-tooltip="QQ联系我: <%= theme.socialLink.qq %>" data-position="top" data-delay="50">
         <i class="fa fa-qq"></i>
+    </a>
+<% } %>
+
+<% if (theme.socialLink.wechat) { %>
+    <a href="<%= theme.socialLink.wechat %>" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-wechat"></i>
+    </a>
+<% } %>
+
+<% if (theme.socialLink.weibo) { %>
+    <a href="<%= theme.socialLink.weibo %>" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
     </a>
 <% } %>
 

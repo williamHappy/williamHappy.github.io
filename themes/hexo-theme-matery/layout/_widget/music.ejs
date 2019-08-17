@@ -1,36 +1,31 @@
-<%
-var audiosJson = JSON.stringify(site.data.musics);
-%>
-
 <link rel="stylesheet" href="<%- theme.libs.css.aplayer %>">
-<div class="music-player">
-    <% if (theme.music.showTitle) { %>
-    <div class="title center-align">
-        <i class="fa fa-music"></i>&nbsp;&nbsp;<%- theme.music.title %>
-    </div>
-    <% } %>
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s12">
-            <div id="aplayer" class="music"></div>
-        </div>
+
+<% if(is_home()) { %>
+    <div class="music-player top-scroll">
+<% } %>
+<% if(!is_home()) { %>
+    <div class="music-player">
+<% } %>
+    <div class="col l8 offset-l2 m10 offset-m1 s12">
+        <meting-js
+            id="<%- theme.music.id %>"
+            server="<%- theme.music.server %>"
+            type="<%- theme.music.type %>"
+            fixed="<%- theme.music.fixed %>"
+            mini="<%- theme.music.mini %>"
+            loop="<%- theme.music.loop %>"
+            order="<%- theme.music.order %>"
+            volume="<%- theme.music.volume %>"
+            lrctype="<%- theme.music.lrctype %>"
+            listfolded="<%- theme.music.listfolded %>"
+            storagename="<%- theme.music.storagename %>"
+            autoplay="<%- theme.music.autoplay %>" 
+            mutex="<%- theme.music.mutex %>"
+            listmaxheight="<%- theme.music.listmaxheight %>"
+            preload="<%- theme.music.preload %>" 
+            theme="<%- theme.music.theme %>">
+        </meting-js>
     </div>
 </div>
-
 <script src="<%- theme.libs.js.aplayer %>"></script>
-<script>
-$(function () {
-    new APlayer({
-        container: document.getElementById('aplayer'),
-        fixed: '<%- theme.music.fixed %>' === 'true',
-        autoplay: '<%- theme.music.autoplay %>' === 'true',
-        theme: '<%- theme.music.theme %>',
-        loop: '<%- theme.music.loop %>',
-        order: '<%- theme.music.order %>',
-        preload: '<%- theme.music.preload %>',
-        volume: Number('<%- theme.music.volume %>'),
-        listFolded: '<%- theme.music.listFolded %>' === 'true',
-        listMaxHeight: '<%- theme.music.listMaxHeight %>',
-        audio: JSON.parse('<%- audiosJson %>')
-    });
-});
-</script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>

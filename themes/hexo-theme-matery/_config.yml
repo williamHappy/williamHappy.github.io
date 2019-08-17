@@ -39,35 +39,84 @@ dream:
 
 # Whether to display the musics.
 # 是否在首页显示音乐.
+# 不再使用，使用了根目录下的aplayer
+# music:
+#   enable: true
+#   showTitle: false
+#   title: 听听音乐
+#   fixed: true # 开启吸底模式
+#   autoplay: true # 是否自动播放
+#   theme: 'rgba(0,0,0,0)'
+#   loop: 'all' # 音频循环播放, 可选值: 'all', 'one', 'none'
+#   order: 'list' # 音频循环顺序, 可选值: 'list', 'random'
+#   preload: 'auto' # 预加载，可选值: 'none', 'metadata', 'auto'
+#   volume: 0.7 # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+#   listFolded: false # 列表默认折叠
+#   listMaxHeight: #列表最大高度
+
 music:
-  enable: false
-  showTitle: true
-  title: 听听音乐
-  fixed: false # 开启吸底模式
-  autoplay: false # 是否自动播放
-  theme: '#42b983'
-  loop: 'all' # 音频循环播放, 可选值: 'all', 'one', 'none'
-  order: 'list' # 音频循环顺序, 可选值: 'list', 'random'
-  preload: 'auto' # 预加载，可选值: 'none', 'metadata', 'auto'
-  volume: 0.7 # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
-  listFolded: false # 列表默认折叠
-  listMaxHeight: #列表最大高度
+  enable: true
+  # 所有页面中配置，每篇文章单独配置的可参考hexo-tag-aplayer的写法
+  # {% meting "7158943707" "tencent" "playlist" "mini" "loop:all" "order:random" "volume:0.6" "lrctype:0"  "listfolded" "storagename:metingjs" "autoplay" "listmaxheight:340px" "preload:none" "theme:#ad7a86" %}
+  id: '7158943707' #必须值	歌曲 id / 播放列表 id / 相册 id / 搜索关键字
+  server:	'tencent' #必须值	音乐平台: netease, tencent, kugou, xiami, baidu
+  type:	'playlist' #必须值	song, playlist, album, search, artist
+  fixed: true #false	开启固定模式
+  mini: true	#false	开启迷你模式
+  loop: 'all'	#all	列表循环模式：all, one,none
+  order: 'list'	#list	列表播放模式： list, random
+  volume: 0.7	#0.7	播放器音量
+  lrctype: 0	#0	歌词格式类型
+  listfolded: true	#false	指定音乐播放列表是否折叠
+  storagename: 'metingjs'	#metingjs	LocalStorage 中存储播放器设定的键名
+  autoplay: true	#true	自动播放，移动端浏览器暂时不支持此功能
+  mutex: true	#true	该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停
+  listmaxheight: '340px'	#340px	播放列表的最大长度
+  preload: 'auto'	#auto	音乐文件预载入模式，可选项： none, metadata, auto
+  theme: '#ad7a86'	#ad7a86	播放器风格色彩设置
 
 # Whether to display the videos.
 # 是否在首页显示视频.
-video:
-  enable: false
+# {% dplayer "url=http://oss.willhappy.cn/video/%E8%88%9E%E8%80%85.mp4" "addition=https://dplayer.daoapp.io/bilibili?aid=4157142" "api=https://api.prprpr.me/dplayer/" "pic=https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.jpg" "id=9E2E3368B56CDBB4" "loop=yes" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
+dplayer:
+  enable: true
   showTitle: true
   title: 精彩视频
-  url: # 必填
-  pic:
-  thumbnails:
   height: # 如：400
-  autoplay: false # 是否自动播放
+  live: false #false 开启直播模式
+  screenshot: true #false 开启截图，如果开启，视频和视频封面需要允许跨域
+  hotkey:  #true 开启热键，支持快进、快退、音量控制、播放暂停
+  autoplay: false #false 是否自动播放
   theme: '#42b983'
-  loop: false # 是否循环播放
-  preload: 'auto' # 预加载，可选值: 'none', 'metadata', 'auto'
-  volume: 0.7
+  loop: false #false 是否循环播放
+  preload: 'auto' #'auto' 预加载，可选值: 'none', 'metadata', 'auto'
+  volume: 0.7 #0.7 音量
+  mutex: #互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
+  video:
+    url: 'http://oss.willhappy.cn/video/%E8%88%9E%E8%80%85.mp4' #视频链接
+    type: 'auto' #可选值: 'auto', 'hls', 'flv', 'dash', 'webtorrent', 'normal' 或其他自定义类型
+    pic: #视频封面
+    quality: #清晰度
+    defaultQuality: #默认清晰度
+    thumbnails: #视频缩略图，可以使用 DPlayer-thumbnails 生成
+    customType: #自定义类型
+  subtitle:
+    url: #required 字幕链接
+    type: #'webvtt'	字幕类型，可选值: 'webvtt', 'ass'，目前只支持 webvtt
+    fontSize: #'20px'	字幕字号
+    bottom: #'40px'	字幕距离播放器底部的距离，取值形如: '10px' '10%'
+    color: #'#fff'	字幕颜色
+  danmaku:
+    id: '9E2E3368B56CDBB4' #required	弹幕池id，必须唯一
+    api: 'https://api.prprpr.me/dplayer/' #required	见#弹幕接口
+    token: 'tokendemo' #弹幕后端验证 token
+    maximum: 1000 #弹幕最大数量
+    addition: 'https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142' #额外外挂弹幕，见#bilibili 弹幕
+    user: 'DIYgod' #'DIYgod'	弹幕用户名
+    bottom: '15%' #弹幕距离播放器底部的距离，防止遮挡字幕，取值形如: '10px' '10%'
+    unlimited: true #海量弹幕模式，即使重叠也展示全部弹幕，请注意播放器会记忆用户设置，用户手动设置后即失效
+  
+  
 
 # Whether to display the title of the recommended posts
 # 是否显示推荐文章的标题
@@ -76,8 +125,8 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: /favicon.png
-logo: /medias/logo.png
+favicon: http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png
+logo: http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png
 
 # The configuration of the second button in the home banner,
 # including the display name of the button, the font awesome icon, and the hyperlink to the button.
@@ -86,15 +135,18 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github-alt
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/williamHappy/williamHappy.github.io
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  qq: 123123123
-  github:
-  email: xxx@xx.xx
+  home: 
+  qq: 583876674
+  github: https://github.com/williamHappy
+  email: ctwang1994@163.com
+  wechat: http://oss.willhappy.cn/private/wechat_url.jpg
+  weibo: https://weibo.com/williamhappy
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # You can add `toc: false` to the Front-matter of a post to turn off the TOC.
@@ -114,14 +166,14 @@ code:
 reward:
   enable: true
   title: 你的赏识是我前进的动力
-  wechat: /medias/reward/wechat.png
-  alipay: /medias/reward/alipay.jpg
+  wechat: http://oss.willhappy.cn/private/wechat_code_me.png
+  alipay: http://oss.willhappy.cn/private/alipay_code_me.png
 
 # Whether to activate the copyright information of the blog and author when copying the post content.
 # minCharNumber: Approve copyright information by copying at least how many characters.
 # 是否激活复制文章时追加博客和作者的版权信息.
 copyright:
-  enable: false
+  enable: true
   minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
   description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
 
@@ -131,7 +183,7 @@ copyright:
 # 是否激活mathjax数学公式，这是全局配置，但文章仍然不会都开启mathjax渲染，
 # 考虑到mathjax加载比较耗时，你还需要在需要渲染的文章的Front-matter中再加上`mathjax: true`才行.
 mathjax:
-  enable: false
+  enable: true
   cdn: https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # Post word count, reading duration, site total word count.
@@ -140,7 +192,7 @@ mathjax:
 # 文章字数统计、阅读时长、总字数统计
 # 激活前请确认你已经安装了 hexo-wordcount 插件，安装命令: `npm i --save hexo-wordcount`
 wordCount:
-  enable: false
+  enable: true
   postWordCount: true
   min2read: true
   totalCount: true
@@ -153,7 +205,7 @@ clicklove:
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
-  avatar: /medias/avatar.jpg
+  avatar: http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png
   career: Software Engineer
   introduction: If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
 
@@ -163,21 +215,21 @@ profile:
 myProjects:
   enable: true
   data:
-    hexo-theme-matery:
-      icon: fa-meetup
+    willhappy:
+      icon: fa-home
       iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: http://github.com/blinkfox/hexo-theme-matery
-      desc: This is a Hexo blog theme with 'Material Design' and responsive design.
-    zealt:
-        icon: fa-database
+      url: williamHappy.github.io
+      desc: This is my Hexo blog system.
+    whome-service:
+        icon: fa-server
         iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/blinkfox/zealot
-        desc: 一个轻量级的SQL和参数动态生成工具库
-    typora-vue-theme:
-        icon: fa-file-text-o
+        url: https://github.com/williamHappy/whome-service
+        desc: This is my complex distributed project.
+    universe_project:
+        icon: fa-tv
         iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/blinkfox/typora-vue-theme
-        desc: This is a typora theme inspired by Vue document style.
+        url: https://github.com/williamHappy/universe_project
+        desc: Knowledge one of my more beautiful homepage system.
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
@@ -190,16 +242,16 @@ mySkills:
       percent: 85%
     JavaScript:
       background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
-      percent: 80%
-    HTML5:
+      percent: 60%
+    VUEJS:
       background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
-      percent: 80%
-    CSS:
-      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
-      percent: 70%
-    SQL:
+      percent: 75%
+    MYSQL:
       background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
-      percent: 90%
+      percent: 75%
+    Python:
+      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
+      percent: 20%
     程序设计:
       background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
       percent: 75%
@@ -221,13 +273,13 @@ postCalendar: true
 # the Gitalk config，default disabled
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: false
-  owner:
-  repo:
+  enable: true
+  owner: williamHappy
+  repo: williamHappy.github.io
   oauth:
-    clientId:
-    clientSecret:
-  admin:
+    clientId: c012900cfa3718580687
+    clientSecret: 15fb2a23c381c0bbc4d720ee609ee07a57c24b7a
+  admin: williamHappy
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
@@ -269,7 +321,7 @@ valine:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: true
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/williamHappy/williamHappy.github.io
   title: Fork Me
 
 # The password verification feature of read post. To use this feature,
@@ -279,7 +331,7 @@ githubLink:
 # 阅读文章的密码验证功能，如要使用此功能请激活该配置项，并在对应文章的Front-matter中写上'password'的键和加密后的密文即可.
 # 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.
 verifyPassword:
-  enable: false
+  enable: true
   promptMessage: 请输入访问本文章的密码
   errorMessage: 密码错误，将返回主页！
 
@@ -306,8 +358,12 @@ libs:
     aos: /libs/aos/aos.css
     animate: /libs/animate/animate.min.css # V3.5.1
     lightgallery: /libs/lightGallery/css/lightgallery.min.css # V1.6.11
-    aplayer: /libs/aplayer/APlayer.min.css
-    dplayer: /libs/dplayer/DPlayer.min.css
+    # 由于安装了hexo-tag-aplayer, 所以不用手动引入css，js库了
+    # aplayer: /libs/aplayer/APlayer.min.css
+    aplayer: /assets/css/APlayer.min.css
+    # 由于安装了hexo-tag-dplayer, 所以不用手动引入css，js库了
+    # dplayer: /libs/dplayer/DPlayer.min.css
+    dplayer: /assets/css/DPlayer.min.css
     gitalk: /libs/gitalk/gitalk.css
     jqcloud: /libs/jqcloud/jqcloud.css
     tocbot: /libs/tocbot/tocbot.css
@@ -320,8 +376,10 @@ libs:
     lightgallery: /libs/lightGallery/js/lightgallery-all.min.js # V1.6.11
     clicklove: /libs/others/clicklove.js
     busuanzi: /libs/others/busuanzi.pure.mini.js
-    aplayer: /libs/aplayer/APlayer.min.js
-    dplayer: /libs/dplayer/DPlayer.min.js
+    # aplayer: /libs/aplayer/APlayer.min.js
+    aplayer: /assets/js/APlayer.min.js
+    # dplayer: /libs/dplayer/DPlayer.min.js
+    dplayer: /assets/js/DPlayer.min.js
     crypto: /libs/cryptojs/crypto-js.min.js
     echarts: /libs/echarts/echarts.min.js
     gitalk: /libs/gitalk/gitalk.min.js

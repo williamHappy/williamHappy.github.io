@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="<%- theme.libs.css.dplayer %>">
 <div class="video-player">
-    <% if (theme.video.showTitle) { %>
+    <% if (theme.dplayer.showTitle) { %>
     <div class="title center-align">
-        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;<%- theme.video.title %>
+        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;<%- theme.dplayer.title %>
     </div>
     <% } %>
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s12">
             <div id="dplayer" class="dplayer-video"
-                    <% if (theme.video.height) { %> style="height: <%- theme.video.height %>px;"<% } %>></div>
+                    <% if (theme.dplayer.height) { %> style="height: <%- theme.dplayer.height %>px;"<% } %>></div>
         </div>
     </div>
 </div>
@@ -18,17 +18,38 @@
     $(function () {
         new DPlayer({
             container: document.getElementById('dplayer'),
-            autoplay: '<%- theme.video.autoplay %>' === 'true',
-            theme: '<%- theme.video.theme %>',
-            loop: '<%- theme.video.loop %>' === 'true',
+            live: '<%- theme.dplayer.live %>',
+            autoplay: '<%- theme.dplayer.autoplay %>' === 'true',
+            theme: '<%- theme.dplayer.theme %>',
+            loop: '<%- theme.dplayer.loop %>' === 'true',
             lang: '<%- config.language %>' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: '<%- theme.video.preload %>',
-            volume: Number('<%- theme.video.volume %>'),
+            preload: '<%- theme.dplayer.preload %>',
+            volume: Number('<%- theme.dplayer.volume %>'),
             video: {
-                url: '<%- theme.video.url %>',
-                pic: '<%- theme.video.pic %>',
-                thumbnails: '<%- theme.video.thumbnails %>'
-            }
+                url: '<%- theme.dplayer.video.url %>',
+                type: '<%- theme.dplayer.video.type %>',
+                pic: '<%- theme.dplayer.video.pic %>',
+                quality: '<%- theme.dplayer.video.quality %>',
+                defaultQuality: '<%- theme.dplayer.video.defaultQuality %>',
+                thumbnails: '<%- theme.dplayer.video.thumbnails %>'
+            },
+            subtitle: {
+                url: '<%- theme.dplayer.subtitle.url %>',
+                type: '<%- theme.dplayer.subtitle.type %>',
+                fontSize: '<%- theme.dplayer.subtitle.fontSize %>',
+                bottom: '<%- theme.dplayer.subtitle.bottom %>',
+                color: '<%- theme.dplayer.subtitle.color %>',
+            },
+            danmaku: {
+                id: '<%- theme.dplayer.danmaku.id %>',
+                api: '<%- theme.dplayer.danmaku.api %>',
+                token: '<%- theme.dplayer.danmaku.token %>',
+                maximum: '<%- theme.dplayer.danmaku.maximum %>',
+                addition: '<%- theme.dplayer.danmaku.addition %>'.split(','),
+                user: '<%- theme.dplayer.danmaku.user %>',
+                bottom: '<%- theme.dplayer.danmaku.bottom %>',
+                unlimited: '<%- theme.dplayer.danmaku.unlimited %>',
+            },
         });
     });
 </script>

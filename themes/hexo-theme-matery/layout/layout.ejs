@@ -11,6 +11,10 @@
 <%- partial('_partial/search') %>
 <%- partial('_partial/back-top') %>
 
+<% if (theme.music.enable) { %>
+    <%- partial('_widget/music') %>
+<% } %>
+
 <script src="<%- theme.libs.js.materialize %>"></script>
 <script src="<%- theme.libs.js.masonry %>"></script>
 <script src="<%- theme.libs.js.aos %>"></script>
@@ -25,6 +29,38 @@
 <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
     <script async src="<%- theme.libs.js.busuanzi %>"></script>
 <% } %>
+
+<%- live2d() %>
+
+<% if (theme.daovoice) { %>
+    <script>
+      (function(i,s,o,g,r,a,m){
+        i["DaoVoiceObject"]=r;
+        i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+        a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+        a.async=1;a.src=g;a.charset="utf-8";
+        m.parentNode.insertBefore(a,m)}
+      )(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/" + "<%- theme.daovoice.app_id %>" + ".js","daovoice")
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: "<%- theme.daovoice.app_id %>",
+        user_id: "<%- theme.daovoice.user_id %>",
+        email: "<%- theme.daovoice.email %>",
+        name: "<%- theme.daovoice.name %>",
+        signed_up: "<%- theme.daovoice.signed_up %>"
+      });
+      daovoice('update');
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: "<%- theme.daovoice_app_id %>"
+      });
+      daovoice('update');
+    </script>
+  <% } %>
 
 </body>
 </html>
