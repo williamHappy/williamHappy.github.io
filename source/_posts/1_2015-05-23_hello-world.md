@@ -3,7 +3,7 @@ title: Hello World
 date: 2015-05-23
 categories: [通用]
 tags: [兴趣]
-cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_1.jpg
+cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_1.jpg
 
 ---
 

@@ -4,7 +4,7 @@ date: 2017-06-13
 categories: [运维]
 tags: [Linux,Nginx,vsftpd]
 description: "Linux还是要好好学的，要不安装个东西太累了！"
-cover_picture: http://img.willhappy.cn/hexo/cover_pic/cover_picture_18.jpg
+cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_18.jpg
 
 ---
 
@@ -93,4 +93,4 @@ Redirecting to /bin/systemctl restart  vsftpd.service
 原因分析：可能是linux文件的访问权限问题。
 解决办法：进去linux，找到访问文件的目录，找到相应的文件，鼠标右键点击属性，权限，设置权限为可写，重启一下vsftpd服务即可。然后重新使用FileZilla重新上传一下文件，即可。
 
-[1]: http://img.willhappy.cn/18-5-3/78920160.jpg
+[1]: http://oss.willhappy.cn/18-5-3/78920160.jpg
