@@ -206,8 +206,8 @@ clicklove:
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png
-  career: Software Engineer
-  introduction: If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
+  career: Free Experientialism Person / Software Engineer
+  introduction: Early in the day it was whispered that we should sail in a boat, only thou and I, and never a soul in the world would know of this our pilgrimage to no country and to no end.     在清晓的密语中，我们约定了同去泛舟，世界上没有一个人知道我们这无目的无终止的遨游。
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
