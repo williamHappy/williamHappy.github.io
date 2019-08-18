@@ -9,16 +9,22 @@
     <% if (page.current === 1) { %>
     <div id="indexCard" class="index-card">
         <div class="container ">
+            <% if (theme.dream.enable) { %>
+                <div class="card">
+                    <div class="card-content">
+                        <%- partial('_widget/dream') %>
+                    </div>
+                </div>
+            <% } %>
+            <% if (theme.dplayer.enable) { %>
+                <div class="card">
+                    <div class="card-content">
+                        <%- partial('_widget/video') %>
+                    </div>
+                </div>
+            <% } %>
             <div class="card">
                 <div class="card-content">
-                    <% if (theme.dream.enable) { %>
-                        <%- partial('_widget/dream') %>
-                    <% } %>
-
-                    <% if (theme.dplayer.enable) { %>
-                        <%- partial('_widget/video') %>
-                    <% } %>
-
                     <div id="recommend-sections" class="recommend">
                         <%- partial('_widget/recommend') %>
                     </div>
