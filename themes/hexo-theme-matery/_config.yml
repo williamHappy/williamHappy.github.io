@@ -69,7 +69,7 @@ music:
   lrctype: 0	#0	歌词格式类型
   listfolded: true	#false	指定音乐播放列表是否折叠
   storagename: 'metingjs'	#metingjs	LocalStorage 中存储播放器设定的键名
-  autoplay: true	#true	自动播放，移动端浏览器暂时不支持此功能
+  autoplay: false	#true	自动播放，移动端浏览器暂时不支持此功能
   mutex: true	#true	该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停
   listmaxheight: '340px'	#340px	播放列表的最大长度
   preload: 'auto'	#auto	音乐文件预载入模式，可选项： none, metadata, auto

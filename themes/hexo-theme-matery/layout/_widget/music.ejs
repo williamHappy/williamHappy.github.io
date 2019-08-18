@@ -1,12 +1,19 @@
 <link rel="stylesheet" href="<%- theme.libs.css.aplayer %>">
 
+<style type="text/css">
+    /* don't remove. */
+    .music-player {
+      display: none;
+    }
+</style>
+
 <% if(is_home()) { %>
     <div class="music-player top-scroll">
 <% } %>
 <% if(!is_home()) { %>
-    <div class="music-player">
+    <div class="music-player custom-scroll">
 <% } %>
-    <div class="col l8 offset-l2 m10 offset-m1 s12">
+    <div class="col l8 offset-l2 m10 offset-m1 s12 container-music">
         <meting-js
             id="<%- theme.music.id %>"
             server="<%- theme.music.server %>"
@@ -29,3 +36,18 @@
 </div>
 <script src="<%- theme.libs.js.aplayer %>"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<% if(!is_home()) { %> 
+    <script>
+      $(function(){
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            console.log("<1", scroll)
+            if (scroll < 1) {
+              $('.custom-scroll').slideUp(300)
+            } else {
+              $('.custom-scroll').slideDown(300);
+            }
+        });
+      })
+    </script>
+  <% } %>

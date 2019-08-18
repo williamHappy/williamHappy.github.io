@@ -2,6 +2,16 @@
 <html lang="<%= config.language %>">
 <%- partial('_partial/head') %>
 
+<style type="text/css">
+  /* don't remove. */
+  #daodream-container .daodream-launcher-enabled {
+    display: none;
+  }
+  #live2d-widget {
+    visibility:hidden;
+  }
+</style>
+
 <body>
 
 <%- partial('_partial/header') %>
@@ -59,6 +69,39 @@
         app_id: "<%- theme.daovoice_app_id %>"
       });
       daovoice('update');
+    </script>
+  <% } %>
+
+  <% if(is_home()) { %> 
+    <script>
+      $(function(){
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 360) {
+              $('#daodream-container .daodream-launcher-enabled').slideUp(300)
+              $('#live2d-widget').css("visibility","hidden");
+            } else {
+              $('#daodream-container .daodream-launcher-enabled').slideDown(300);
+              $('#live2d-widget').css("visibility","visible");
+            }
+        });
+      })
+    </script>
+  <% } else { %>
+    <script>
+      $(function(){
+        // 在线联系加载过慢，所以用滑动时间来触发
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('#daodream-container .daodream-launcher-enabled').slideUp(300)
+              $('#live2d-widget').css("visibility","hidden");
+            } else {
+              $('#daodream-container .daodream-launcher-enabled').slideDown(300);
+              $('#live2d-widget').css("visibility","visible");
+            }
+        });
+      })
     </script>
   <% } %>
 
