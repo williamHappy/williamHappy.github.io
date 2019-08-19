@@ -380,6 +380,10 @@ libs:
     aplayer: /assets/js/APlayer.min.js
     # dplayer: /libs/dplayer/DPlayer.min.js
     dplayer: /assets/js/DPlayer.min.js
+    hls: https://cdn.bootcss.com/hls.js/8.0.0-beta.3/hls.min.js
+    flv: https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js
+    dash: https://cdn.bootcss.com/dashjs/3.0.0/dash.all.min.js
+    webtorrent: https://cdn.bootcss.com/webtorrent/0.107.3/webtorrent.min.js
     crypto: /libs/cryptojs/crypto-js.min.js
     echarts: /libs/echarts/echarts.min.js
     gitalk: /libs/gitalk/gitalk.min.js
