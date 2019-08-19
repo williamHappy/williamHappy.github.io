@@ -93,7 +93,7 @@ dplayer:
   volume: 0.7 #0.7 音量
   mutex: #互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
   video:
-    url: 'http://oss.willhappy.cn/video/%E8%88%9E%E8%80%85.mp4' #视频链接
+    url: 'http://oss.willhappy.cn/video/%E8%88%9E%E6%9E%97.mp4' #视频链接
     type: 'auto' #可选值: 'auto', 'hls', 'flv', 'dash', 'webtorrent', 'normal' 或其他自定义类型
     pic: #视频封面
     quality: #清晰度

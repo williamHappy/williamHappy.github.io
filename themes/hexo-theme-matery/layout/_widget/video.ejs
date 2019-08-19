@@ -1,12 +1,22 @@
 <link rel="stylesheet" href="<%- theme.libs.css.dplayer %>">
+<style type="text/css">
+    .input-info {
+        display: none;
+    }
+</style>
 <div class="video-player">
     <% if (theme.dplayer.showTitle) { %>
-    <div class="title center-align">
+    <div class="title center-align" ondblclick="doubleClick()">
         <i class="fa fa-video-camera"></i>&nbsp;&nbsp;<%- theme.dplayer.title %>
     </div>
     <% } %>
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div class="input-info">
+                url:<input type="text" class="input-url" name="input-url" />
+                pic:<input type="text" class="input-pic" name="input-pic" />
+                <button onclick="palyVideo()">确认切换</button>
+            </div>
             <div id="dplayer" class="dplayer-video"
                     <% if (theme.dplayer.height) { %> style="height: <%- theme.dplayer.height %>px;"<% } %>></div>
         </div>
@@ -15,8 +25,9 @@
 
 <script src="<%- theme.libs.js.dplayer %>"></script>
 <script>
+    var dp;
     $(function () {
-        new DPlayer({
+       dp = new DPlayer({
             container: document.getElementById('dplayer'),
             live: '<%- theme.dplayer.live %>',
             autoplay: '<%- theme.dplayer.autoplay %>' === 'true',
@@ -52,4 +63,17 @@
             },
         });
     });
+    function palyVideo() {
+        var input_url = $(".input-url").val()
+        var input_pic = $(".input--pic").val()
+        dp.switchVideo({
+            url: input_url,
+            pic: input_pic
+        })
+    }
+    function doubleClick(){
+        var $inputInfo = $(".input-info");
+        $inputInfo.toggle();
+    }
+
 </script>
