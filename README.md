@@ -1,23 +1,38 @@
 [![Build Status](https://www.travis-ci.org/williamHappy/williamHappy.github.io.svg?branch=blog_source)](https://www.travis-ci.org/williamHappy/williamHappy.github.io)
+
 # 版本更新说明
 
 ---
 
-
  **注意说明**
+
 1. 更新主题仓库，需要先备份配置文件等，如`_config.yml`,`images`文件等
 2. 更新blog源码（如更新主题）会将上一版本的blog源码打`tag`, 可供小伙伴下载某个`tag`正常blog源码，编译运行测试。
 3. blog的主题资源文件（个人文件，如images的相关制作原件，备用文件）
-	会备份在百度网盘。我的资源`/myblog_file`
+会备份在百度网盘。我的资源`/myblog_file`
 
 ---
 
+### 2019.08.19
+
+更新主题：theme: `hexo-theme-matery`
+具体差异，可以查看[16e8aa2][5]和[5df84ad][6]两个版本之间的修改内容, 使用sourcetree对比两版本差异
+主题另外添加的新功能组件如下：
+
+- 音乐播放器组件 [hexo-tag-aplayer][7]
+- 视频播放器组件 [hexo-tag-dplayer][8]
+
+以后文章中使用标签添加歌曲和视频就都比较简单了，其他组件相对于之前主题进行更新修改等。
+
 ### 2018.09.13
+
 更新主题：theme: `hexo-theme-miho`
+
 1. 文件`/themes/hexo-theme-miho/source/css/_partial/highlight.styl`, 详细见代码文件
 主要是对代码块样式的更新。
 
 ### 2018.06.25
+
 更新主题：theme: `hexo-theme-miho`
 
 1. 文件：`themes/hexo-theme-miho/layout/_partial/footer.ejs`
@@ -27,9 +42,11 @@
 更新about me菜单，添加微信公众号二维码和赞赏二维码。
 
 ### 2018.05.08
+
 更新主题：theme: `hexo-theme-miho`
 
 1. 文件：`themes/hexo-theme-miho/source/css/_partial/article.styl`
+
 ```css
 {
   .article-entry
@@ -38,6 +55,7 @@
 ```
 
 ### 2018.05.07
+
 更新`.travis.yml`配置文件， git仓库梳理。
 
 1. 百度链接的主动推送方式，使用了插件，需要在`hexo d`是推送，所以要更改travisCI的流程，要改配置文件，踩到坑了，详情[查看][2]文章的第六节-->站点收录的**坑二**。
@@ -72,6 +90,7 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
 有自定义的部分是有标注注释的，可查看具体的代码文件。
 
 1. 文件`/themes/hexo-theme-miho/source/css/_extend.styl`
+
 ```css
 {
   h3
@@ -92,9 +111,10 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
     border-radius: 9px		//will自定义 3px改为9px
 }
 ```
+
 <br>
 
-2. 文件`/themes/hexo-theme-miho/source/css/_partial/article.styl`
+1. 文件`/themes/hexo-theme-miho/source/css/_partial/article.styl`
 
 ```css
 {
@@ -114,24 +134,29 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
 	border-radius: 9px		//will自定义 0改为9px
 }
 ```
+
 <br>
 
 3. 文件`/themes/hexo-theme-miho/source/css/_variables.styl`
 
-```
+```css
   // 主色调
   main-color = #51acf9		//自定义 #0cc修改为#51acf9
 ```
+
 <br>
 
 4. 文件`/themes/hexo-theme-miho/source/css/_partial/highlight.styl`
-```
+
+```css
   //修复部分代码块颜色，具体查看代码文件
 ```
+
 <br>
 
-5. 文件`/themes/hexo-theme-miho/source/css/_partial/post.styl`
-```
+1. 文件`/themes/hexo-theme-miho/source/css/_partial/post.styl`
+
+```css
   //修改了部分样式，具体查看文件标注
 ```
 
@@ -142,10 +167,10 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
 更换主题：theme: `hexo-theme-miho`， 安装配置说明[点击][3]
 
 1. 原blog目录文件`修改主题样式说明.txt`（即此文件），更名为blog说明文件`blog_readme.txt`
-2. 更换主题`hexo-theme-miho `
+2. 更换主题`hexo-theme-miho`
 3. 修改样式
 文件：`/hexo-theme-miho/source/css/_variables.styl`(样式值表)
-由`color-background = #eee` 改为`color-background = #fff `
+由`color-background = #eee` 改为`color-background = #fff`
 
 ---
 
@@ -154,13 +179,15 @@ blog中所有图片文件仓库的迁移，从github的FileRepo迁移到七牛�
 更新主题：theme: `yelee`, 安装配置[点击][4]
 
 1. 修改了`/yelee/source/css/_variables.styl`
-```
+
+```css
 mid-col-color = rgba(99,99,99,.8)
 article-color = rgba(255,255,255,.75)
 ```
 
-2. 修改了`/yelee/source/css/article.styl`
-```
+1. 修改了`/yelee/source/css/article.styl`
+
+```css
 box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 ```
 
@@ -168,3 +195,7 @@ box-shadow: 3px 2px 8px rgba(0,0,0, .8);
 [2]: http://blog.willhappy.cn/2018/05/06/27_2018-05-06_hexo%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E5%8D%87%E7%BA%A7/
 [3]: https://github.com/WongMinHo/hexo-theme-miho
 [4]: https://github.com/MOxFIVE/hexo-theme-yelee
+[5]: https://github.com/williamHappy/williamHappy.github.io/tree/16e8aa24d76f8e9ba4f751bcc6d5c41867432297
+[6]: https://github.com/williamHappy/williamHappy.github.io/tree/5df84adcfb8e696cba84cae29e445402fe315986
+[7]: https://github.com/MoePlayer/hexo-tag-aplayer
+[8]: https://github.com/MoePlayer/hexo-tag-dplayer

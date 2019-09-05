@@ -16,12 +16,20 @@
 
 **小目标制定及完成情况**
 
+### 2019/09/05
+
+- [ ] blog更新主题内容
+- [ ] 思考主题模块作为子模块，参考[hexo使用git子模块来管理theme][8]
+- [ ] 相关工作总结博客，参考mac便签的笔记
+
 ### 2018/09/11
-- [ ] vanke项目mysql全文索引，或倒排索引整理blog
+
+- [x] vanke项目mysql全文索引，或倒排索引整理blog
 - [x] doc_stu/学习问题总结，关于前端的，整理成blog，删除text文档, 详见[前端归结（科学上网）][7]
 - [ ] doc_stu/目录下其他可以整理到github上的一并整理上来，以后方便'随身携带'
 
 ### 2018/06/27
+
 - [x] 记录分享文章, 思考如何方便的添加到自己的博客中，会附原出处
 
 ### 2018/06/06
@@ -68,3 +76,4 @@
 [5]: https://segmentfault.com/a/1190000009329474?name=tec&description=&isPrivate=1
 [6]: https://github.com/thx/rap2-delos
 [7]: https://goo.gl/EVbwiU
+[8]: http://blog.githuber.cn/posts/5534

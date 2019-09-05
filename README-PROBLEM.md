@@ -16,11 +16,13 @@
 #### 后端
 
 **--2018/07/01--**
+
 - [ ] 1. springboot搭建dubbo环境，springboot2.x需要额外添加log4j jar包，springboot1.x不需要，why？
 
 #### 工具
 
 **--2018/07/27--**
+
 - [ ] 1. git 修改内容未提交切换分支，造成的后果？
 - [ ] 2. dev和master分支都有各自的提交执行($dev)git pull origin master-->git push推送-->切换到master-->git pull origin dev,结果如何？
 - [ ] 3. git rebase和git merge深入理解(区别), 参考[git-recipes][1]
@@ -29,12 +31,11 @@
 #### 实践问题
 
 **--2018/07/31--**
+
 - [ ] 1. 半小时内用户错误登录次数,半小时用户访问频率超限,锁定用户的时效(半个小时)，基于redis实现（参考vanke项目）
 
 ---
 
 #### 博客部署常见问题
-
-
 
 [1]: https://github.com/geeeeeeeeek/git-recipes
