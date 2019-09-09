@@ -26,7 +26,7 @@ Interest is the best teacher, record new things, memorize the agenda.
 #### 工具相关
 
 **2019/09/09**
-
+- [] 1. kali Linux
 
 **2018/09/12**
 
