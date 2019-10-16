@@ -1,0 +1,13 @@
+/* Here is your custom css styles. */
+.music-player .aplayer.aplayer-fixed {
+    bottom: 300px;
+}
+.music-player .aplayer.aplayer-fixed .aplayer-body {
+    bottom: 300px;
+}
+.music-player .aplayer.aplayer-fixed .aplayer-lrc {
+    padding-left: 50%;
+}
+#daodream-launcher{
+    bottom: 135px!important;
+}
