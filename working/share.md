@@ -47,6 +47,25 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 #### 前端[3]
 
 #### 后端[4]
+**2021/06/07-反射**
+> 场景：自定义模板
+- [java反射调用get/set方法，你还在拼接方法名吗？][4-15]
+- [如何利用缓存机制实现JAVA类反射性能提升30倍][4-16]
+
+**2021/06/07-多线程并发编程**
+> 场景：异步处理场景
+- [线程池多任务的执行顺序][4-12]
+- [线程池其实看懂了也很简单][4-13]
+- [三分钟弄懂线程池执行过程][4-14]
+
+**2021/06/07-海量数据插入处理**
+> 场景：分库分表方案
+- [MySQL分库分表方案][4-7]
+- [不用找了，大厂在用的分库分表方案，都在这里！][4-8]
+- [MySQL分库分表，写得太好了！][4-9]
+- [干货丨数据库分库分表基础和实践][4-10]
+- [分库分表的几种常见形式以及可能遇到的难][4-11]
+
 **2021/05/18-多线程并发编程**
 > 场景：批量导入异步处理
 - [java8线程池][4-6]
@@ -91,3 +110,12 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 [4-4]: https://www.imooc.com/article/41647
 [4-5]: https://blog.csdn.net/c5113620/article/details/83106888
 [4-6]: https://blog.csdn.net/wy11933/article/details/80399562
+[4-7]: https://zhuanlan.zhihu.com/p/84224499
+[4-8]: https://www.huaweicloud.com/articles/8ac1dc6dfe005bdaf76f7d1d2136276a.html
+[4-9]: https://database.51cto.com/art/201809/583857.htm
+[4-10]: https://www.infoq.cn/article/zmlcbpihothwjeqmzd4i
+[4-11]: https://www.infoq.cn/article/key-steps-and-likely-problems-of-split-table
+[4-12]: https://blog.csdn.net/Mr_25kjiang/article/details/105815054
+[4-13]: https://www.cnblogs.com/jajian/p/11442929.html
+[4-14]: https://juejin.cn/post/6866054685044768782
+[4-15]: https://segmentfault.com/a/1190000020986852
