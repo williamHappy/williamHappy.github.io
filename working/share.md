@@ -57,6 +57,7 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 - [线程池多任务的执行顺序][4-12]
 - [线程池其实看懂了也很简单][4-13]
 - [三分钟弄懂线程池执行过程][4-14]
+- [Java 四种线程池][4-17]
 
 **2021/06/07-海量数据插入处理**
 > 场景：分库分表方案
@@ -118,4 +119,6 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 [4-12]: https://blog.csdn.net/Mr_25kjiang/article/details/105815054
 [4-13]: https://www.cnblogs.com/jajian/p/11442929.html
 [4-14]: https://juejin.cn/post/6866054685044768782
-[4-15]: https://segmentfault.com/a/1190000020986852
+[4-15]: https://www.cnblogs.com/1ning/p/10936129.html
+[4-16]: https://segmentfault.com/a/1190000020986852
+[4-17]: https://www.cnblogs.com/zhujiabin/p/5404771.html
