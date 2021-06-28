@@ -83,6 +83,8 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 - [Mysql千万级别数据批量插入只需简单三步！][4-3]
 
 #### 测试[5]
+> 场景：做单元测试，要求覆盖率统计，如何正确编写单元测试
+- [mock测试及jacoco覆盖率][5-1]
 
 #### API[6]
 
@@ -122,3 +124,5 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 [4-15]: https://www.cnblogs.com/1ning/p/10936129.html
 [4-16]: https://segmentfault.com/a/1190000020986852
 [4-17]: https://www.cnblogs.com/zhujiabin/p/5404771.html
+
+[5-1]: https://www.cnblogs.com/yjmyzz/p/mockito-and-jacoco-tutorial.html
