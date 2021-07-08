@@ -34,6 +34,19 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 - [leave-sample(本代码源于极客时间《DDD实战课》)][1-6]
 
 #### 框架[2]
+**2021/07/08-mybatis大数据查询优化**
+> 场景：大数据量查询导出文件
+- [MyBatis（八）：懒加载][2-9]
+- [MyBatis 延迟加载（懒加载）一篇入门][2-10]
+
+**2021/07/08-easyExcel使用**
+> 场景：大数据量复杂表格导出
+- [POI如何高效导出百万级Excel数据？][2-4]
+- [大数据量excel解析工具性能对比][2-5]
+- [大数据量写入Excel，试试EasyExcel][2-6]
+- [java中多种写文件方式的效率对比实验][2-7]
+- [异步 excel 导出组件设计和实现][2-8]
+
 **2021/05/18-springboot异步异常处理**
 > 场景：异步出现异常
 -[SpringBoot学习笔记（十七：异步调用）][2-3]
@@ -47,6 +60,14 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 #### 前端[3]
 
 #### 后端[4]
+**2021/06/07-海量数据插入处理**
+> 场景：分库分表方案
+- [分布式数据库中间件Sharding-JDBC][4-19]
+
+**2021/07/08-集合效率问题**
+> 场景：大数据量遍历
+- [list与map遍历效率浅析][4-18]
+
 **2021/06/07-反射**
 > 场景：自定义模板
 - [java反射调用get/set方法，你还在拼接方法名吗？][4-15]
@@ -89,6 +110,15 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 #### API[6]
 
 #### 工具[7]
+**2021/07/08-JVM性能诊断工具**
+> 场景: 提交历史错乱，rebase为什么危险
+- [为什么你应该停止使用 Git rebase 命令][7-4]
+
+**2021/07/08-JVM性能诊断工具**
+> 场景：监控导出大数据内存占用情况
+- [性能诊断利器 JProfiler 快速入门和最佳实践][7-1]
+- [windows下查找java应用程序CPU与内存过高][7-2]
+- [JDK工具（查看JVM参数、内存使用情况及分析等）][7-3]
 
 
 
@@ -105,6 +135,13 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 [2-1]: https://blog.csdn.net/qq_39609993/article/details/114288378
 [2-2]: https://blog.csdn.net/u014082714/article/details/107160281
 [2-3]: https://juejin.cn/post/6850418116464230408
+[2-4]: https://zhuanlan.zhihu.com/p/60347814
+[2-5]: https://www.cnblogs.com/cnsec/p/13286591.html
+[2-6]: https://www.sundayfine.com/easyexcel/
+[2-7]: https://developer.aliyun.com/article/553054
+[2-8]: https://xie.infoq.cn/article/3a73ce87b824861365862879d
+[2-9]: https://zhuanlan.zhihu.com/p/37259948
+[2-10]: https://juejin.cn/post/6844904062362583054
 
 
 [4-1]: https://www.geek-share.com/detail/2777135663.html
@@ -124,5 +161,13 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 [4-15]: https://www.cnblogs.com/1ning/p/10936129.html
 [4-16]: https://segmentfault.com/a/1190000020986852
 [4-17]: https://www.cnblogs.com/zhujiabin/p/5404771.html
+[4-18]: https://juejin.cn/post/6844903937246494728
+[4-19]: https://blog.gzj.me/2017/11/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6Sharding-JDBC/
 
 [5-1]: https://www.cnblogs.com/yjmyzz/p/mockito-and-jacoco-tutorial.html
+
+
+[7-1]: https://segmentfault.com/a/1190000017795841
+[7-2]: https://blog.csdn.net/gavin_john/article/details/52458542
+[7-3]: https://www.cnblogs.com/z-sm/p/6745375.html
+[7-4]: https://zhuanlan.zhihu.com/p/29682134
