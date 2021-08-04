@@ -24,6 +24,10 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 
 #### 架构[1]
 
+**2021/07/31-DDD** 
+> 场景：DDD学习实践
+- [领域驱动设计在互联网业务开发中的实践][1-7]
+
 **2021/01/26-DDD** 
 > 场景：技术分享使用
 - [为什么DDD是设计微服务的最佳实践][1-1]
@@ -131,6 +135,7 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_32.jpg
 [1-4]: https://segmentfault.com/a/1190000038480392
 [1-5]: https://time.geekbang.org/column/article/149950
 [1-6]: https://github.com/ouchuangxin/leave-sample
+[1-7]: https://tech.meituan.com/2017/12/22/ddd-in-practice.html
 
 [2-1]: https://blog.csdn.net/qq_39609993/article/details/114288378
 [2-2]: https://blog.csdn.net/u014082714/article/details/107160281
