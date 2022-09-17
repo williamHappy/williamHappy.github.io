@@ -40,8 +40,8 @@ jobs:
           cat ./_config.yml
       - name: Install dependencies
         run: |
-          npm i -g hexo-cli
-          npm i
+          npm i hexo@4.1.1 -g
+          npm install
       - name: Deploy hexo
         run: |
           hexo clean && hexo generate && hexo deploy
