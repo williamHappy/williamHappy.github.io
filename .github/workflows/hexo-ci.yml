@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [9.6.1]
+        node-version: [8.15.1]
 
     steps:
       - uses: actions/checkout@v1
@@ -36,7 +36,6 @@ jobs:
       - name: Install dependencies
         run: |
           npm i -g hexo-cli
-          npm install nodejieba
           npm i
       - name: Deploy hexo
         run: |
