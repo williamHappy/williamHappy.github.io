@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm i node-gyp -g
-          npm install nodejieba@v2.5.2 -g
+          npm install nodejieba@2.6.0 -g
           npm i -g hexo-cli
           npm i
       - name: Deploy hexo
