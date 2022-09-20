@@ -40,6 +40,8 @@ jobs:
           cat ./_config.yml
       - name: Install dependencies
         run: |
+          rm -rf node_modules
+          npm cache clean
           npm i node-gyp -g
           npm install nodejieba@2.6.0 -g
           npm i -g hexo-cli
