@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [10.24.1]
 
     steps:
       - uses: actions/checkout@v1
@@ -40,8 +40,6 @@ jobs:
           cat ./_config.yml
       - name: Install dependencies
         run: |
-          npm cache clean --force
-          npm install --save hexo-autoprefixer hexo-filter-cleanup hexo-generator-feed hexo-generator-sitemap hexo-renderer-sass hexo-renderer-swig mamboer/lunr.js moment node-sass object-assign
           npm i -g hexo-cli
           npm i
       - name: Deploy hexo
