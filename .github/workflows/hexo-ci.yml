@@ -39,12 +39,13 @@ jobs:
           sed -i "s/baidu_token/${{secrets.BAIDU_URL_SUBMIT_TOKEN}}/g" ./_config.yml
           cat ./_config.yml
 
-      - name: Cache Node Dependencies # Npm 缓存，这一步报错的话，把这部分删掉即可
-        id: cache
-        uses: actions/cache@v1
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
         with:
-          path: .npm
-          key: ${{runner.OS}}-npm-caches-${{ hashFiles('package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
 
       - name: Install dependencies
         run: |
