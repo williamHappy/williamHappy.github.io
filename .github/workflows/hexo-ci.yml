@@ -36,7 +36,7 @@ jobs:
           git config --global user.name "williamhappy"
           git config --global user.email "ctwang1994@163.com"
           # 替换同目录下的_config.yml文件中baidu_token字符串为github后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
-          sed -i "s/baidu_token/$secrets.Baidu_Url_Submit_Token/g" ./_config.yml
+          sed -i "s/baidu_token/$secrets.BAIDU_URL_SUBMIT_TOKEN/g" ./_config.yml
           cat ./_config.yml
 
       - name: Cache Node Dependencies # Npm 缓存，这一步报错的话，把这部分删掉即可
