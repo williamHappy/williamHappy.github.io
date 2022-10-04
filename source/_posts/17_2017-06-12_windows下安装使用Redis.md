@@ -13,10 +13,13 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_17.jpg
 [toc]
 
 ### 1.redis介绍
+
 Redis是一个Key-value存储系统。在学习慕课网java高并发秒杀的高并发优化是接触到redis，顺便记录学习过程。
 
 ### 2.redis安装
+
 注：本文主要讲解在windows下安装
+
 * linux下安装
     由于本人尚未学习linux，所以以后有机会可能会写，百度的意思是在linux环境下redis可以直接通过源码编译安装。
 * windows下安装
@@ -24,22 +27,30 @@ Redis是一个Key-value存储系统。在学习慕课网java高并发秒杀的�
 参考：[redis安装使用](http://jingyan.baidu.com/article/49ad8bce40174f5834d8fa24.html)
 
 ### 3.启动redis
+
 进入redis安装目录后，执行命令开启服务（可能会出现port占用情况）
-```
+
+```shell
 redis-server.exe redis.conf
 ```
+
 同样在redis的安装目录下，执行命令链接redis进行测试
-```
+
+```shell
 redis-cli
 ```
+
 通过info命令查看redis的运行情况
-```
+
+```shell
 info
 ```
 
 ### 4.使用java访问本地redis做缓存
-Jedis ：http://www.oschina.net/p/jedis （Redis的官方首选Java开发包）
-```
+
+Jedis ：<http://www.oschina.net/p/jedis> （Redis的官方首选Java开发包）
+
+```shell
 <!--5:redis客户端：Jedis-->
 <dependency>
     <groupId>redis.clients</groupId>
@@ -47,7 +58,8 @@ Jedis ：http://www.oschina.net/p/jedis （Redis的官方首选Java开发包）
     <version>2.7.3</version>
 </dependency>
 ```
-测试例子原帖：http://flychao88.iteye.com/blog/1527163
+
+测试例子原帖：<http://flychao88.iteye.com/blog/1527163>
 
 ```java
 package com.lujianing.utils;
@@ -216,22 +228,31 @@ public class JedisUtilTest {
 
 }
 ```
+
 Redis会定时 保存数据到硬盘上
 在redis安装目录下，通过命令链接redis
-```
+
+```shell
 redis-cli
 ```
+
 然后通过命令查看redis存储大小
-```
+
+```shell
 dbsize
 ```
+
 通过
-```
+
+```shell
 keys *
 ```
+
 查看存储的键值
 通过
-```
+
+```shell
 get 键：值
 ```
+
 拿到存储的二进制数据。

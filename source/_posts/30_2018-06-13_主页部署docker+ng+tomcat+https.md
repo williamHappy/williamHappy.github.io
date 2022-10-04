@@ -15,6 +15,7 @@ cover_picture: http://oss.willhappy.cn/hexo/cover_pic/cover_picture_30.jpg
 [toc]
 
 ### 前言
+
 之前想着是使用一个纯净的linux镜像，然后使用dockerfile构建一个自己博客环境镜像的，但是自己的水平有限，目前就使用拉去官方镜像，进行一些配置，已达到自己的生产环境需求。后面有机会学习的话，会构建一个自己的镜像出来，期待ing。
 
 另外，我是使用的服务器是google平台，搭建的服务器环境是基于debian(stretch 9.4)，所以很多相关的服务器操作和centos有所不同，比如包管理工具apt-get,vim([需要安装][2],[iptables][3])
@@ -51,7 +52,7 @@ $ docker exec -it tomcat_will /bin/bash
 $ docker resatrt tomcat_will
 ```
 
-测试访问：http://35.197.142.179:8080/ ，如果访问到你的项目说明部署成功。
+测试访问：<http://35.197.142.179:8080/> ，如果访问到你的项目说明部署成功。
 如果出现无法访问的情况，请查看是否开放服务器端口号。可使用站长工具的[端口扫描工具][15]来查看是否真正开放。
 google平台的话，可在vpc网路中[创建防火墙规则][4]来开放端口号。
 
@@ -60,6 +61,7 @@ google平台的话，可在vpc网路中[创建防火墙规则][4]来开放端口
 如果单纯只是http配置的话，相对简单，可参考[文章][5], 这里我们重点介绍结合配置https.
 
 #### 说明
+
 docker的nginx容器，配置文件在`/etc/nginx`目录下，有`nginx.conf`主配置文件，会加载`conf.d/*.conf`目录的所有配置文件，通过`nginx.conf`可以看出。
 
 ```conf
@@ -69,11 +71,13 @@ http {
   ...
 }
 ```
+
 这也就是为什么我们在运行容器的时候，挂载`server.conf`到`conf.d/`目录下，这样可以通过主配置文件将其加载进来，我们就可直接在宿主机上目录下更改`server.conf`.当然，这仅限于更改http块里面的内容。
 
 另外参考我的[另一篇文章][6]来配置https,因为知道在哪里配置，配置的内容自然就差不多了。
 
 #### 上传证书
+
 通过我们挂在目录，我们将证书上传docker容器，挂载文件主要是方便容器和宿主机的文件共享，避免了频繁的在宿主机和容器间进行文件的拷贝。
 
 ```bash
@@ -83,6 +87,7 @@ $ docker exec -it nginx_will_v2 /bin/bash
 ```
 
 #### 修改配置
+
 配置挂载文件/etc/nginx/conf.d/server.conf，当然可在容器内修改，也可在宿主机上修改，文件是共享的（我的理解，没有完全实践）。
 server.conf添加内容如下：
 
@@ -116,9 +121,11 @@ upstream whome{
 ```
 
 #### 访问测试
-通过 https://willhappy.cn/ ，访问到自己的项目即表示配置成功。
+
+通过 <https://willhappy.cn/> ，访问到自己的项目即表示配置成功。
 
 #### 自己挖的坑
+
 通过nginx容器名称（nginx_will_v2）可以看到，这是我运行的第二个容器，第一个容器，我在创建时只开放了80端口，所以当一切都配置好之后，发现通过443端口（也就是通过https方式）访问，怎么都无法访问。第一时间想到的时宿主机没有开放443端口，没想到容器的443端口没有映射到443端口上，通过在google云平台配置防火墙，开放443端口，但是，依然无效，这时就陷入了一个巨大的坑，难道云平台上配置无效？那就去服务器上手动开放443端口。鉴于服务器是debian版本，iptables配置有所不同，结果去单独配置443端口时，把其他的端口全都抹掉了，其中包括docker和宿主机的防火墙设置都清除掉，导致容器都无法启动。这中间经历艰辛，无从言起，记录下，避免下次再出现。
 
 1. **不明原理，贸然根据网上教程更改服务器（debian）的iptables配置。**
@@ -126,8 +133,8 @@ upstream whome{
   发现情况不妙后，准备恢复防火墙设置，参考[iptables配置][9], 因为不知道哪个是原来防火墙的最终配置，所以选择了`/etc/iptables.up.rules`进行恢复。
   从文件恢复IPtables规则：
 
-```
-$ sudo iptables-restore < iptables.up.rules
+```shell
+sudo iptables-restore < iptables.up.rules
 ```
 
 这样虽然挽回了部分端口规则，但是docker的防火墙规则被破坏，出现了问题2.
@@ -136,7 +143,7 @@ $ sudo iptables-restore < iptables.up.rules
   同样参考了几篇文章：[文章][10]，但是都是基于centos修改防火墙规则的，但是已经不敢再去动debian的规则了，怕再出问题。所以继续找。
   google搜索最终看到一种[解决方法][11],即重启docker服务，即可自动恢复docker关于防火墙的配置，测试，最终解决，QAQ。
   
-```
+```shell
 # 重启docker服务，须在所有容器停止后重启
 $ sudo systemctl restart docker
 ```
@@ -148,11 +155,12 @@ $ sudo systemctl restart docker
 $ docker run -p 80:80 -p 443:443 --name nginx_will_v2 -v $PWD/conf/server.conf:/etc/nginx/conf.d/server.conf -v $PWD/www:/www -v
 ```
 
-访问 https://willhappy.cn/ 测试成功。
+访问 <https://willhappy.cn/> 测试成功。
 
 解决过程艰辛，关于debian系统的各种骚操作，还得要深入学习，传送[debian官网][12], 不然，随便一操作，那都是一个坑啊，泪奔。
 
 #### more
+
 关于nginx, 可参考[nginx中文文档][13],查看相关参数说明。
 通过nginx配置更多负载均衡，动静分离，参考[文章][14]
 
@@ -161,16 +169,14 @@ $ docker run -p 80:80 -p 443:443 --name nginx_will_v2 -v $PWD/conf/server.conf:/
 相关命令
 
 ```
-$ lsb_release -a          #查看debian版本信息
-$ sudo systemctl restart docker     #重启docker服务（debian）须在所有容器停止后重启
+lsb_release -a          #查看debian版本信息
+sudo systemctl restart docker     #重启docker服务（debian）须在所有容器停止后重启
 ```
 
 相关工具
+
 - [站长工具][15]: 本章所用功能->端口扫描
 - [debian官网][12]: 关于iptables部分
-
-
-
 
 [1]: http://blog.willhappy.cn/2018/06/11/29_2018-06-11_docker%E5%88%9D%E8%AF%86/
 [2]: https://blog.csdn.net/weixin_39800144/article/details/79231002
