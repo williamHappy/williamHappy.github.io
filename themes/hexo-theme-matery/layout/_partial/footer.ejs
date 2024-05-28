@@ -24,6 +24,11 @@
                 <span class="white-color"><%= totalcount(site) %></span>
             <% } %>
 
+            <% if (theme.record.enable){ %>
+                <!-- <p><%= theme.record.value %></p> -->
+              <a href="https://beian.miit.gov.cn/" target="_blank"><%= theme.record.value %></a>
+            <% } %>
+
             <% let socialClass = '' %>
 			<% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
                 <% socialClass = 'social-statis' %><br>
