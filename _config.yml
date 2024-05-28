@@ -141,7 +141,7 @@ daovoice:
 # 备案号
 record:
   enable: true
-  value: 浙ICP备18005540号
+  value: 鲁ICP备2024094097号-1
 
 footer:
   qrcode: 
