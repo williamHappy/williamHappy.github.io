@@ -1,0 +1,1222 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="编辑器IDE--vim, WillHappy">
+    <meta name="description" content="
+[toc]
+一. Emacs or vim?素有的两大编辑器之争vim、emacs, 我们也就不再多说了，各具千秋，都值得我们学习，或许融入到他们之中，才能体会到他们的独特。说融入他们是容易， 可为什么平时我们还是很少的使用他们呢？ 这可">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>编辑器IDE--vim | WillHappy</title>
+    <link rel="icon" type="image/png" href="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+
+    <!-- 支持各视频类型js -->
+    <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
+    <script src="https://cdn.bootcss.com/hls.js/8.0.0-beta.3/hls.min.js"></script>
+    <script src="https://cdn.bootcss.com/dashjs/3.0.0/dash.all.min.js"></script>
+    <script src="https://cdn.bootcss.com/webtorrent/0.107.3/webtorrent.min.js"></script>
+
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?aa4349e706e4d8d729a94c2f879190d7";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+    <!-- 腾讯分析 -->
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66478330" charset="UTF-8"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<style type="text/css">
+  /* don't remove. */
+  #daodream-container .daodream-launcher-enabled {
+    display: none;
+  }
+  #live2d-widget {
+    visibility:hidden;
+  }
+</style>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo mobile-wd65">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">WillHappy</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">WillHappy</div>
+        <div class="logo-desc">
+            
+            Know the world, Find yourself
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/williamHappy/williamHappy.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #ac80b8;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/williamHappy/williamHappy.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        编辑器IDE--vim
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/vim/" target="_blank">
+                                <span class="chip bg-color">vim</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tools/" class="post-category" target="_blank">
+                                tools
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-05-02
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1,033
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        4 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <a id="more"></a>
+<p>[toc]</p>
+<h3 id="一-Emacs-or-vim"><a href="#一-Emacs-or-vim" class="headerlink" title="一. Emacs or vim?"></a>一. Emacs or vim?</h3><p>素有的两大编辑器之争vim、emacs, 我们也就不再多说了，各具千秋，都值得我们学习，或许融入到他们之中，才能体会到他们的独特。说融入他们是容易， 可为什么平时我们还是很少的使用他们呢？ 这可能是他们两个的学习曲线，实在让人难啄， 大多数人是有学习的那份心， 却难在了坚持使用他们上面，一起来看看他们的学习曲线。（请允许我盗一张图）<br><img src="http://oss.willhappy.cn/hexo/img/18-5-2/41682203.jpg" alt="41682203"></p>
+<p>另外，关于更多这两大编辑器学习曲线的介绍， 请关注这篇文章 <a href="http://blog.jobbole.com/87872/" target="_blank" rel="noopener">传送门</a></p>
+<p>介于我们文章的主题， 下面我们主要学习了解vim。</p>
+<h3 id="二-why-vim"><a href="#二-why-vim" class="headerlink" title="二. why vim?"></a>二. why vim?</h3><p>因为vim在我们初学者当中，其应用范围还是蛮广的，包括在一些类unix系统中默认的编辑器，都是vim，所以笔者先来学习vim。关于其他的vim的一些好处和特点，和为什么使用vim更多，请关注此贴的why vim <a href="https://zilongshanren.com/blog/2014-06-19-make-your-vim-weapon.html" target="_blank" rel="noopener">传送门</a>，感谢作者，通过他的blog，学到很多东西，支持原创。 ：D</p>
+<p>重点总结下， vim的好处：</p>
+<ul>
+<li>扩展性</li>
+<li>通用性</li>
+<li>可定制化</li>
+</ul>
+<h3 id="三-How-to-do"><a href="#三-How-to-do" class="headerlink" title="三. How to do?"></a>三. How to do?</h3><p>关于vim的一些插件或者个性化配置，同样的也请移步此文章 <a href="https://zilongshanren.com/blog/2014-06-19-make-your-vim-weapon.html" target="_blank" rel="noopener">传送门</a></p>
+<h3 id="四-vim相关操作"><a href="#四-vim相关操作" class="headerlink" title="四. vim相关操作"></a>四. vim相关操作</h3><p>关于vim的一些相关的操作，可以参考：<br><a href="https://github.com/ruanyf/articles/blob/master/dev/vim/operation.md" target="_blank" rel="noopener">传送1</a><br><a href="https://blog.csdn.net/flexman09/article/details/51802005" target="_blank" rel="noopener">传送2</a></p>
+<h3 id="五-mac-of-vim"><a href="#五-mac-of-vim" class="headerlink" title="五. mac of vim"></a>五. mac of vim</h3><p>在mac中，我们选择安装macVim，不使用mac原装的vim，安装macVim， 参考<a href="https://blog.csdn.net/weixin_40539892/article/details/79252927" target="_blank" rel="noopener">文章</a>.</p>
+<p><strong>⚠️注意</strong></p>
+<ol>
+<li>使用homebrew安装完macVim之后， 可能会自动添加到环境变量中， 参考文章中提到的建立软连接什么的， 我认为作者的意图是在终端使用<code>vim</code>命令时，是直接调用macvim.app, 也可不用配置， 仍让原装vim可使用， 两者互不干扰， 即<code>vim</code>命令仍然调用原装vim， 而<code>mvim</code>命令调用macvim。</li>
+<li>安装完成之后， 可能需要为macvim配置各种插件或者主题样式，这里我们为了方便， 使用github上一个比较完整且开源的配置仓库<code>.vim_runtime</code>, 安装配置，参考<a href="https://github.com/amix/vimrc" target="_blank" rel="noopener">.vim_runtime的api</a></li>
+<li>安装完<code>.vim_runtime</code>之后， 安装生效后，会返现原来的vim主题样式（solarized配色， 原来的配置可参考我的<a href="https://blog.willhappy.cn/2018/05/04/26-2018-05-04-si-ren-ding-zhi-mac-pei-zhi-pian/">私人定制–mac配置篇</a>）变了，不是我们喜欢的配色了，是因为安装<code>.vim_runtime</code>会重写<code>.vimrc</code>文件，将原来的配置覆盖掉了，所以样式vim主题样式会变。所以将原来配置在<code>.vimrc</code>中的样式重新写到自己的配置文件<code>～/.vim_runtime/my_configs.vim</code>中，没有该文件的话， 创建一个即。<code>.vim_runtime</code>会通过<code>.vimrc</code>读取<code>my_configs.vim</code>配置文件，就会重新生效。</li>
+<li>自此，macvim安装完毕了，我们可以尽情的享受了。</li>
+</ol>
+<h3 id="六-ideaVim-应用"><a href="#六-ideaVim-应用" class="headerlink" title="六. ideaVim 应用"></a>六. ideaVim 应用</h3><p>可能我们更多的实在<code>idea</code>中开发代码, 那么，我们可以不断的练习使用vim的常用操作了，安装插件ideaVim, 关于ideaVim的应用技巧， 我们也不再重复造轮子了， 参考这篇文章， 介绍详细 <a href="http://kidneyball.iteye.com/blog/1828427" target="_blank" rel="noopener">传送门</a> .</p>
+<p>特别注意： 就是在使用vim剪切板和系统剪切板之间的复制粘贴操作，系统剪切板上的内容可在任意程序中<code>ctrl+v</code>粘贴。<br><code>&quot;+yy</code>  复制当前行到系统剪切板<br><code>&quot;+p</code>   粘贴系统剪切板内容到vim<br><code>&quot;ayy</code>  复制当前行到寄存器 a<br><code>&quot;ap</code>   将寄存器 a 中的内容粘贴到光标后面</p>
+<h3 id="七-vim之于新同学建议"><a href="#七-vim之于新同学建议" class="headerlink" title="七. vim之于新同学建议"></a>七. vim之于新同学建议</h3><p>可能有新同学下定决心学习vim， 并开始的初级阶段， 但是学着学着就产生的迷惑， 像我， 那我到底如何继续下去， 那么同样给出新同学学习中的建议和学习习惯养成  <a href="https://zilongshanren.com/blog/2014-06-07-make-your-own-vim-supert-weapon.html" target="_blank" rel="noopener">传送门</a> 再次感谢这位大神。</p>
+<h3 id="八-vim命令脑图记忆"><a href="#八-vim命令脑图记忆" class="headerlink" title="八. vim命令脑图记忆"></a>八. vim命令脑图记忆</h3><p>脑图并不代表死记硬背， 关键在于多加练习。源文件<a href="http://oss.willhappy.cn/xmind/18-5-2/VIM-Key.xmind" target="_blank" rel="noopener">下载地址</a><br><img src="http://oss.willhappy.cn/18-5-2/91577548.jpg" alt="91577548"></p>
+<p>vim键盘图：<br><img src="http://oss.willhappy.cn/hexo/img/18-5-2/32079775.jpg" alt="32079775"></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="http://oss.willhappy.cn/private/alipay_code_me.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="http://oss.willhappy.cn/private/wechat_code_me.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《编辑器IDE--vim》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/05/02/24-2018-05-02-bian-ji-qi-ide-vim/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Will
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'c012900cfa3718580687',
+        clientSecret: '15fb2a23c381c0bbc4d720ee609ee07a57c24b7a',
+        repo: 'williamHappy.github.io',
+        owner: 'williamHappy',
+        admin: "williamHappy",
+        id: '2018-05-02T00-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/05/03/25-2018-05-03-zheng-tu-zhi-lu-linux/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="征途之路--linux">
+                        
+                        <span class="card-title">征途之路--linux</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            可能作为coder这么一类人， 总会有多少接触Linux， 并且有一份想拿下它，并凌驾于它之上的野心， 但是， 现实的骨感的， 从入门到放弃的， 也是比比皆是， 那如何才能有章程由规划的一步步进行呢， 那是需要我们有方向， 并有持之以恒的决
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-03
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/System/" class="post-category" target="_blank">
+                                    System
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/05/02/23-2018-05-02-java-dui-xiang-chu-shi-hua-wen-ti-a-li-bao-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="java对象初始化问题--阿里🐮刨析">
+                        
+                        <span class="card-title">java对象初始化问题--阿里🐮刨析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+[toc]
+一. why引入因为java对象初始化问题是比较基础的java知识点，同时，也是众多面试中百问不厌的问题，所以，我们通过阿里工程师的例子和刨析来好好理解他。
+二. 引发问题会触发Java object initializati
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/后端/" class="post-category" target="_blank">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/" target="_blank">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/基础/" target="_blank">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: WillHappy<br />'
+            + '作者: Will<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            
+            <div>
+                <div style="text-align: center; float:left; width: 50%;">
+                    <img alt="" src="http://oss.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;" width="43%">
+                    <p style="text-align: center">喜欢请给个赞赏，谢谢</p>
+                </div>
+            
+                <div style="text-align: center; border-left: 1px solid #4C5461; float:left; width: 48%;">
+                    <img alt="" src="http://oss.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" width="45%">
+                    <p style="text-align: center">欢迎关注个人微信公众号</p>
+                </div>
+            </div>
+            
+
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">64.3k</span>
+            
+
+            
+                <!-- <p>鲁ICP备2024094097号-1</p> -->
+              <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2024094097号-1</a>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="https://github.com/williamHappy" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ctwang1994@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=583876674" class="tooltipped" data-tooltip="QQ联系我: 583876674" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="http://oss.willhappy.cn/private/wechat_url.jpg" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-wechat"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/williamhappy" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+
+    <link rel="stylesheet" href="/assets/css/APlayer.min.css">
+
+<style type="text/css">
+    /* don't remove. */
+    .music-player {
+      display: none;
+    }
+</style>
+
+
+
+    <div class="music-player custom-scroll">
+
+    <div class="col l8 offset-l2 m10 offset-m1 s12 container-music">
+        <meting-js
+            id="2157073216"
+            server="netease"
+            type="song"
+            fixed="true"
+            mini="true"
+            loop="all"
+            order="list"
+            volume="0.7"
+            lrctype="0"
+            listfolded="true"
+            storagename="metingjs"
+            autoplay="false" 
+            mutex="true"
+            listmaxheight="340px"
+            preload="auto" 
+            theme="#ad7a86">
+        </meting-js>
+    </div>
+</div>
+<script src="/assets/js/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2.0.1/dist/Meting.min.js"></script>
+ 
+    <script>
+      $(function(){
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('.custom-scroll').slideUp(300)
+            } else {
+              $('.custom-scroll').slideDown(300);
+            }
+        });
+      })
+    </script>
+  
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150197527-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-150197527-1');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){
+        i["DaoVoiceObject"]=r;
+        i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+        a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+        a.async=1;a.src=g;a.charset="utf-8";
+        m.parentNode.insertBefore(a,m)}
+      )(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/" + "ab5cf222" + ".js","daovoice")
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: "ab5cf222",
+        user_id: "willhappy",
+        email: "ctwang1994@163.com",
+        name: "甩甩哒博主",
+        signed_up: "1449821660"
+      });
+      daovoice('update');
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: ""
+      });
+      daovoice('update');
+    </script>
+  
+
+  
+    <script>
+      $(function(){
+        // 在线联系加载过慢，所以用滑动时间来触发
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('#daodream-container .daodream-launcher-enabled').slideUp(300)
+              $('#live2d-widget').css("visibility","hidden");
+            } else {
+              $('#daodream-container .daodream-launcher-enabled').slideDown(300);
+              $('#live2d-widget').css("visibility","visible");
+            }
+        });
+      })
+    </script>
+  
+
+</body>
+</html>

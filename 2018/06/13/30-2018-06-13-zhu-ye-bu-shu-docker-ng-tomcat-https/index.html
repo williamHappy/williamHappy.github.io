@@ -1,0 +1,1309 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="主页部署docker+ng+tomcat+https, WillHappy">
+    <meta name="description" content="上一章docker初识结合docker的文档，将博客主页所需的生产环境镜像及容器准备好了，这一章主要是写一些在博客部署到线上时出现的一些问题，从而对使用容器部署有一个更深层次的理解。
+
+[toc]
+前言之前想着是使用一个纯净的linux镜像">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>主页部署docker+ng+tomcat+https | WillHappy</title>
+    <link rel="icon" type="image/png" href="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+
+    <!-- 支持各视频类型js -->
+    <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
+    <script src="https://cdn.bootcss.com/hls.js/8.0.0-beta.3/hls.min.js"></script>
+    <script src="https://cdn.bootcss.com/dashjs/3.0.0/dash.all.min.js"></script>
+    <script src="https://cdn.bootcss.com/webtorrent/0.107.3/webtorrent.min.js"></script>
+
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?aa4349e706e4d8d729a94c2f879190d7";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+    <!-- 腾讯分析 -->
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66478330" charset="UTF-8"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<style type="text/css">
+  /* don't remove. */
+  #daodream-container .daodream-launcher-enabled {
+    display: none;
+  }
+  #live2d-widget {
+    visibility:hidden;
+  }
+</style>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo mobile-wd65">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">WillHappy</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">WillHappy</div>
+        <div class="logo-desc">
+            
+            Know the world, Find yourself
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/williamHappy/williamHappy.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #ac80b8;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/williamHappy/williamHappy.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        主页部署docker+ng+tomcat+https
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/" target="_blank">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/https/" target="_blank">
+                                <span class="chip bg-color">https</span>
+                            </a>
+                        
+                            <a href="/tags/docker/" target="_blank">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                            <a href="/tags/nginx/" target="_blank">
+                                <span class="chip bg-color">nginx</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/运维/" class="post-category" target="_blank">
+                                运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-06-13
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1,946
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>上一章<a href="http://blog.willhappy.cn/2018/06/11/29_2018-06-11_docker%E5%88%9D%E8%AF%86/">docker初识</a>结合docker的文档，将博客主页所需的生产环境镜像及容器准备好了，这一章主要是写一些在博客部署到线上时出现的一些问题，从而对使用容器部署有一个更深层次的理解。</p>
+<a id="more"></a>
+<p>[toc]</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前想着是使用一个纯净的linux镜像，然后使用dockerfile构建一个自己博客环境镜像的，但是自己的水平有限，目前就使用拉去官方镜像，进行一些配置，已达到自己的生产环境需求。后面有机会学习的话，会构建一个自己的镜像出来，期待ing。</p>
+<p>另外，我是使用的服务器是google平台，搭建的服务器环境是基于debian(stretch 9.4)，所以很多相关的服务器操作和centos有所不同，比如包管理工具apt-get,vim(<a href="https://blog.csdn.net/weixin_39800144/article/details/79231002" target="_blank" rel="noopener">需要安装</a>,<a href="https://wiki.debian.org/iptables" target="_blank" rel="noopener">iptables</a>)</p>
+<h3 id="一-博客部署到tomcat容器"><a href="#一-博客部署到tomcat容器" class="headerlink" title="一. 博客部署到tomcat容器"></a>一. 博客部署到tomcat容器</h3><p>这个还是比较简单的，前面<a href="http://blog.willhappy.cn/2018/06/11/29_2018-06-11_docker%E5%88%9D%E8%AF%86/">一章</a>, 我们已经将主机中目录下的/usr/lcoal/docker/tomcat/apps挂载到容器的/apps, 那么我们可以直接将war包放到/usr/local/docker/tomcat/apps目录下，即可进入容器内部，然后进行相关配置。</p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> /usr/local/docker/tomcat/apps
+<span class="token comment" spellcheck="true"># 上传博客war包</span>
+<span class="token comment" spellcheck="true"># 进入tomcat 容器</span>
+$ docker <span class="token function">exec</span> -it tomcat_will /bin/bash
+
+<span class="token comment" spellcheck="true"># tomcat容器shell操作，进入容器后，直接是在/usr/local/tomcat/目录下</span>
+<span class="token comment" spellcheck="true"># 进入webapps/apps/目录下，会发现我们刚刚上传到宿主机的war包，把他移动到webapps目录下，会自动解压缩</span>
+<span class="token comment" spellcheck="true"># 进入/usr/local/tomcat/conf/目录下，配置server.xml文件</span>
+</code></pre>
+<p>配置<code>server.xml</code>文件：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Host</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>localhost<span class="token punctuation">"</span></span>  <span class="token attr-name">appBase</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>webapps<span class="token punctuation">"</span></span>
+            <span class="token attr-name">unpackWARs</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">autoDeploy</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+            <span class="token attr-name">xmlValidation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">xmlNamespaceAware</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Context</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">docBase</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/usr/local/tomcat/webapps/XX你的项目名<span class="token punctuation">"</span></span> <span class="token attr-name">reloadable</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Host</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>推出tomcat容器，回到宿主机</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 重启tomcat容器</span>
+$ docker resatrt tomcat_will
+</code></pre>
+<p>测试访问：<a href="http://35.197.142.179:8080/" target="_blank" rel="noopener">http://35.197.142.179:8080/</a> ，如果访问到你的项目说明部署成功。<br>如果出现无法访问的情况，请查看是否开放服务器端口号。可使用站长工具的<a href="http://tool.chinaz.com/" target="_blank" rel="noopener">端口扫描工具</a>来查看是否真正开放。<br>google平台的话，可在vpc网路中<a href="https://console.cloud.google.com/networking/firewalls/list?project=beaming-oarlock-197105&amp;tab=INGRESS" target="_blank" rel="noopener">创建防火墙规则</a>来开放端口号。</p>
+<h3 id="二-nginx-https相关配置"><a href="#二-nginx-https相关配置" class="headerlink" title="二. nginx+https相关配置"></a>二. nginx+https相关配置</h3><p>如果单纯只是http配置的话，相对简单，可参考<a href="https://blog.csdn.net/mlc1218559742/article/details/53117520" target="_blank" rel="noopener">文章</a>, 这里我们重点介绍结合配置https.</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>docker的nginx容器，配置文件在<code>/etc/nginx</code>目录下，有<code>nginx.conf</code>主配置文件，会加载<code>conf.d/*.conf</code>目录的所有配置文件，通过<code>nginx.conf</code>可以看出。</p>
+<pre class=" language-conf"><code class="language-conf">http {
+  ...
+  include /etc/nginx/conf.d/*.conf;
+  ...
+}
+</code></pre>
+<p>这也就是为什么我们在运行容器的时候，挂载<code>server.conf</code>到<code>conf.d/</code>目录下，这样可以通过主配置文件将其加载进来，我们就可直接在宿主机上目录下更改<code>server.conf</code>.当然，这仅限于更改http块里面的内容。</p>
+<p>另外参考我的<a href="http://blog.willhappy.cn/2018/04/25/21_2018-04-25_%E5%B0%8F%E7%BB%BF%E9%94%81https%E7%9A%84web%E5%AE%B9%E5%99%A8%E9%85%8D%E7%BD%AE/">另一篇文章</a>来配置https,因为知道在哪里配置，配置的内容自然就差不多了。</p>
+<h4 id="上传证书"><a href="#上传证书" class="headerlink" title="上传证书"></a>上传证书</h4><p>通过我们挂在目录，我们将证书上传docker容器，挂载文件主要是方便容器和宿主机的文件共享，避免了频繁的在宿主机和容器间进行文件的拷贝。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 进入daocker nginx容器</span>
+$ docker <span class="token function">exec</span> -it nginx_will_v2 /bin/bash
+<span class="token comment" spellcheck="true"># 为了方便，我们把证书文件统一放到/etc/nginx/cert目录下</span>
+</code></pre>
+<h4 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h4><p>配置挂载文件/etc/nginx/conf.d/server.conf，当然可在容器内修改，也可在宿主机上修改，文件是共享的（我的理解，没有完全实践）。<br>server.conf添加内容如下：</p>
+<pre class=" language-conf"><code class="language-conf"># 和我们前面文章中的https配置基本一致，需要更改的就是upstream中的server,更改为你的ip地址，因为容器的隔离技术，再使用localhost可能转发失败（可自己尝试）。
+server {
+    listen 80;
+    listen 443;
+    server_name willhappy.cn;   #拦截的域名
+    ssl on;
+    root html;
+    index index.html index.htm;
+    ssl_certificate   cert/XX.pem;  #你自己申请的证书文件
+    ssl_certificate_key  cert/XX.key;  #私钥文件
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_pass http://whome;    #提供数据服务的服务器
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+upstream whome{
+    server ip地址:8080;
+}
+</code></pre>
+<h4 id="访问测试"><a href="#访问测试" class="headerlink" title="访问测试"></a>访问测试</h4><p>通过 <a href="https://willhappy.cn/" target="_blank" rel="noopener">https://willhappy.cn/</a> ，访问到自己的项目即表示配置成功。</p>
+<h4 id="自己挖的坑"><a href="#自己挖的坑" class="headerlink" title="自己挖的坑"></a>自己挖的坑</h4><p>通过nginx容器名称（nginx_will_v2）可以看到，这是我运行的第二个容器，第一个容器，我在创建时只开放了80端口，所以当一切都配置好之后，发现通过443端口（也就是通过https方式）访问，怎么都无法访问。第一时间想到的时宿主机没有开放443端口，没想到容器的443端口没有映射到443端口上，通过在google云平台配置防火墙，开放443端口，但是，依然无效，这时就陷入了一个巨大的坑，难道云平台上配置无效？那就去服务器上手动开放443端口。鉴于服务器是debian版本，iptables配置有所不同，结果去单独配置443端口时，把其他的端口全都抹掉了，其中包括docker和宿主机的防火墙设置都清除掉，导致容器都无法启动。这中间经历艰辛，无从言起，记录下，避免下次再出现。</p>
+<ol>
+<li><strong>不明原理，贸然根据网上教程更改服务器（debian）的iptables配置。</strong><br>更改参考<a href="https://www.centos.bz/2017/10/debian%E9%85%8D%E7%BD%AEiptables/" target="_blank" rel="noopener">文章1</a>,<a href="https://my.oschina.net/winHerson/blog/143465" target="_blank" rel="noopener">文章二</a>, 根据这两篇文章修改，虽然没有最终完成修改，但是依然更改了端口号的配置。发现情况不妙；<br>发现情况不妙后，准备恢复防火墙设置，参考<a href="http://www.codebelief.com/article/2017/08/linux-25-useful-iptables-firewall-rules/" target="_blank" rel="noopener">iptables配置</a>, 因为不知道哪个是原来防火墙的最终配置，所以选择了<code>/etc/iptables.up.rules</code>进行恢复。<br>从文件恢复IPtables规则：</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">sudo iptables-restore < iptables.up.rules
+</code></pre>
+<p>这样虽然挽回了部分端口规则，但是docker的防火墙规则被破坏，出现了问题2.</p>
+<ol start="2">
+<li><strong>docker 启动容器报”No chain/target/match by that name”错误，无法启动容器。</strong><br>同样参考了几篇文章：<a href="http://ystyle.top/2015/09/24/centos-7-docker-qi-dong-bao/" target="_blank" rel="noopener">文章</a>，但是都是基于centos修改防火墙规则的，但是已经不敢再去动debian的规则了，怕再出问题。所以继续找。<br>google搜索最终看到一种<a href="https://support.plesk.com/hc/en-us/articles/115000186754-Docker-container-does-not-start-with-error-No-chain-target-match-by-that-name" target="_blank" rel="noopener">解决方法</a>,即重启docker服务，即可自动恢复docker关于防火墙的配置，测试，最终解决，QAQ。</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell"># 重启docker服务，须在所有容器停止后重启
+$ sudo systemctl restart docker
+</code></pre>
+<ol start="3">
+<li><strong>至此，debian防火墙规则恢复到原来的状态，冷静下来后，恍然发现，是因为nginx容器的443端口没有映射到宿主机上，再次泪奔，问题忽然这么明朗、容易，或许，总是要经历些什么，才能成长吧！</strong></li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 重新创建运行开放80和443端口的容器，这才有了nginx_will_v2这个容器</span>
+$ docker run -p 80:80 -p 443:443 --name nginx_will_v2 -v <span class="token variable">$PWD</span>/conf/server.conf:/etc/nginx/conf.d/server.conf -v <span class="token variable">$PWD</span>/www:/www -v
+</code></pre>
+<p>访问 <a href="https://willhappy.cn/" target="_blank" rel="noopener">https://willhappy.cn/</a> 测试成功。</p>
+<p>解决过程艰辛，关于debian系统的各种骚操作，还得要深入学习，传送<a href="https://www.debian.org/" target="_blank" rel="noopener">debian官网</a>, 不然，随便一操作，那都是一个坑啊，泪奔。</p>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><p>关于nginx, 可参考<a href="http://www.nginx.cn/doc/index.html" target="_blank" rel="noopener">nginx中文文档</a>,查看相关参数说明。<br>通过nginx配置更多负载均衡，动静分离，参考<a href="http://www.runoob.com/w3cnote/linux-nginx-tomcat.html" target="_blank" rel="noopener">文章</a></p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>相关命令</p>
+<pre><code>lsb_release -a          #查看debian版本信息
+sudo systemctl restart docker     #重启docker服务（debian）须在所有容器停止后重启
+</code></pre><p>相关工具</p>
+<ul>
+<li><a href="http://tool.chinaz.com/" target="_blank" rel="noopener">站长工具</a>: 本章所用功能-&gt;端口扫描</li>
+<li><a href="https://www.debian.org/" target="_blank" rel="noopener">debian官网</a>: 关于iptables部分</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="http://oss.willhappy.cn/private/alipay_code_me.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="http://oss.willhappy.cn/private/wechat_code_me.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《主页部署docker+ng+tomcat+https》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/06/13/30-2018-06-13-zhu-ye-bu-shu-docker-ng-tomcat-https/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Will
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'c012900cfa3718580687',
+        clientSecret: '15fb2a23c381c0bbc4d720ee609ee07a57c24b7a',
+        repo: 'williamHappy.github.io',
+        owner: 'williamHappy',
+        admin: "williamHappy",
+        id: '2018-06-13T00-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/06/15/33-2018-06-15-qian-duan-ji-chu-gui-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="前端基础知识工作归结">
+                        
+                        <span class="card-title">前端基础知识工作归结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+[toc]
+前言由于工作需要，所以巩固一下前端的基础知识，因为不是专职前端coder，所以补的都是基础的基础，勿喷…😭
+1. jquery给动态生成的元素添加绑定事件$(parentSelector).on('event', child
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-06-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/基础/" target="_blank">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/06/11/29-2018-06-11-docker-chu-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="docker初识（博客环境准备）">
+                        
+                        <span class="card-title">docker初识（博客环境准备）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            为什么要开始学习docker呢？主要是自己博客home页部署在同事的阿里云上，但是，目前他的服务器已经快到期，所以我要对我的主页迁移，但是想到重现搭建生产环境的不确定性，决定研究下docker,同时也方便以后博客主页的迁移，也没必要为生产环
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-06-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/运维/" class="post-category" target="_blank">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: WillHappy<br />'
+            + '作者: Will<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            
+            <div>
+                <div style="text-align: center; float:left; width: 50%;">
+                    <img alt="" src="http://oss.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;" width="43%">
+                    <p style="text-align: center">喜欢请给个赞赏，谢谢</p>
+                </div>
+            
+                <div style="text-align: center; border-left: 1px solid #4C5461; float:left; width: 48%;">
+                    <img alt="" src="http://oss.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" width="45%">
+                    <p style="text-align: center">欢迎关注个人微信公众号</p>
+                </div>
+            </div>
+            
+
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">64.3k</span>
+            
+
+            
+                <!-- <p>鲁ICP备2024094097号-1</p> -->
+              <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2024094097号-1</a>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="https://github.com/williamHappy" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ctwang1994@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=583876674" class="tooltipped" data-tooltip="QQ联系我: 583876674" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="http://oss.willhappy.cn/private/wechat_url.jpg" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-wechat"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/williamhappy" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+
+    <link rel="stylesheet" href="/assets/css/APlayer.min.css">
+
+<style type="text/css">
+    /* don't remove. */
+    .music-player {
+      display: none;
+    }
+</style>
+
+
+
+    <div class="music-player custom-scroll">
+
+    <div class="col l8 offset-l2 m10 offset-m1 s12 container-music">
+        <meting-js
+            id="2157073216"
+            server="netease"
+            type="song"
+            fixed="true"
+            mini="true"
+            loop="all"
+            order="list"
+            volume="0.7"
+            lrctype="0"
+            listfolded="true"
+            storagename="metingjs"
+            autoplay="false" 
+            mutex="true"
+            listmaxheight="340px"
+            preload="auto" 
+            theme="#ad7a86">
+        </meting-js>
+    </div>
+</div>
+<script src="/assets/js/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2.0.1/dist/Meting.min.js"></script>
+ 
+    <script>
+      $(function(){
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('.custom-scroll').slideUp(300)
+            } else {
+              $('.custom-scroll').slideDown(300);
+            }
+        });
+      })
+    </script>
+  
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150197527-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-150197527-1');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){
+        i["DaoVoiceObject"]=r;
+        i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+        a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+        a.async=1;a.src=g;a.charset="utf-8";
+        m.parentNode.insertBefore(a,m)}
+      )(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/" + "ab5cf222" + ".js","daovoice")
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: "ab5cf222",
+        user_id: "willhappy",
+        email: "ctwang1994@163.com",
+        name: "甩甩哒博主",
+        signed_up: "1449821660"
+      });
+      daovoice('update');
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: ""
+      });
+      daovoice('update');
+    </script>
+  
+
+  
+    <script>
+      $(function(){
+        // 在线联系加载过慢，所以用滑动时间来触发
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('#daodream-container .daodream-launcher-enabled').slideUp(300)
+              $('#live2d-widget').css("visibility","hidden");
+            } else {
+              $('#daodream-container .daodream-launcher-enabled').slideDown(300);
+              $('#live2d-widget').css("visibility","visible");
+            }
+        });
+      })
+    </script>
+  
+
+</body>
+</html>

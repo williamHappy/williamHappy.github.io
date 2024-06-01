@@ -1,0 +1,1679 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java提升1, WillHappy">
+    <meta name="description" content="
+[toc]
+一.WebService入门
+Java中的xml操作
+
+XML和HTML区别
+
+
+XML被设计为传输和存储数据，其焦点是数据的内容
+HTML被设计用来显示数据，起焦点是数据的外观
+HTML旨在显示信息，而XML旨在传输信息
+
+">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java提升1 | WillHappy</title>
+    <link rel="icon" type="image/png" href="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+
+    <!-- 支持各视频类型js -->
+    <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
+    <script src="https://cdn.bootcss.com/hls.js/8.0.0-beta.3/hls.min.js"></script>
+    <script src="https://cdn.bootcss.com/dashjs/3.0.0/dash.all.min.js"></script>
+    <script src="https://cdn.bootcss.com/webtorrent/0.107.3/webtorrent.min.js"></script>
+
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?aa4349e706e4d8d729a94c2f879190d7";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+    <!-- 腾讯分析 -->
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66478330" charset="UTF-8"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<style type="text/css">
+  /* don't remove. */
+  #daodream-container .daodream-launcher-enabled {
+    display: none;
+  }
+  #live2d-widget {
+    visibility:hidden;
+  }
+</style>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo mobile-wd65">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">WillHappy</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="http://oss.willhappy.cn/private/pic-%E5%A4%B4%E5%83%8F4-%E9%80%8F%E6%98%8E.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">WillHappy</div>
+        <div class="logo-desc">
+            
+            Know the world, Find yourself
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/williamHappy/williamHappy.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #ac80b8;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/williamHappy/williamHappy.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java提升1
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java/" target="_blank">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/提升/" target="_blank">
+                                <span class="chip bg-color">提升</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/后端/" class="post-category" target="_blank">
+                                后端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2016-11-24
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3,784
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        15 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <a id="more"></a>
+<p>[toc]</p>
+<h3 id="一-WebService入门"><a href="#一-WebService入门" class="headerlink" title="一.WebService入门"></a>一.WebService入门</h3><ol>
+<li><p>Java中的xml操作</p>
+<ul>
+<li>XML和HTML区别</li>
+</ul>
+<ol>
+<li>XML被设计为传输和存储数据，其焦点是数据的内容</li>
+<li>HTML被设计用来显示数据，起焦点是数据的外观</li>
+<li>HTML旨在显示信息，而XML旨在传输信息</li>
+</ol>
+<ul>
+<li>使用java读取XML文件<br>实例：</li>
+</ul>
+</li>
+</ol>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ReadXML</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//dom解析xml文件</span>
+            DocumentBuilderFactory factory <span class="token operator">=</span> DocumentBuilderFactory<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            DocumentBuilder builder <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">newDocumentBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Document document <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"Java01/languages.xml"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Element root <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getDocumentElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"cat="</span> <span class="token operator">+</span> root<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"cat"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            NodeList list <span class="token operator">=</span> root<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"lan"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Element lan <span class="token operator">=</span> <span class="token punctuation">(</span>Element<span class="token punctuation">)</span> list<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"id="</span> <span class="token operator">+</span> lan<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//                Element name = (Element) lan.getElementsByTagName("name").item(0);</span>
+<span class="token comment" spellcheck="true">//                System.out.println("name="+name.getTextContent());</span>
+                NodeList cList <span class="token operator">=</span> lan<span class="token punctuation">.</span><span class="token function">getChildNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> cList<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    Node c <span class="token operator">=</span> cList<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token keyword">instanceof</span> <span class="token class-name">Element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">getNodeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"="</span> <span class="token operator">+</span> c<span class="token punctuation">.</span><span class="token function">getTextContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ParserConfigurationException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SAXException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>languages.xml文件：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8" ?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>languages</span> <span class="token attr-name">cat</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>it<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lan</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ide</span><span class="token punctuation">></span></span>IntelliJ IDEA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ide</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lan</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lan</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>swift<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ide</span><span class="token punctuation">></span></span>Xcode<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ide</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lan</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lan</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>C#<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ide</span><span class="token punctuation">></span></span>Visual Studio<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ide</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lan</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>languages</span><span class="token punctuation">></span></span>
+</code></pre>
+<ul>
+<li>使用java创建xml数据</li>
+<li>使用dom4j操作xml数据</li>
+</ul>
+<p><br></p>
+<ol start="2">
+<li>java中的JSON操作</li>
+</ol>
+<ul>
+<li><p>JSON数据格式简介</p>
+<p>  json是存储和交换文本信息的语法。</p>
+<ol>
+<li>json是轻量级的文本数据交换格式</li>
+<li>json独立于语言和平台</li>
+<li>json具有自我描述性，更易理解</li>
+</ol>
+</li>
+<li><p>使用java读取json数据</p>
+</li>
+</ul>
+<p>使用gson的jar包来读取json</p>
+<ul>
+<li>使用java创建json数据</li>
+</ul>
+<h3 id="二-Spring"><a href="#二-Spring" class="headerlink" title="二. Spring"></a>二. Spring</h3><ol>
+<li><p>spring入门<br> a. 简介：spring是一个轻量级控制反转（ioc）和面向切面（aop）的容器框架，它主要是为了解解决企业应用开发的复杂性而诞生的<br> b. 优势：</p>
+<ul>
+<li>它定位的领域是许多其他流行的framework没有的</li>
+<li>spring是全面的和模块化的</li>
+<li>他的设计从底部帮助你编写易于测试的代码</li>
+<li><p>spring是潜在的一站式解决方案</p>
+<p>c. 优点：</p>
+</li>
+<li>低侵入式设计，代码污染极低</li>
+<li>write Once,Run Anywhere</li>
+<li>DI有效的降低了耦合度</li>
+<li>AOP提供了通用任务的集中管理</li>
+<li>ORM和DAO简化了对数据库访问</li>
+<li>高度开放性，并不强制</li>
+</ul>
+</li>
+<li><p>spring之IOC</p>
+</li>
+</ol>
+<p>a. 浅谈IOC<br>IOC（Inversion of Control，控制反转）是spring的核心，贯穿始终。所谓IOC，对于spring框架来说，就是由spring来负责控制对象的生命周期和对象间的关系：</p>
+<ul>
+<li>传统开发模式：对象之间互相依赖（像找对象，自己需要什么样的对象，按自己的标准去找，完全由自己来做，来筛选）</li>
+<li>IOC开发模式：IOC容器安排对象之间的依赖（像有一个婚姻介绍所，会收集所有的男女对象，你需要什么样的对象，只需要提交给他，他会帮你筛选，你只需要谈恋爱就行了，其他的交个婚介就可以了）</li>
+</ul>
+<p>b. IOC理论背景<br><img src="http://oss.willhappy.cn/18-5-3/73362040.jpg" alt="SpringIOC"></p>
+<p>c. IOC通俗的理解如下：</p>
+<ul>
+<li>IOC控制反转：说的是创建对象实例的控制权从代码控制剥离到IOC容器控制，实际就是你在xml文件控制，侧重原理</li>
+<li>DI依赖注入：说的是创建对象实例时，为这个对象注入属性值或其他对象实例，侧重于实现。</li>
+<li>ioc比如有一个类，在类里面有方法（不是静态的方法），调用类里面的方法，创建类的对象，使用对象调用方法，创建类对象的过程，需要new出来对象</li>
+<li>把对象的创建不是通过new方式实现，而是交给spring配置创建类对象</li>
+</ul>
+<ol start="3">
+<li>spring之AOP<br> a. AOP图解</li>
+</ol>
+<p><img src="http://oss.willhappy.cn/18-5-3/47267701.jpg" alt="SpringAOP"></p>
+<p>面向切面的编程，扩展功能不是修改源代码实现</p>
+<ol start="4">
+<li><p>springIOC容器深入理解<br> a. IOC概念<br> b. Java反射机制</p>
+<ul>
+<li><p>ClassLoader工作机制</p>
+<ol>
+<li>装载：查找和导入Class文件</li>
+<li>链接：执行校验，准备和解析步骤</li>
+<li>初始化：对垒的静态变量、静态代码块执行初始化工作</li>
+</ol>
+<p>c. 资源访问工具类<br>d. BeanFactory和ApplicationContext的介绍<br>e. Bean的生命周期</p>
+</li>
+</ul>
+</li>
+<li><p>spring的配置文件<br> a. spring容器高层视图</p>
+<ul>
+<li>spring容器启动基本条件：</li>
+</ul>
+<ol>
+<li>spring的框架类包</li>
+<li>bean的配置文件</li>
+<li>bean的实现类</li>
+</ol>
+<ul>
+<li>bean的元数据信息：</li>
+</ul>
+<ol>
+<li>bean的实现类</li>
+<li>bean的属性信息</li>
+<li>bean的依赖关系</li>
+<li>bean的行为配置</li>
+<li><p>bean的创建方式</p>
+<p><img src="http://oss.willhappy.cn/18-5-3/64128309.jpg" alt="Spring高层视图"></p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>传智播客spring框架2016版 笔记记录</p>
+<h3 id="一-Spring概念（传智播客笔记）"><a href="#一-Spring概念（传智播客笔记）" class="headerlink" title="一. Spring概念（传智播客笔记）"></a>一. Spring概念（传智播客笔记）</h3><ol>
+<li>spring是开源的轻量级框架</li>
+<li>spring核心主要两部分：</li>
+</ol>
+<ul>
+<li>aop：面向切面编程，扩展功能不是修改源代码实现</li>
+<li>ioc：控制反转<br>（1） 比如有一个类，在类里面有方法（不是静态的方法），调用类里面的方法，创建类的对象，使用对象调用方法，创建类对象的过程，需要new出来对象<br>（2） 把对象的创建不是通过new方式实现，而是交个spring配置创建类对象</li>
+</ul>
+<ol start="3">
+<li>spring是一站式框架</li>
+</ol>
+<ul>
+<li>spring在javaee三层结构中，每一层都提供不同的解决技术<br>（1） web层：springMVC<br>（2） service层：spring的ioc<br>（3） dao层：spring的jdbcTemplate</li>
+</ul>
+<ol start="4">
+<li>spring版本</li>
+</ol>
+<ul>
+<li>hivernate5.x</li>
+<li>spring4.x</li>
+</ul>
+<h3 id="二-Spring的ioc操作"><a href="#二-Spring的ioc操作" class="headerlink" title="二. Spring的ioc操作"></a>二. Spring的ioc操作</h3><ol>
+<li>把对象的创建交给spring进行管理</li>
+<li>ioc操作两部分：</li>
+</ol>
+<ul>
+<li>ioc的配置文件的方式</li>
+<li>ioc的注解方式</li>
+</ul>
+<ol start="3">
+<li>ioc底层原理</li>
+</ol>
+<ul>
+<li>xml配置文件</li>
+<li>dom4J解决xml</li>
+<li>工厂设计模式</li>
+<li>java反射技术</li>
+</ul>
+<p><img src="http://oss.willhappy.cn/18-5-3/14125156.jpg" alt="iocDevelop"></p>
+<p><img src="http://oss.willhappy.cn/18-5-3/51646746.jpg" alt="iocDevelop"></p>
+<ol start="4">
+<li>ioc入门案例</li>
+</ol>
+<ul>
+<li>导入jar包<br>（1） 解压资料zip文件<br>jar特点：都有三个jar包<br>（2） 做spring最基本功能时候，导入四个核心的jar包就可以了<br>（3） 导入支持日志输出的jar包</li>
+<li>创建类，在类里面创建方法</li>
+<li>创建spring配置文件，配置创建类<br>（1） spring核心配置文件名称和位置不是固定的，建议放到src下面，官方建议applicationContext.xml<br>（2） 引入schema约束<br>（3） 配置对象的创建</li>
+<li>写代码测试对象创建</li>
+</ul>
+<h3 id="三-Spring的bean管理（xml方式）"><a href="#三-Spring的bean管理（xml方式）" class="headerlink" title="三. Spring的bean管理（xml方式）"></a>三. Spring的bean管理（xml方式）</h3><ol>
+<li>bean实例化的方式</li>
+</ol>
+<ul>
+<li>在spring里面通过配置文件创建对象</li>
+<li>bean实例化三种方式实现<br>（1） 使用类的无参数构造创建（重点）<br>注：如果类里面没有无参数的构造，会出现异常<br>（2） 使用静态工厂创建<br>① 创建静态的方法，返回类对象<br>（3） 使用实例工厂创建<br>① 创建不是静态的方法，返回类对象</li>
+</ul>
+<ol start="2">
+<li>Bean标签常用属性</li>
+</ol>
+<ul>
+<li><p>id属性：起名称，id属性值名称任意命名<br>注：① id属性值，不能包含特殊符号<br>② 根据id值得到配置对象</p>
+</li>
+<li><p>class属性：创建对象所在类的全路径</p>
+</li>
+<li>name属性：功能和id属性一样的，id属性值布恩那个包含特殊符号，但是在name属性值里面可以包含特殊符号，name属性为了解决strus1遗留的问题。</li>
+<li><p>scope属性<br>① singleton：默认值，单例的<br>② prototype：多例的<br>③ request：web项目中，spring创建一个bean的对象，将对象存入到session域中<br>④ session：web项目中，spring创建一个bean对象，将对象存入到session域中<br>⑤ globalSession：web项目中，应用到porlet环境，如果没有porlet环境那么globalSession相当于session。</p>
+</li>
+<li><p>属性的注入<br>① 创建对象的时候，向类里面属性里面设置值<br>② 属性注入的方式介绍<br>（1） 使用set方法注入<br>（2） 使用有参数构造注入<br>（3） 使用接口注入<br>③ 在spring框架里面，支持前两种方式</p>
+</li>
+<li><p>注入对象类型属性（重点）<br>①. 创建service类和dao类<br>（1） 在service中得到dao对象<br>②. 具体过程实现<br>（1） 在service里面把dao做为类型属性<br>（2） 生成dao类型属性的set方法<br>（3） 在配置文件中注入关系</p>
+</li>
+<li><p>P 名称空间的注入</p>
+</li>
+<li>注入复杂类型属性<br>① 数组<br>② list集合<br>③ map集合<br>④ properties类型</li>
+</ul>
+<ol start="3">
+<li>IOC和DI区别</li>
+</ol>
+<ul>
+<li>IOC:控制反转，把对象创建交给spring进行配置</li>
+<li>DI：依赖注入，向类里面的属性中设置值</li>
+<li>关系：依赖注入不能单独存在，需要在ioc基础上完成操作</li>
+</ul>
+<ol start="4">
+<li>spring整合web项目原理</li>
+</ol>
+<ul>
+<li>加载spring核心配置文件<br>① new对象，功能可以实现，效率很低</li>
+<li>实现思想：吧加载配置文件和创建对象过程，在服务器启动时候完成</li>
+<li>实现原理<br>① ServletContext对象<br>② 监听器<br>③ 具体使用：<br>在服务器启动的时候，为每个项目创建一个ServletContext对象<br>在servletContext对象创建时候，使用监听器可以具体盗ServletContext对象在什么时候创建<br>使用监听器监听到ServletContext对象创建时候<br>加载Spring配置文件，把配置文件配置对象创建<br>把创建出来的对象放到ServletContext域对象里面（setAttribute方法）<br>获取对象的时候，盗ServletContext域中得到（getAttribute方法）</li>
+</ul>
+<h3 id="四-Spring的bean管理（注解）"><a href="#四-Spring的bean管理（注解）" class="headerlink" title="四. Spring的bean管理（注解）"></a>四. Spring的bean管理（注解）</h3><ol>
+<li>注解</li>
+</ol>
+<blockquote>
+<ol>
+<li>代码里面特殊标记，使用注解可以完成功能</li>
+<li>注解写法@注解名称（属性名称=属性值）</li>
+<li>注解使用在类上面，方法上面和属性上面</li>
+</ol>
+</blockquote>
+<ol>
+<li>spring注解开发准备</li>
+</ol>
+<ul>
+<li>导入jar包（基本jar包和aop的jar包）</li>
+<li>创建类，创建方法</li>
+<li>创建spring配置文件，引入约束</li>
+<li>开启注解扫描</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- 注解扫描包 到包里面扫描类、方法和属性上面是否有注释 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.seeknovel<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- 扫描属性上面的注解 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>annotation-config</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">context:</span>annotation-config</span><span class="token punctuation">></span></span>
+</code></pre>
+<ol start="3">
+<li>注解创建对象</li>
+</ol>
+<ul>
+<li>在创建对象的类上面使用注解实现</li>
+<li>创建对象有四个注解</li>
+</ul>
+<p><img src="http://oss.willhappy.cn/18-5-3/54295144.jpg" alt="@component"></p>
+<ol start="4">
+<li>创建对象单实例还是多实例</li>
+<li>注解注入属性</li>
+</ol>
+<ul>
+<li>创建service类，创建dao类，在service得到dao对象</li>
+</ul>
+<h3 id="五-AOP"><a href="#五-AOP" class="headerlink" title="五. AOP"></a>五. AOP</h3><ol>
+<li>aop概述</li>
+</ol>
+<blockquote>
+<p>aop:面向切面编程，扩展功能不修改源代码实现<br>aop采取横向抽取机制，取代了传统纵向继承体系重复性代码</p>
+</blockquote>
+<ol start="2">
+<li>aop原理<br>示意图如下：</li>
+</ol>
+<p><img src="http://oss.willhappy.cn/18-5-3/6805202.jpg" alt="aopDevelop"></p>
+<p><img src="http://oss.willhappy.cn/18-5-3/75261754.jpg" alt="aopTheory"></p>
+<ol start="3">
+<li>aop操作术语</li>
+</ol>
+<p><strong>Joinpoint(连接点)</strong>：所谓的连接点是指那些被拦截到的点。在spring中，这些点指的是方法，因为spring只支持方法类型的连接点。</p>
+<p><strong>Pointcut（切入点）</strong>：所谓的切入点是指我们要对哪些Joinpoint进行拦截的定义。</p>
+<p><strong>Advice（通知/增强）</strong>：所谓通知是指拦截到Joinpoint之后所要做的事情就是通知，通知分为前置通知，后置通知，异常通知，最终通知，环绕通知（切面要完成的功能）</p>
+<p><strong>Introduction（引介）</strong>：引介是一种特殊的通知在不修改类代码的前提下，Introduction可以在运行期为类动态添加一些方法或Field。</p>
+<p><strong>Target（目标对象）</strong>：代理的目标对象（要增强的类）<br><strong>Weaving（织入）</strong>：是把增强应用到目标的过程，把advice应用到target的过程<br><strong>Proxy（代理）</strong>：一个类被aop治入增强后，就产生一个结果代理类<br><strong>Aspect（切面）</strong>：是切入点和通知（引介）的结合</p>
+<p>术语解读：</p>
+<p><img src="http://oss.willhappy.cn/18-5-3/69405956.jpg" alt="aopName"></p>
+<p>4.Spring的aop操作</p>
+<ul>
+<li>在spring里面进行aop操作，使用aspectj实现<br>① aspectj不是spring的一部分，和spring一起使用进行aop操作<br>② spring2.0以后增加了对AspectJ的支持</li>
+<li>使用aspectj实现aop有两种方式<br>① 基于aspectj的xml配置<br>② 基于aspectj的注解方式</li>
+</ul>
+<ol start="5">
+<li>aop操作准备</li>
+</ol>
+<ul>
+<li>除了导入基本的jar包之外，还需要导入aop相关的jar包</li>
+<li>创建spring核心配置文件，导入aop的约束</li>
+</ul>
+<ol start="6">
+<li>使用表达式配置切入点</li>
+</ol>
+<ul>
+<li>切入点：实际增强的方法</li>
+<li>常用表达式<br>① execution（<em>cn.itcast.aop.Book.add(..)）<br>② execution(</em> cn.itcast.aop.Book.<em>(..))<br>③ execution(</em> <em>.</em>(..))<br>④ 匹配所有save开头的方法 execution(<em>save</em>(..))<br>aop基于Aspectj配置实现：</li>
+</ul>
+<p><img src="http://oss.willhappy.cn/18-5-3/81650325.jpg" alt="aopAchieve"></p>
+<p>注：环绕通知的增强</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//环绕通知</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">aroundTest</span><span class="token punctuation">(</span>ProceedingJoinPoint proceedingJoinPoint<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//方法之前</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法之前。。。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//执行被增强的方法</span>
+    proceedingJoinPoint<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//方法之后</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法之后。。。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ol start="7">
+<li>log4J介绍</li>
+</ol>
+<ul>
+<li>通过log4j可以看到程序运行过程中更详细的信息</li>
+<li>使用log4j查看日志</li>
+<li><p>使用<br>① 导入log4j的jar包<br>⑤ 复制log4j配置文件，复制到src下面</p>
+</li>
+<li><p>设置日志级别</p>
+</li>
+</ul>
+<blockquote>
+<p>log4j.rootLogger=info,stdout<br>① info：看到基本信息<br>② debug：看到更详细的信息</p>
+</blockquote>
+<h3 id="六-Spring整合web项目演示"><a href="#六-Spring整合web项目演示" class="headerlink" title="六. Spring整合web项目演示"></a>六. Spring整合web项目演示</h3><ol>
+<li>演示为题<br>（1） action调用service，service调用dao<br>（2） 每次访问action时候，都会加载spring配置文件</li>
+<li>解决方法：<br>（1） 在服务器启动时候，创建俺对象加载配置文件<br>（2） 底层使用监听器、ServletContext对象</li>
+<li>在spring里面不需要我们自己写代码实现，spring已经封装好了<br>（1） 封装了一个监听器，只需要配置监听器就可以了<br>（2） 配置监听器之前做事情：导入spring整合web项目jar包<br>在web.xml中配置:</li>
+</ol>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">></span></span>org.springframework.web.context.ContextLoaderListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- 指定加载spring配置文件位置 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>contextConfigLocation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>classpath*:spring-context.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">></span></span>
+</code></pre>
+<ol start="3">
+<li>基于aspectj的注解aop</li>
+</ol>
+<ul>
+<li>使用注解方式实现aop操作<br>① 创建对象</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- 创建对象 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>book<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cn.itcast.aop.Book<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myBook<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cn.itcast.aop.MyBook<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>② 在spring核心配置文件中，开启aop操作</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- 开启aop操作 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>aspectj-autoproxy</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">aop:</span>aspectj-autoproxy</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>③ 在增强类上面使用注解完成aop操作</p>
+<p><img src="http://oss.willhappy.cn/18-5-3/35764246.jpg" alt="aopBefore"></p>
+<h3 id="七-Spring的jdbcTemplate操作"><a href="#七-Spring的jdbcTemplate操作" class="headerlink" title="七. Spring的jdbcTemplate操作"></a>七. Spring的jdbcTemplate操作</h3><ol>
+<li><p>spring框架一站式框架<br>（1） 针对javaee三层，每一层都有解决技术<br>（2） 在dao层，使用jdbcTemplate</p>
+</li>
+<li><p>spring对不同的持久化层技术都进行了封装<br>（1） jdbcTemplate对jdbc进行了封装</p>
+</li>
+<li>jdbcTemplate使用和dbutils使用很相似，都数据库进行crud操作</li>
+</ol>
+<ul>
+<li>增加<br>① 导入jdbcTemplate的jar包<br>② 创建对象，设置数据库信息<br>③ 创建jdbcTemplate对象，设置数据源<br>④ 调用jdbcTemplate对象里面的方法实现操作</li>
+</ul>
+<p><img src="http://oss.willhappy.cn/18-5-3/22949019.jpg" alt="springJdbc"></p>
+<ul>
+<li>修改，删除类似与增加，不做赘述</li>
+<li>查找</li>
+</ul>
+<blockquote>
+<p>查找区别与dbutils，返回结果集的处理类需要自己去实现，而dbutils则给出了不同的结果集处理类，而jdbcTemplate则需要自己去实现RowMapper（）接口来处理结果。dbutils中也有类似于RowMapper（）接口的接口为ResultSetHandler（），但是他也提供了不同的实现类，来处理不同的结果。</p>
+</blockquote>
+<h3 id="八-Spring事务管理"><a href="#八-Spring事务管理" class="headerlink" title="八. Spring事务管理"></a>八. Spring事务管理</h3><ol>
+<li>Spring事物管理两种方式<br>（1） 编程式事务管理（不用）<br>（2） 声明式事务管理</li>
+</ol>
+<ul>
+<li>基于xml配置文件实现</li>
+<li>基于注解实现</li>
+</ul>
+<ol start="2">
+<li>spring事务管理的api介绍</li>
+</ol>
+<p><img src="http://oss.willhappy.cn/18-5-3/45395861.jpg" alt="springTx"></p>
+<p>（1） spring针对不同的dao层框架，提供接口不同的实现类</p>
+<p><img src="http://oss.willhappy.cn/18-5-3/36709263.jpg" alt="springTxSx"></p>
+<p>（2） 配置事物管理器</p>
+<ol start="3">
+<li>搭建转账环境<br>（1） 创建数据库表，添加数据<br>（2） 创建service和dao类，完成注入关系</li>
+</ol>
+<ul>
+<li>service层又叫业务逻辑层</li>
+<li>dao层，单独对数据库操作，在dao层不添加业务</li>
+</ul>
+<p>（3） 声明式事务管理（xml配置，麻烦不建议使用）</p>
+<ul>
+<li>配置文件方式使用aop思想配置</li>
+</ul>
+<p><img src="http://oss.willhappy.cn/18-5-3/14916884.jpg" alt="pzTx"></p>
+<p><img src="http://oss.willhappy.cn/18-5-3/65304479.jpg" alt="pzQm"></p>
+<p>（4） 声明式事务管理（注解）</p>
+<ul>
+<li>配置事务管理器</li>
+<li>配置事物注解</li>
+<li>在要使用事务的方法所在类上面添加注解<br>图示：</li>
+</ul>
+<p><img src="http://oss.willhappy.cn/18-5-3/45372897.jpg" alt="zjTx"></p>
+<h3 id="九-ssh框架的整合"><a href="#九-ssh框架的整合" class="headerlink" title="九. ssh框架的整合"></a>九. ssh框架的整合</h3><ol>
+<li>ssh整合思想</li>
+</ol>
+<p><img src="http://oss.willhappy.cn/18-5-3/82192601.jpg" alt="sshThink"></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="http://oss.willhappy.cn/private/alipay_code_me.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="http://oss.willhappy.cn/private/wechat_code_me.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《Java提升1》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2016/11/24/5-2016-11-24-java-zhong-ji-zhi-shi-java002/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Will
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'c012900cfa3718580687',
+        clientSecret: '15fb2a23c381c0bbc4d720ee609ee07a57c24b7a',
+        repo: 'williamHappy.github.io',
+        owner: 'williamHappy',
+        admin: "williamHappy",
+        id: '2016-11-24T00-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2016/11/25/6-2016-11-25-java-gao-ji-zhi-shi-java003/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Java提升2">
+                        
+                        <span class="card-title">Java提升2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+[toc]
+一. Java集合类详解
+Connection接口
+集合可以理解为一个动态的对象数组，不同的是集合中的对象内容可以任意扩充
+集合的特点： 性能高 容易扩展和修改
+Collection的常用子类 List Set Queue
+L
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2016-11-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/后端/" class="post-category" target="_blank">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/" target="_blank">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/提升/" target="_blank">
+                        <span class="chip bg-color">提升</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2016/11/20/4-2016-11-20-java-chu-ji-zhi-shi-java001/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java入门">
+                        
+                        <span class="card-title">Java入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+[toc]
+一. 什么是java
+java编程语言是个简答/完全面向对象/分布式/解释性/健壮性/安全与系统无关/可移植性/高性能/多线程和动态得编程语言。
+
+二. java体系
+java SE java平台标准版
+java EE jav
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2016-11-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/后端/" class="post-category" target="_blank">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/基础/" target="_blank">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: WillHappy<br />'
+            + '作者: Will<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            
+            <div>
+                <div style="text-align: center; float:left; width: 50%;">
+                    <img alt="" src="http://oss.willhappy.cn/private/mm_reward_qrcode.png" style="margin: 0 auto;" width="43%">
+                    <p style="text-align: center">喜欢请给个赞赏，谢谢</p>
+                </div>
+            
+                <div style="text-align: center; border-left: 1px solid #4C5461; float:left; width: 48%;">
+                    <img alt="" src="http://oss.willhappy.cn/private/qrcode_for_gzh.jpg" style="margin: 0 auto;" width="45%">
+                    <p style="text-align: center">欢迎关注个人微信公众号</p>
+                </div>
+            </div>
+            
+
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">64.3k</span>
+            
+
+            
+                <!-- <p>鲁ICP备2024094097号-1</p> -->
+              <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2024094097号-1</a>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="https://github.com/williamHappy" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ctwang1994@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=583876674" class="tooltipped" data-tooltip="QQ联系我: 583876674" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="http://oss.willhappy.cn/private/wechat_url.jpg" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-wechat"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/williamhappy" class="tooltipped" target="_blank" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+
+    <link rel="stylesheet" href="/assets/css/APlayer.min.css">
+
+<style type="text/css">
+    /* don't remove. */
+    .music-player {
+      display: none;
+    }
+</style>
+
+
+
+    <div class="music-player custom-scroll">
+
+    <div class="col l8 offset-l2 m10 offset-m1 s12 container-music">
+        <meting-js
+            id="2157073216"
+            server="netease"
+            type="song"
+            fixed="true"
+            mini="true"
+            loop="all"
+            order="list"
+            volume="0.7"
+            lrctype="0"
+            listfolded="true"
+            storagename="metingjs"
+            autoplay="false" 
+            mutex="true"
+            listmaxheight="340px"
+            preload="auto" 
+            theme="#ad7a86">
+        </meting-js>
+    </div>
+</div>
+<script src="/assets/js/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2.0.1/dist/Meting.min.js"></script>
+ 
+    <script>
+      $(function(){
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('.custom-scroll').slideUp(300)
+            } else {
+              $('.custom-scroll').slideDown(300);
+            }
+        });
+      })
+    </script>
+  
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150197527-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-150197527-1');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){
+        i["DaoVoiceObject"]=r;
+        i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+        a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+        a.async=1;a.src=g;a.charset="utf-8";
+        m.parentNode.insertBefore(a,m)}
+      )(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/" + "ab5cf222" + ".js","daovoice")
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: "ab5cf222",
+        user_id: "willhappy",
+        email: "ctwang1994@163.com",
+        name: "甩甩哒博主",
+        signed_up: "1449821660"
+      });
+      daovoice('update');
+    </script>
+  
+    <script>
+      daovoice('init', {
+        app_id: ""
+      });
+      daovoice('update');
+    </script>
+  
+
+  
+    <script>
+      $(function(){
+        // 在线联系加载过慢，所以用滑动时间来触发
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll < 1) {
+              $('#daodream-container .daodream-launcher-enabled').slideUp(300)
+              $('#live2d-widget').css("visibility","hidden");
+            } else {
+              $('#daodream-container .daodream-launcher-enabled').slideDown(300);
+              $('#live2d-widget').css("visibility","visible");
+            }
+        });
+      })
+    </script>
+  
+
+</body>
+</html>
