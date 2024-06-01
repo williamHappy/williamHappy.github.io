@@ -58,9 +58,9 @@ music:
   enable: true
   # 所有页面中配置，每篇文章单独配置的可参考hexo-tag-aplayer的写法
   # {% meting "7158943707" "tencent" "playlist" "mini" "loop:all" "order:random" "volume:0.6" "lrctype:0"  "listfolded" "storagename:metingjs" "autoplay" "listmaxheight:340px" "preload:none" "theme:#ad7a86" %}
-  id: '7158943707' #必须值	歌曲 id / 播放列表 id / 相册 id / 搜索关键字
-  server:	'tencent' #必须值	音乐平台: netease, tencent, kugou, xiami, baidu
-  type:	'playlist' #必须值	song, playlist, album, search, artist
+  id: '2157073216' #必须值	歌曲 id / 播放列表 id / 相册 id / 搜索关键字
+  server:	'netease' #必须值	音乐平台: netease, tencent, kugou, xiami, baidu
+  type:	'song' #必须值	song, playlist, album, search, artist
   fixed: true #false	开启固定模式
   mini: true	#false	开启迷你模式
   loop: 'all'	#all	列表循环模式：all, one,none
